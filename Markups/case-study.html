@@ -1,0 +1,2825 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sutherland Case Study – Spotify Multilingual Support</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+            <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+          <a href="/" class="nav__logo" aria-label="Sutherland home">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="nav__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="nav__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="nav__logo-dot"
+            />
+            <img src="assets/images/logo-r.svg" alt="" class="nav__logo-r" />
+          </a>
+          <div class="nav__menu-wrapper">
+            <div
+              class="nav__menu glass-pill"
+              role="menubar"
+              aria-label="Primary menu"
+            >
+              <a
+                href="/capabilities"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="capabilities"
+                >Capabilities</a
+              >
+              <a
+                href="/industries"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="industries"
+                >Industries</a
+              >
+              <a
+                href="/outcomes"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="outcomes"
+                >Outcomes</a
+              >
+              <a
+                href="/impact"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="impact"
+                >Impact</a
+              >
+              <a
+                href="/about"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="about"
+                >About</a
+              >
+            </div>
+            <div
+              class="nav__search glass-pill"
+              role="search"
+              aria-label="Site search"
+            >
+              <div class="nav__search-field">
+                <input
+                  type="search"
+                  class="nav__search-input"
+                  placeholder="Search"
+                  aria-label="Search the site"
+                />
+                <img
+                  src="assets/images/icon-search.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                  class="nav__search-icon"
+                />
+              </div>
+              <span class="nav__search-divider" aria-hidden="true"></span>
+              <div
+                class="nav__lang"
+                aria-label="Language selector"
+                data-lang-toggle
+              >
+                <img
+                  src="assets/images/icon-globe.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  class="nav__lang-icon"
+                />
+                <span class="nav__lang-text">EN</span>
+                <img
+                  src="assets/images/icon-arrow.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  class="nav__lang-arrow"
+                />
+                <div
+                  class="lang-dropdown"
+                  aria-hidden="true"
+                  data-lang-dropdown
+                >
+                  <div class="lang-dropdown__arrow"></div>
+                  <a
+                    href="?lang=en"
+                    class="lang-dropdown__item lang-dropdown__item--active"
+                    ><span>English</span></a
+                  >
+                  <a href="?lang=ar" class="lang-dropdown__item"
+                    ><span>Arabic</span></a
+                  >
+                  <a href="?lang=de" class="lang-dropdown__item"
+                    ><span>German</span></a
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="/contact" class="nav__cta cta cta--primary">
+              <span>Contact</span>
+            </a>
+          </div>
+          <button
+            type="button"
+            class="nav__mobile-search"
+            aria-label="Search"
+            data-mobile-search-toggle
+          >
+            <img
+              src="assets/images/icon-search.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+            />
+          </button>
+          <div
+            class="nav__mobile-search-bar"
+            aria-hidden="true"
+            data-mobile-search-bar
+          >
+            <img
+              src="assets/images/icon-search.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+              class="nav__mobile-search-bar-icon"
+            />
+            <input
+              type="search"
+              class="nav__mobile-search-bar-input"
+              placeholder="Search ..."
+              aria-label="Search the site"
+            />
+            <button
+              type="button"
+              class="nav__mobile-search-bar-close"
+              aria-label="Close search"
+              data-mobile-search-close
+            >
+              &times;
+            </button>
+          </div>
+          <div class="nav__mobile-globe-wrap" data-lang-toggle>
+            <button
+              type="button"
+              class="nav__mobile-globe"
+              aria-label="Select language"
+            >
+              <img
+                src="assets/images/icon-globe.svg"
+                alt=""
+                width="18"
+                height="18"
+                aria-hidden="true"
+              />
+            </button>
+            <div class="lang-dropdown" aria-hidden="true" data-lang-dropdown>
+              <div class="lang-dropdown__arrow"></div>
+              <a
+                href="?lang=en"
+                class="lang-dropdown__item lang-dropdown__item--active"
+                ><span>English</span></a
+              >
+              <a href="?lang=ar" class="lang-dropdown__item"
+                ><span>Arabic</span></a
+              >
+              <a href="?lang=de" class="lang-dropdown__item"
+                ><span>German</span></a
+              >
+            </div>
+          </div>
+          <button
+            type="button"
+            class="nav__hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            data-nav-toggle
+          >
+            <img
+              src="assets/images/icon-hamburger.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+        <!-- Desktop dropdown mega-menu -->
+        <div class="nav-dropdown" data-nav-dropdown aria-hidden="true">
+          <div class="nav-dropdown__inner">
+            <div class="nav-dropdown__panel" data-dropdown-panel="capabilities">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >AI &amp; Technology</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Artificial Intelligence</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Cloud &amp; Infrastructure</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Consulting &amp; Transformation</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Data &amp; Analytics</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Digital Engineering</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Enterprise Applications</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Proprietary Platforms</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >Intelligent Operations</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li><a href="#" class="nav-dropdown__item">BPaaS</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Customer Experience (CX)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Finance &amp; Accounting</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">HR Operations</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Industry Solutions</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="industries">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">By Sector</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Banking &amp; Financial Services</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Healthcare &amp; Life Sciences</a
+                    >
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Insurance</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Retail &amp; Consumer Goods</a
+                    >
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Technology</a></li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >More Industries</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Communications &amp; Media</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Energy &amp; Utilities</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Travel &amp; Hospitality</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Government &amp; Public Sector</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="outcomes">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Results</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Case Studies</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Client Success Stories</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">ROI Calculator</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Insights</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">White Papers</a>
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Blog</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Webinars &amp; Events</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="impact">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >Social Impact</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Sustainability</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Diversity &amp; Inclusion</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Community Engagement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Innovation</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Labs &amp; R&amp;D</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Patents &amp; IP</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Partnerships</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="about">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Company</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li><a href="#" class="nav-dropdown__item">Our Story</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Leadership</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Locations</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Newsroom</a></li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Careers</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Open Positions</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Life at Sutherland</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Benefits &amp; Culture</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div
+        class="mobile-menu"
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+        data-mobile-menu
+      >
+        <div class="mobile-menu__top">
+          <a href="/" class="mobile-menu__logo" aria-label="Sutherland home">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="nav__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="nav__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="nav__logo-dot"
+            />
+            <img src="assets/images/logo-r.svg" alt="" class="nav__logo-r" />
+          </a>
+          <button
+            type="button"
+            class="mobile-menu__close"
+            aria-label="Close menu"
+            data-mobile-menu-close
+          >
+            <span
+              class="mobile-menu__close-line mobile-menu__close-line--1"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="mobile-menu__close-line mobile-menu__close-line--2"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+        <div class="mobile-menu__search" role="search">
+          <input
+            type="search"
+            class="mobile-menu__search-input"
+            placeholder="Search"
+            aria-label="Search the site"
+          />
+          <img
+            src="assets/images/icon-search.svg"
+            alt=""
+            width="18"
+            height="18"
+            aria-hidden="true"
+            class="mobile-menu__search-icon"
+          />
+        </div>
+        <nav class="mobile-menu__nav" aria-label="Primary navigation">
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Capabilities</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >AI &amp; Technology</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Artificial Intelligence</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Cloud &amp; Infrastructure</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Consulting &amp; Transformation</a
+              >
+              <a href="#" class="mobile-menu__sublink">Data &amp; Analytics</a>
+              <a href="#" class="mobile-menu__sublink">Digital Engineering</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Enterprise Applications</a
+              >
+              <a href="#" class="mobile-menu__sublink">Proprietary Platforms</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >Intelligent Operations</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink">BPaaS</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Customer Experience (CX)</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Finance &amp; Accounting</a
+              >
+              <a href="#" class="mobile-menu__sublink">HR Operations</a>
+              <a href="#" class="mobile-menu__sublink">Industry Solutions</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Industries</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">By Sector</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Banking &amp; Financial Services</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Healthcare &amp; Life Sciences</a
+              >
+              <a href="#" class="mobile-menu__sublink">Insurance</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Retail &amp; Consumer Goods</a
+              >
+              <a href="#" class="mobile-menu__sublink">Technology</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >More Industries</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Communications &amp; Media</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Energy &amp; Utilities</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Travel &amp; Hospitality</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Government &amp; Public Sector</a
+              >
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Outcomes</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Results</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Case Studies</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Client Success Stories</a
+              >
+              <a href="#" class="mobile-menu__sublink">ROI Calculator</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Insights</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">White Papers</a>
+              <a href="#" class="mobile-menu__sublink">Blog</a>
+              <a href="#" class="mobile-menu__sublink">Webinars &amp; Events</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Impact</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >Social Impact</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink">Sustainability</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Diversity &amp; Inclusion</a
+              >
+              <a href="#" class="mobile-menu__sublink">Community Engagement</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Innovation</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Labs &amp; R&amp;D</a>
+              <a href="#" class="mobile-menu__sublink">Patents &amp; IP</a>
+              <a href="#" class="mobile-menu__sublink">Partnerships</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>About</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Company</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Our Story</a>
+              <a href="#" class="mobile-menu__sublink">Leadership</a>
+              <a href="#" class="mobile-menu__sublink">Locations</a>
+              <a href="#" class="mobile-menu__sublink">Newsroom</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Careers</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Open Positions</a>
+              <a href="#" class="mobile-menu__sublink">Life at Sutherland</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Benefits &amp; Culture</a
+              >
+            </div>
+          </div>
+        </nav>
+        <a href="/contact" class="mobile-menu__cta">Contact</a>
+        <div class="mobile-menu__lang">
+          <img
+            src="assets/images/icon-globe.svg"
+            alt=""
+            width="16"
+            height="16"
+            aria-hidden="true"
+          />
+          <span>English</span>
+          <img
+            src="assets/images/icon-arrow.svg"
+            alt=""
+            width="12"
+            height="12"
+            aria-hidden="true"
+            class="mobile-menu__lang-arrow"
+          />
+        </div>
+        <div class="mobile-menu__bg-decor" aria-hidden="true">
+          <img src="assets/images/menu-decor.png" alt="" />
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <div class="hero" role="banner">
+      <div class="hero__bg">
+        <!-- Hero Content -->
+        <div class="hero__content">
+          <div class="hero__text">
+            <nav class="breadcrumb glass-pill-subtle" aria-label="Breadcrumb">
+              <ol class="breadcrumb__list" role="list">
+                <li class="breadcrumb__item">
+                  <a href="/" class="breadcrumb__link">Home</a>
+                </li>
+                <li class="breadcrumb__item">
+                  <a href="/insights" class="breadcrumb__link">Insights</a>
+                </li>
+                <li class="breadcrumb__item" aria-current="page">
+                  <span class="breadcrumb__current">Case Study</span>
+                </li>
+              </ol>
+            </nav>
+            <h1 class="hero__title">
+              Scaling Multilingual Support for Spotify with Contextual
+              AI-Powered Translation
+            </h1>
+            <div class="hero__company-logo">
+              <img
+                src="assets/images/company-logo.png"
+                alt="Spotify logo"
+                class="hero__company-img"
+              />
+            </div>
+          </div>
+          <div class="hero__image-container">
+            <div class="hero__image-frame">
+              <img
+                src="assets/images/hero-main.png"
+                alt="Spotify multilingual support team in action"
+                class="hero__image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Statistics -->
+        <div class="hero__stats-wrapper">
+          <div class="hero__stats" role="region" aria-label="Key statistics">
+            <div class="stat-card stat-card--hero">
+              <span class="stat-card__value">35K+</span>
+              <span class="stat-card__label"
+                >Monthly resolutions across digital channels</span
+              >
+            </div>
+            <div class="stat-card stat-card--hero">
+              <span class="stat-card__value">90%+</span>
+              <span class="stat-card__label">CSAT from non-native agents</span>
+            </div>
+            <div class="stat-card stat-card--hero">
+              <span class="stat-card__value">33%</span>
+              <span class="stat-card__label">Reduction in response time</span>
+            </div>
+            <div class="stat-card stat-card--hero">
+              <span class="stat-card__value">98%</span>
+              <span class="stat-card__label">Accuracy rate</span>
+            </div>
+          </div>
+          <div
+            class="hero__stats-dots"
+            role="tablist"
+            aria-label="Statistics page indicators"
+          >
+            <span
+              class="hero__stats-dot hero__stats-dot--active"
+              role="tab"
+              aria-selected="true"
+              aria-label="Page 1"
+              tabindex="0"
+            ></span>
+            <span
+              class="hero__stats-dot"
+              role="tab"
+              aria-selected="false"
+              aria-label="Page 2"
+              tabindex="-1"
+            ></span>
+            <span
+              class="hero__stats-dot"
+              role="tab"
+              aria-selected="false"
+              aria-label="Page 3"
+              tabindex="-1"
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content" class="case-study">
+      <div class="case-study__bg" aria-hidden="true">
+        <div class="case-study__bg-img"></div>
+      </div>
+      <div class="case-study__layout">
+        <!-- Desktop Sidebar -->
+        <aside
+          class="sidebar sidebar--desktop"
+          role="complementary"
+          aria-label="Case study navigation"
+        >
+          <div class="sidebar__sticky">
+            <nav class="sidebar__nav" aria-label="Case study sections">
+              <div class="sidebar__section">
+                <div class="sidebar__item">
+                  <a
+                    href="#overview"
+                    class="sidebar__heading sidebar__heading--active"
+                    data-section="overview"
+                    >Client Overview</a
+                  >
+                  <span class="sidebar__dot" aria-hidden="true"></span>
+                </div>
+                <hr class="sidebar__divider" aria-hidden="true" />
+                <div class="sidebar__item">
+                  <a
+                    href="#challenge"
+                    class="sidebar__link"
+                    data-section="challenge"
+                    >The Challenge</a
+                  >
+                </div>
+                <hr class="sidebar__divider" aria-hidden="true" />
+                <div class="sidebar__item">
+                  <a
+                    href="#solution"
+                    class="sidebar__link"
+                    data-section="solution"
+                    >Sutherland Solution</a
+                  >
+                </div>
+                <hr class="sidebar__divider" aria-hidden="true" />
+                <div class="sidebar__item">
+                  <a
+                    href="#outcome"
+                    class="sidebar__link"
+                    data-section="outcome"
+                    >The Outcome</a
+                  >
+                </div>
+              </div>
+            </nav>
+            <div
+              class="sidebar__share"
+              role="region"
+              aria-label="Share this case study"
+            >
+              <span class="sidebar__share-label">Share</span>
+              <div class="sidebar__share-icons">
+                <a
+                  href="#"
+                  class="sidebar__share-link"
+                  aria-label="Share on X (Twitter)"
+                >
+                  <img
+                    src="assets/images/social-x.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="31"
+                    height="30"
+                  />
+                </a>
+                <a
+                  href="#"
+                  class="sidebar__share-link"
+                  aria-label="Share on Facebook"
+                >
+                  <img
+                    src="assets/images/social-fb.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="30"
+                    height="30"
+                  />
+                </a>
+                <a
+                  href="#"
+                  class="sidebar__share-link"
+                  aria-label="Share on LinkedIn"
+                >
+                  <img
+                    src="assets/images/social-li.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="30"
+                    height="30"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Mobile Sidebar (sticky tab bar) -->
+        <div
+          class="sidebar sidebar--mobile"
+          role="navigation"
+          aria-label="Case study sections"
+        >
+          <div class="sidebar__mobile-inner">
+            <div
+              class="sidebar__tabs"
+              role="tablist"
+              aria-label="Case study sections"
+            >
+              <button
+                class="sidebar__tab sidebar__tab--active"
+                role="tab"
+                aria-selected="true"
+                data-section="overview"
+                tabindex="0"
+              >
+                <span class="sidebar__tab-dot" aria-hidden="true"></span>
+                <span class="sidebar__tab-text">Client Overview</span>
+              </button>
+              <button
+                class="sidebar__tab"
+                role="tab"
+                aria-selected="false"
+                data-section="challenge"
+                tabindex="-1"
+              >
+                <span class="sidebar__tab-text">The Challenge</span>
+              </button>
+              <button
+                class="sidebar__tab"
+                role="tab"
+                aria-selected="false"
+                data-section="solution"
+                tabindex="-1"
+              >
+                <span class="sidebar__tab-text">Sutherland Solution</span>
+              </button>
+              <button
+                class="sidebar__tab"
+                role="tab"
+                aria-selected="false"
+                data-section="outcome"
+                tabindex="-1"
+              >
+                <span class="sidebar__tab-text">The Outcome</span>
+              </button>
+            </div>
+            <div class="sidebar__share-wrapper">
+              <button
+                class="sidebar__share-btn"
+                aria-label="Share this case study"
+                aria-expanded="false"
+                aria-controls="mobile-share-panel"
+              >
+                <img
+                  src="assets/images/icon-share.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="15"
+                  height="15"
+                />
+              </button>
+              <div
+                class="sidebar__share-panel"
+                id="mobile-share-panel"
+                role="region"
+                aria-label="Share options"
+              >
+                <a
+                  href="#"
+                  class="sidebar__share-icon"
+                  aria-label="Share on X (Twitter)"
+                >
+                  <img
+                    src="assets/images/social-x.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </a>
+                <a
+                  href="#"
+                  class="sidebar__share-icon"
+                  aria-label="Share on Facebook"
+                >
+                  <img
+                    src="assets/images/social-fb.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </a>
+                <a
+                  href="#"
+                  class="sidebar__share-icon"
+                  aria-label="Share on LinkedIn"
+                >
+                  <img
+                    src="assets/images/social-li.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="sidebar__progress" aria-hidden="true">
+              <div class="sidebar__progress-track"></div>
+              <div class="sidebar__progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <article class="content" role="article">
+          <div class="content__wrapper">
+            <!-- Client Overview -->
+            <section
+              class="content__section"
+              id="overview"
+              aria-labelledby="overview-heading"
+            >
+              <h2 class="content__heading" id="overview-heading">
+                Client Overview
+              </h2>
+              <p class="content__body">
+                Spotify is a renowned digital music streaming service with a
+                vast global user base. As the company expanded into new markets,
+                it faced the challenge of delivering consistent, high-quality
+                customer support in multiple languages without proportionally
+                increasing operational costs.
+              </p>
+            </section>
+
+            <!-- The Challenge -->
+            <section
+              class="content__section"
+              id="challenge"
+              aria-labelledby="challenge-heading"
+            >
+              <h2 class="content__heading" id="challenge-heading">
+                The Challenge
+              </h2>
+              <div class="content__feature-card">
+                <div class="content__feature-image">
+                  <img
+                    src="assets/images/challenge-image.png"
+                    alt="Visual representation of the multilingual support challenge"
+                    class="content__feature-img"
+                  />
+                </div>
+                <div class="content__feature-text">
+                  <h3 class="content__feature-title">
+                    Meeting Global Expectations: Delivering Personalized Support
+                    Across Languages at Scale
+                  </h3>
+                </div>
+              </div>
+              <div class="content__text-block">
+                <p>
+                  As Spotify's global user base expanded, so did the demand for
+                  real-time, multilingual customer support. Traditional models
+                  reliant on hiring native speakers for each market were costly,
+                  difficult to scale, and inflexible to changing language
+                  volumes.
+                </p>
+                <p>
+                  Growing non-English interactions across web, email, and social
+                  channels strained Spotify's support infrastructure, making it
+                  difficult to deliver consistent, high-quality experiences in
+                  users' native languages. To avoid impacting customer
+                  satisfaction and operational efficiency, Spotify needed a
+                  scalable solution that enabled real-time, context-aware
+                  translations with native-level quality—seamlessly integrated
+                  into existing systems without increasing costs or compromising
+                  service levels.
+                </p>
+              </div>
+            </section>
+
+            <!-- Sutherland Solution -->
+            <section
+              class="content__section"
+              id="solution"
+              aria-labelledby="solution-heading"
+            >
+              <h2 class="content__heading" id="solution-heading">
+                Sutherland Solution
+              </h2>
+              <div class="content__feature-card content__feature-card--reverse">
+                <div class="content__feature-text">
+                  <h3 class="content__feature-title">
+                    AI-Driven Language Translation at Scale: Contextual,
+                    Seamless, and Always-On
+                  </h3>
+                </div>
+                <div class="content__feature-image">
+                  <img
+                    src="assets/images/solution-image-2.png"
+                    alt="AI-powered translation solution interface"
+                    class="content__feature-img"
+                  />
+                </div>
+              </div>
+
+              <div class="content__text-block">
+                <h4 class="content__subheading">
+                  Seamless Platform Integration
+                </h4>
+                <p>
+                  Sutherland designed, tested, and deployed an end-to-end
+                  multilingual support solution within Spotify's existing
+                  customer service ecosystem using LivePerson Conversational
+                  Cloud®.
+                </p>
+              </div>
+
+              <div class="content__text-block">
+                <h4 class="content__subheading">
+                  AI-Powered Translation at Scale
+                </h4>
+                <p>
+                  At the core was Sutherland Translate AI®, combined with an
+                  AI/ML-based predictability framework and integrated with
+                  Google Contact Center AI to enable scalable multilingual
+                  support across nearly 100 languages.
+                </p>
+                <ul class="content__list" role="list">
+                  <li>Powered by Sutherland Translate AI®</li>
+                  <li>Enhanced with AI/ML-based predictability framework</li>
+                  <li>Integrated with Google Contact Center AI</li>
+                  <li>Supports nearly 100 languages</li>
+                  <li>Scales dynamically with language demand</li>
+                  <li>
+                    Real-time translation across web, email, and social channels
+                  </li>
+                  <li>Preserves message intent, tone, and cultural nuance</li>
+                </ul>
+              </div>
+
+              <!-- CTA Block -->
+              <div class="content__cta-wrapper">
+                <div
+                  class="content__cta-block"
+                  role="region"
+                  aria-label="Contact form"
+                >
+                  <p class="content__cta-title">
+                    Let's turn your challenge<br />into measurable results.
+                  </p>
+                  <form
+                    class="content__cta-form"
+                    action="#"
+                    method="post"
+                    aria-label="Get in touch form"
+                    novalidate
+                  >
+                    <label for="email-input" class="sr-only"
+                      >Email address</label
+                    >
+                    <div class="content__cta-field">
+                      <input
+                        type="text"
+                        id="email-input"
+                        class="content__cta-input glass-input"
+                        placeholder="Enter your email address"
+                        aria-required="true"
+                        aria-describedby="email-error"
+                      />
+                    </div>
+                    <button type="submit" class="cta cta--secondary">
+                      <span>Get in touch</span>
+                    </button>
+                  </form>
+                  <div class="content__cta-promo" aria-hidden="true">
+                    <div class="content__cta-promo-blur">
+                      <div class="content__cta-promo-image">
+                        <img
+                          src="assets/images/promo-image.png"
+                          alt=""
+                          class="content__cta-promo-img"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="content__cta-tooltip" id="email-error" role="alert"
+                  >Must be valid email.<br />example@yourdomain.com</span
+                >
+              </div>
+
+              <div class="content__text-block">
+                <h4 class="content__subheading">
+                  Real-Time, Context-Aware Messaging
+                </h4>
+                <p>
+                  Customer queries from web, email, and social channels were
+                  instantly translated into the agent's preferred language,
+                  preserving intent, tone, and cultural nuance for natural,
+                  empathetic interactions.
+                </p>
+              </div>
+
+              <div class="content__text-block">
+                <h4 class="content__subheading">Expanded Agent Capabilities</h4>
+                <p>
+                  English- and Filipino-speaking agents in the Philippines can
+                  now seamlessly support Spanish-speaking customers in Latin
+                  America on a digital music platform, without language
+                  barriers.
+                </p>
+              </div>
+
+              <figure
+                class="content__video-block"
+                role="group"
+                aria-label="Solution overview video"
+              >
+                <div class="content__video-thumb">
+                  <img
+                    src="assets/images/outcome-video-thumb.png"
+                    alt="Solution overview video thumbnail"
+                    class="content__video-img"
+                  />
+                  <button
+                    class="content__video-play"
+                    aria-label="Play solution overview video"
+                  >
+                    <img
+                      src="assets/images/play-button.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </figure>
+            </section>
+          </div>
+
+          <!-- The Outcome -->
+          <section
+            class="content__outcome"
+            id="outcome"
+            aria-labelledby="outcome-heading"
+          >
+            <div class="content__outcome-inner">
+              <div class="content__section">
+                <h2
+                  class="content__heading content__heading--large"
+                  id="outcome-heading"
+                >
+                  The Outcome
+                </h2>
+                <div class="content__feature-card">
+                  <div class="content__feature-image">
+                    <img
+                      src="assets/images/outcome-image.png"
+                      alt="Positive outcome of the Sutherland solution"
+                      class="content__feature-img"
+                    />
+                  </div>
+                  <div class="content__feature-text">
+                    <h3 class="content__feature-title">
+                      Transforming Customer Care into a Scalable Growth Engine
+                    </h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content__text-block">
+                <p>
+                  Spotify's partnership with Sutherland resulted in a
+                  transformative uplift in both operational performance and
+                  customer sentiment. More than 35,000 monthly customer issues
+                  were resolved using the
+                  <a
+                    href="https://www.sutherlandglobal.com/products-x-platforms/sutherland-translate-ai"
+                    class="content__link"
+                    >Sutherland Translate AI®</a
+                  >
+                  platform, spanning email, web, and social media.
+                  Non-native-speaking agents, enabled by AI, achieved customer
+                  satisfaction scores on par with or exceeding those of
+                  native-language teams, pushing CSAT consistently above 90%.
+                </p>
+                <p>
+                  Critically, the platform enabled Spotify to offer true 24/7
+                  multilingual support in over 20 languages, aligning support
+                  delivery with global user demand while controlling operational
+                  costs. The flexibility to route interactions based on time
+                  zone, demand patterns, and agent availability unlocked new
+                  levels of business continuity and scalability.
+                </p>
+              </div>
+
+              <div class="content__conclusion">
+                <h3 class="content__heading content__heading--large">
+                  That's digital outcomes delivered.
+                </h3>
+                <p class="content__body">
+                  This transformation empowered Spotify to grow its service
+                  capabilities in lockstep with its global user base – ensuring
+                  that no matter where users engaged from, they experienced
+                  fast, natural, and satisfying support that spoke their
+                  language.
+                </p>
+              </div>
+
+              <!-- Outcome Stats -->
+              <div
+                class="content__stats"
+                role="region"
+                aria-label="Outcome statistics"
+              >
+                <div class="stat-card stat-card--outcome">
+                  <span class="stat-card__value stat-card__value--dark"
+                    >35K+</span
+                  >
+                  <span class="stat-card__label stat-card__label--dark"
+                    >Monthly resolutions across digital channels</span
+                  >
+                </div>
+                <div class="stat-card stat-card--outcome">
+                  <span class="stat-card__value stat-card__value--dark"
+                    >90%+</span
+                  >
+                  <span class="stat-card__label stat-card__label--dark"
+                    >CSAT from non-native agents</span
+                  >
+                </div>
+                <div class="stat-card stat-card--outcome">
+                  <span class="stat-card__value stat-card__value--dark"
+                    >33%</span
+                  >
+                  <span class="stat-card__label stat-card__label--dark"
+                    >Reduction in response time</span
+                  >
+                </div>
+                <div class="stat-card stat-card--outcome">
+                  <span class="stat-card__value stat-card__value--dark"
+                    >98%</span
+                  >
+                  <span class="stat-card__label stat-card__label--dark"
+                    >Accuracy rate</span
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tags -->
+          <div
+            class="content__tags"
+            role="region"
+            aria-label="Case study categories"
+          >
+            <div class="tag-group">
+              <span class="tag-group__label">Industry</span>
+              <ul class="tag-group__list" role="list">
+                <li><a href="#" class="tag-group__tag">Communications</a></li>
+                <li><a href="#" class="tag-group__tag">Media</a></li>
+                <li><a href="#" class="tag-group__tag">Entertainment</a></li>
+              </ul>
+            </div>
+            <div class="tag-group">
+              <span class="tag-group__label">Services</span>
+              <ul class="tag-group__list" role="list">
+                <li><a href="#" class="tag-group__tag">AI</a></li>
+                <li><a href="#" class="tag-group__tag">Automation</a></li>
+                <li><a href="#" class="tag-group__tag">Data Analytics</a></li>
+                <li><a href="#" class="tag-group__tag">Digital CX</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- ===== CONTACT US SECTION ===== -->
+    <section class="contact" aria-labelledby="contact-heading">
+      <div class="contact__inner">
+        <div class="contact__content">
+          <div class="contact__text">
+            <h2 class="contact__title" id="contact-heading">
+              <span class="contact__title--accent"
+                >Achieve Global Reach with Local Relevance – Instantly.</span
+              >
+              <span class="contact__title--white"> Let's Connect!</span>
+            </h2>
+            <a href="/contact" class="cta cta--secondary">
+              <span>Get in touch</span>
+            </a>
+          </div>
+        </div>
+        <div
+          class="contact__bg-shape contact__bg-shape--desktop"
+          aria-hidden="true"
+        >
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="contact__bg-video"
+            poster="assets/images/promo-image.png"
+          >
+            <source src="assets/videos/contact-bg.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div
+        class="contact__bg-shape contact__bg-shape--mobile"
+        aria-hidden="true"
+      >
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          class="contact__bg-video contact__bg-video--mobile"
+          poster="assets/images/promo-image.png"
+        >
+          <source src="assets/videos/contact-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- ===== RELATED INSIGHTS (Figma desktop 471:367, mobile 471:842) ===== -->
+    <section
+      class="insights"
+      role="region"
+      aria-labelledby="insights-heading"
+      aria-roledescription="carousel"
+      aria-label="Related insights carousel"
+      data-insights-carousel
+    >
+      <div class="insights__inner">
+        <div class="insights__header">
+          <h2 class="insights__title" id="insights-heading">
+            Related Insights
+          </h2>
+          <div
+            class="insights__nav"
+            role="group"
+            aria-label="Carousel controls"
+          >
+            <button
+              type="button"
+              class="insights__arrow insights__arrow--prev"
+              aria-label="Previous slide"
+              aria-controls="insights-carousel-track"
+              data-insights-prev
+            >
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="22"
+                height="22"
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              type="button"
+              class="insights__arrow insights__arrow--next"
+              aria-label="Next slide"
+              aria-controls="insights-carousel-track"
+              data-insights-next
+            >
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="22"
+                height="22"
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="insights-carousel-viewport"
+          class="insights__viewport"
+          tabindex="0"
+          data-insights-viewport
+        >
+          <div
+            id="insights-carousel-track"
+            class="insights__track"
+            data-insights-track
+          >
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  Customer Care in 2030: Where the Future is heading
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      The future of customer care is already here for early
+                      adopters. Future-facing brands have re-imagined customer
+                      service as something experiential.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-1.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">White Paper</span>
+              </div>
+            </article>
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  6 Reasons Why Effective Automation Requires Human - Centered
+                  Design
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      Experience-led business transformation — often powered by
+                      intelligent automation — is an integrated approach that
+                      involves business acumen, design thinking, and technology.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-2.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">Blog</span>
+              </div>
+            </article>
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  Scaling Digital CX with AI-First Operations
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      Learn how AI-first operations help brands scale digital CX
+                      with consistent quality, faster resolution, and measurable
+                      outcomes across every channel.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-1.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">Case Study</span>
+              </div>
+            </article>
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  Data Trust and Governance in the Age of Automation
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      Strong governance and trusted data practices are essential
+                      as automation scales — ensuring compliance, transparency,
+                      and confidence in every decision.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-2.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">White Paper</span>
+              </div>
+            </article>
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  Building Resilient Service Models for Global Brands
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      Global brands need resilient service models that adapt to
+                      demand, protect customer trust, and deliver consistent
+                      experiences across regions and markets.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-2.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">Blog</span>
+              </div>
+            </article>
+            <article class="insight-card" data-insight-card role="article">
+              <div class="insight-card__text">
+                <h3 class="insight-card__title">
+                  Human + AI: Designing the Next Service Workforce
+                </h3>
+                <div class="insight-card__reveal">
+                  <div class="insight-card__reveal-inner">
+                    <p class="insight-card__desc">
+                      The next service workforce blends human empathy with AI
+                      efficiency — designed for clarity, safety, and performance
+                      at scale.
+                    </p>
+                    <a href="#" class="insight-card__cta">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card__image">
+                <img
+                  src="assets/images/insight-card-1.png"
+                  alt=""
+                  class="insight-card__img"
+                />
+                <span class="insight-card__badge">Case Study</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div
+          class="insights__pagination"
+          role="group"
+          aria-label="Carousel position"
+          data-insights-dots
+        ></div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER (Figma: desktop 447:435, mobile 447:882) ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__bg footer__bg--desktop" aria-hidden="true">
+        <div class="footer__bg-flip">
+          <div class="footer__bg-crop footer__bg-crop--desktop">
+            <div class="footer__bg-img footer__bg-img--desktop"></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bg footer__bg--mobile" aria-hidden="true">
+        <div class="footer__bg-crop footer__bg-crop--mobile">
+          <div class="footer__bg-img footer__bg-img--mobile"></div>
+        </div>
+      </div>
+      <div class="footer__inner">
+        <div class="footer__top">
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="/about" class="footer__link">About Us</a>
+            <a href="/contact" class="footer__link">Contact Us</a>
+            <a href="/locations" class="footer__link">Locations</a>
+            <a href="/careers" class="footer__link">Careers</a>
+          </nav>
+          <div class="footer__logo">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="footer__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="footer__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="footer__logo-dot"
+            />
+            <img src="assets/images/logo-r.svg" alt="" class="footer__logo-r" />
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <ul class="footer__social" aria-label="Social media links">
+            <li>
+              <a href="#" class="footer__social-link" aria-label="Instagram">
+                <img
+                  src="assets/images/icon-instagram.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                <img
+                  src="assets/images/icon-linkedin.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__social-link" aria-label="X (Twitter)">
+                <img src="assets/images/icon-x.svg" alt="" aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__social-link" aria-label="Facebook">
+                <img
+                  src="assets/images/icon-facebook.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+          </ul>
+          <nav class="footer__legal" aria-label="Legal links">
+            <div class="footer__legal-row">
+              <a href="/privacy" class="footer__legal-link">Privacy Policy</a>
+              <span class="footer__legal-sep" aria-hidden="true">|</span>
+              <a href="/cookies" class="footer__legal-link">Cookie Policy</a>
+              <span class="footer__legal-sep" aria-hidden="true">|</span>
+              <a href="/terms" class="footer__legal-link">Terms of Use</a>
+              <span
+                class="footer__legal-sep footer__legal-sep--row-break"
+                aria-hidden="true"
+                >|</span
+              >
+            </div>
+            <div class="footer__legal-row">
+              <a href="/sitemap" class="footer__legal-link">Sitemap</a>
+              <span class="footer__legal-sep" aria-hidden="true">|</span>
+              <a href="#" class="footer__legal-link">Cookie Preferences</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Fixed header on scroll
+      (function () {
+        var header = document.querySelector(".site-header");
+        if (!header) return;
+
+        var spacer = document.createElement("div");
+        spacer.style.display = "none";
+        header.parentNode.insertBefore(spacer, header);
+
+        var headerHeight = header.offsetHeight;
+        var triggerPoint = header.offsetTop + headerHeight;
+
+        function onScroll() {
+          headerHeight =
+            spacer.style.display === "none"
+              ? header.offsetHeight
+              : parseInt(spacer.style.height) || headerHeight;
+
+          if (
+            window.scrollY > header.offsetTop &&
+            !header.classList.contains("is-fixed")
+          ) {
+            triggerPoint = header.offsetTop;
+          }
+
+          if (window.scrollY > triggerPoint) {
+            if (!header.classList.contains("is-fixed")) {
+              spacer.style.height = headerHeight + "px";
+              spacer.style.display = "block";
+              header.classList.add("is-fixed");
+            }
+            header.classList.add("is-scrolled");
+          } else {
+            header.classList.remove("is-fixed", "is-scrolled");
+            spacer.style.display = "none";
+          }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener(
+          "resize",
+          function () {
+            if (!header.classList.contains("is-fixed")) {
+              headerHeight = header.offsetHeight;
+              triggerPoint = header.offsetTop;
+            }
+          },
+          { passive: true },
+        );
+        onScroll();
+      })();
+
+      // Language dropdown toggle
+      (function () {
+        var langToggles = document.querySelectorAll("[data-lang-toggle]");
+        langToggles.forEach(function (toggle) {
+          var dropdown = toggle.querySelector("[data-lang-dropdown]");
+          if (!dropdown) return;
+          var closeTimer = null;
+
+          toggle.addEventListener("click", function (e) {
+            if (e.target.closest("[data-lang-dropdown]")) return;
+            e.preventDefault();
+            clearTimeout(closeTimer);
+            var open = dropdown.getAttribute("aria-hidden") === "false";
+            document
+              .querySelectorAll("[data-lang-dropdown]")
+              .forEach(function (d) {
+                if (d !== dropdown) d.setAttribute("aria-hidden", "true");
+              });
+            dropdown.setAttribute("aria-hidden", open ? "true" : "false");
+          });
+
+          toggle.addEventListener("mouseleave", function () {
+            if (dropdown.getAttribute("aria-hidden") === "false") {
+              closeTimer = setTimeout(function () {
+                dropdown.setAttribute("aria-hidden", "true");
+              }, 300);
+            }
+          });
+
+          toggle.addEventListener("mouseenter", function () {
+            clearTimeout(closeTimer);
+          });
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest("[data-lang-toggle]")) {
+            document
+              .querySelectorAll("[data-lang-dropdown]")
+              .forEach(function (d) {
+                d.setAttribute("aria-hidden", "true");
+              });
+          }
+        });
+      })();
+
+      // Mobile search bar toggle
+      (function () {
+        var searchToggle = document.querySelector(
+          "[data-mobile-search-toggle]",
+        );
+        var searchBar = document.querySelector("[data-mobile-search-bar]");
+        var searchClose = document.querySelector("[data-mobile-search-close]");
+        var navInner = document.querySelector(".nav__inner");
+        if (!searchToggle || !searchBar) return;
+
+        function openSearch() {
+          searchBar.setAttribute("aria-hidden", "false");
+          if (navInner) navInner.classList.add("search-open");
+          var input = searchBar.querySelector("input");
+          if (input) input.focus();
+        }
+
+        function closeSearch() {
+          searchBar.setAttribute("aria-hidden", "true");
+          if (navInner) navInner.classList.remove("search-open");
+        }
+
+        searchToggle.addEventListener("click", openSearch);
+        if (searchClose) searchClose.addEventListener("click", closeSearch);
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            searchBar.getAttribute("aria-hidden") === "false"
+          ) {
+            closeSearch();
+            searchToggle.focus();
+          }
+        });
+      })();
+
+      // Site header — mobile menu
+      (function () {
+        var toggle = document.querySelector("[data-nav-toggle]");
+        var menu = document.querySelector("[data-mobile-menu]");
+        var closeBtn = document.querySelector("[data-mobile-menu-close]");
+        if (!toggle || !menu) return;
+
+        function setMenuOpen(open) {
+          menu.setAttribute("aria-hidden", open ? "false" : "true");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          document.body.style.overflow = open ? "hidden" : "";
+        }
+
+        toggle.addEventListener("click", function () {
+          var isOpen = menu.getAttribute("aria-hidden") === "false";
+          setMenuOpen(!isOpen);
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
+            setMenuOpen(false);
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            menu.getAttribute("aria-hidden") === "false"
+          ) {
+            setMenuOpen(false);
+            toggle.focus();
+          }
+        });
+
+        // Mobile accordion sub-menus
+        var submenuToggles = menu.querySelectorAll("[data-toggle-submenu]");
+        submenuToggles.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var expanded = btn.getAttribute("aria-expanded") === "true";
+            var submenu = btn.nextElementSibling;
+            if (!submenu) return;
+            btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+            submenu.setAttribute("aria-hidden", expanded ? "true" : "false");
+          });
+        });
+      })();
+
+      // Desktop dropdown mega-menu
+      (function () {
+        var dropdown = document.querySelector("[data-nav-dropdown]");
+        var triggers = document.querySelectorAll("[data-dropdown-trigger]");
+        if (!dropdown || !triggers.length) return;
+
+        var panels = dropdown.querySelectorAll("[data-dropdown-panel]");
+        var dropdownInner = dropdown.querySelector(".nav-dropdown__inner");
+        var closeTimer = null;
+
+        var navMenuPill = document.querySelector(".nav__menu");
+
+        var innerPadding = dropdownInner
+          ? parseInt(getComputedStyle(dropdownInner).paddingLeft) || 0
+          : 0;
+
+        function positionElements(trigger) {
+          if (!dropdownInner) return;
+          var triggerRect = trigger.getBoundingClientRect();
+          var innerRect = dropdownInner.getBoundingClientRect();
+          var pillRect = navMenuPill
+            ? navMenuPill.getBoundingClientRect()
+            : null;
+
+          var activePanel = dropdown.querySelector(
+            ".nav-dropdown__panel.is-active",
+          );
+          if (activePanel) {
+            var pillLeft = pillRect
+              ? pillRect.left - innerRect.left - innerPadding
+              : 0;
+            var contentWidth = innerRect.width - innerPadding * 2;
+            var maxLeft = contentWidth - activePanel.offsetWidth;
+            var panelLeft = Math.max(0, Math.min(pillLeft, maxLeft));
+            activePanel.style.marginLeft = panelLeft + "px";
+
+            var triggerCenter = triggerRect.left + triggerRect.width / 2;
+            var panelVisualLeft = innerRect.left + innerPadding + panelLeft;
+            var indicatorX = triggerCenter - panelVisualLeft - 8;
+            activePanel.style.setProperty("--indicator-x", indicatorX + "px");
+            activePanel.style.setProperty(
+              "--panel-w",
+              activePanel.offsetWidth + "px",
+            );
+          }
+        }
+
+        function openDropdown(panelId, trigger) {
+          clearTimeout(closeTimer);
+
+          panels.forEach(function (p) {
+            p.classList.toggle(
+              "is-active",
+              p.getAttribute("data-dropdown-panel") === panelId,
+            );
+          });
+
+          triggers.forEach(function (l) {
+            l.classList.toggle(
+              "nav__link--active",
+              l.getAttribute("data-dropdown-trigger") === panelId,
+            );
+          });
+
+          dropdown.classList.add("is-open");
+          dropdown.setAttribute("aria-hidden", "false");
+          positionElements(trigger);
+        }
+
+        function closeDropdown() {
+          closeTimer = setTimeout(function () {
+            dropdown.classList.remove("is-open");
+            dropdown.setAttribute("aria-hidden", "true");
+            panels.forEach(function (p) {
+              p.classList.remove("is-active");
+              p.style.marginLeft = "";
+            });
+            triggers.forEach(function (l) {
+              l.classList.remove("nav__link--active");
+            });
+          }, 100);
+        }
+
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener("mouseenter", function () {
+            openDropdown(
+              trigger.getAttribute("data-dropdown-trigger"),
+              trigger,
+            );
+          });
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            var panelId = trigger.getAttribute("data-dropdown-trigger");
+            if (
+              dropdown.classList.contains("is-open") &&
+              trigger.classList.contains("nav__link--active")
+            ) {
+              closeDropdown();
+            } else {
+              openDropdown(panelId, trigger);
+            }
+          });
+        });
+
+        dropdown.addEventListener("mouseenter", function () {
+          clearTimeout(closeTimer);
+        });
+
+        dropdown.addEventListener("mouseleave", function () {
+          closeDropdown();
+        });
+
+        var navMenu = document.querySelector(".nav__menu");
+        if (navMenu) {
+          navMenu.addEventListener("mouseleave", function (e) {
+            if (!dropdown.contains(e.relatedTarget)) {
+              closeDropdown();
+            }
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && dropdown.classList.contains("is-open")) {
+            closeDropdown();
+          }
+        });
+      })();
+
+      (function () {
+        const slider = document.querySelector(".hero__stats");
+        const dots = document.querySelectorAll(".hero__stats-dot");
+        if (!slider || !dots.length) return;
+
+        const cards = slider.querySelectorAll(".stat-card--hero");
+        const totalCards = cards.length;
+        const totalDots = dots.length;
+
+        function getActiveIndex() {
+          const scrollLeft = slider.scrollLeft;
+          const maxScroll = slider.scrollWidth - slider.clientWidth;
+          if (maxScroll <= 0) return 0;
+          const ratio = scrollLeft / maxScroll;
+          return Math.min(Math.round(ratio * (totalDots - 1)), totalDots - 1);
+        }
+
+        function updateDots(activeIdx) {
+          dots.forEach(function (dot, i) {
+            const isActive = i === activeIdx;
+            dot.classList.toggle("hero__stats-dot--active", isActive);
+            dot.setAttribute("aria-selected", String(isActive));
+            dot.setAttribute("tabindex", isActive ? "0" : "-1");
+          });
+        }
+
+        function scrollToPosition(dotIdx) {
+          const maxScroll = slider.scrollWidth - slider.clientWidth;
+          const target = (dotIdx / (totalDots - 1)) * maxScroll;
+          slider.scrollTo({ left: target, behavior: "smooth" });
+        }
+
+        slider.addEventListener(
+          "scroll",
+          function () {
+            updateDots(getActiveIndex());
+          },
+          { passive: true },
+        );
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            scrollToPosition(i);
+          });
+          dot.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+              e.preventDefault();
+              var next = Math.min(i + 1, totalDots - 1);
+              scrollToPosition(next);
+              dots[next].focus();
+            } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+              e.preventDefault();
+              var prev = Math.max(i - 1, 0);
+              scrollToPosition(prev);
+              dots[prev].focus();
+            }
+          });
+        });
+      })();
+
+      // =====================================================================
+      // Sidebar scroll-spy, progress bar, and smooth scroll
+      // =====================================================================
+      (function () {
+        var sections = document.querySelectorAll(
+          ".content__section[id], .content__outcome[id]",
+        );
+        var desktopLinks = document.querySelectorAll(
+          ".sidebar--desktop [data-section]",
+        );
+        var mobileTabs = document.querySelectorAll(
+          ".sidebar--mobile .sidebar__tab",
+        );
+        var progressFill = document.querySelector(".sidebar__progress-fill");
+        var progressBar = document.querySelector(".sidebar__progress");
+        var tabsEl = document.querySelector(".sidebar__tabs");
+
+        if (!sections.length) return;
+
+        function syncProgressWidth() {
+          if (!progressBar || !tabsEl) return;
+          progressBar.style.width = tabsEl.offsetWidth - 12 + "px";
+        }
+        syncProgressWidth();
+        window.addEventListener("resize", syncProgressWidth);
+
+        var sectionIds = [];
+        sections.forEach(function (s) {
+          sectionIds.push(s.id);
+        });
+
+        var desktopDot = document.querySelector(
+          ".sidebar--desktop .sidebar__dot",
+        );
+
+        function setActiveDesktop(id) {
+          desktopLinks.forEach(function (link) {
+            var isActive = link.getAttribute("data-section") === id;
+            if (link.classList.contains("sidebar__heading")) {
+              link.classList.toggle("sidebar__heading--active", isActive);
+            } else {
+              link.classList.toggle("sidebar__link--active", isActive);
+            }
+            if (isActive && desktopDot) {
+              var item = link.closest(".sidebar__item");
+              if (item && !item.contains(desktopDot)) {
+                item.appendChild(desktopDot);
+              }
+            }
+          });
+        }
+
+        function setActiveMobile(id) {
+          mobileTabs.forEach(function (tab) {
+            var isActive = tab.getAttribute("data-section") === id;
+            tab.classList.toggle("sidebar__tab--active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+            tab.setAttribute("tabindex", isActive ? "0" : "-1");
+
+            var dot = tab.querySelector(".sidebar__tab-dot");
+            if (isActive && !dot) {
+              var newDot = document.createElement("span");
+              newDot.className = "sidebar__tab-dot";
+              newDot.setAttribute("aria-hidden", "true");
+              tab.insertBefore(newDot, tab.firstChild);
+            } else if (!isActive && dot) {
+              dot.remove();
+            }
+
+            if (isActive) {
+              tab.scrollIntoView({
+                inline: "center",
+                block: "nearest",
+                behavior: "smooth",
+              });
+            }
+          });
+        }
+
+        function updateProgress(id) {
+          if (!progressFill) return;
+          var idx = sectionIds.indexOf(id);
+          if (idx === -1) idx = 0;
+          var pct = ((idx + 1) / sectionIds.length) * 100;
+          progressFill.style.width = pct + "%";
+          progressFill.style.transition = "width 0.3s ease";
+        }
+
+        var currentActive = sectionIds[0];
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                currentActive = entry.target.id;
+                setActiveDesktop(currentActive);
+                setActiveMobile(currentActive);
+                updateProgress(currentActive);
+              }
+            });
+          },
+          {
+            rootMargin: "-20% 0px -60% 0px",
+            threshold: 0,
+          },
+        );
+
+        sections.forEach(function (s) {
+          observer.observe(s);
+        });
+        updateProgress(currentActive);
+
+        function smoothScrollTo(id) {
+          var target = document.getElementById(id);
+          if (!target) return;
+          var offset = window.innerWidth < 1024 ? 100 : 20;
+          var top =
+            target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: "smooth" });
+        }
+
+        desktopLinks.forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            smoothScrollTo(link.getAttribute("data-section"));
+          });
+        });
+
+        mobileTabs.forEach(function (tab, i) {
+          tab.addEventListener("click", function () {
+            smoothScrollTo(tab.getAttribute("data-section"));
+          });
+          tab.addEventListener("keydown", function (e) {
+            var idx = i;
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              var next = Math.min(idx + 1, mobileTabs.length - 1);
+              mobileTabs[next].focus();
+              mobileTabs[next].click();
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              var prev = Math.max(idx - 1, 0);
+              mobileTabs[prev].focus();
+              mobileTabs[prev].click();
+            }
+          });
+        });
+      })();
+
+      // =====================================================================
+      // Email validation tooltip
+      // =====================================================================
+      (function () {
+        var form = document.querySelector(".content__cta-form");
+        var input = document.getElementById("email-input");
+        var tooltip = document.getElementById("email-error");
+        if (!form || !input || !tooltip) return;
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function showTooltip() {
+          input.classList.add("is-invalid");
+          tooltip.classList.add("is-visible");
+        }
+
+        function hideTooltip() {
+          input.classList.remove("is-invalid");
+          tooltip.classList.remove("is-visible");
+        }
+
+        form.addEventListener("submit", function (e) {
+          if (!emailPattern.test(input.value.trim())) {
+            e.preventDefault();
+            showTooltip();
+            input.focus();
+          }
+        });
+
+        input.addEventListener("input", function () {
+          if (
+            tooltip.classList.contains("is-visible") &&
+            emailPattern.test(input.value.trim())
+          ) {
+            hideTooltip();
+          }
+        });
+
+        input.addEventListener("blur", function () {
+          if (input.value.trim() && !emailPattern.test(input.value.trim())) {
+            showTooltip();
+          }
+        });
+      })();
+
+      // =====================================================================
+      // Mobile share panel toggle
+      // =====================================================================
+      (function () {
+        var btn = document.querySelector(".sidebar__share-btn");
+        var panel = document.getElementById("mobile-share-panel");
+        if (!btn || !panel) return;
+
+        btn.addEventListener("click", function () {
+          var isOpen = panel.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!btn.contains(e.target) && !panel.contains(e.target)) {
+            panel.classList.remove("is-open");
+            btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      })();
+
+      // =====================================================================
+      // Insights carousel — desktop: 2 cards / slide (471:367); mobile: snap + peek (471:842)
+      // =====================================================================
+      (function () {
+        var root = document.querySelector("[data-insights-carousel]");
+        if (!root) return;
+
+        var track = root.querySelector("[data-insights-track]");
+        var viewport = root.querySelector("[data-insights-viewport]");
+        var prevBtn = root.querySelector("[data-insights-prev]");
+        var nextBtn = root.querySelector("[data-insights-next]");
+        var dotsContainer = root.querySelector("[data-insights-dots]");
+        var cards = root.querySelectorAll("[data-insight-card]");
+
+        if (!track || !viewport || !dotsContainer || !cards.length) return;
+
+        var mq = window.matchMedia("(min-width: 1024px)");
+        var slideIndex = 0;
+        var dots = [];
+        var scrollTick = false;
+
+        function slideCount() {
+          return Math.max(1, Math.ceil(cards.length / 2));
+        }
+
+        function layoutDesktop() {
+          var W = viewport.clientWidth;
+          var gap = 24;
+          var cardW = (W - gap) / 2;
+          var i;
+          for (i = 0; i < cards.length; i++) {
+            cards[i].style.flex = "0 0 " + cardW + "px";
+            cards[i].style.width = cardW + "px";
+            cards[i].style.maxWidth = "";
+          }
+          track.style.width =
+            cards.length * cardW + (cards.length - 1) * gap + "px";
+        }
+
+        function clearMobileCardStyles() {
+          var i;
+          for (i = 0; i < cards.length; i++) {
+            cards[i].style.flex = "";
+            cards[i].style.width = "";
+            cards[i].style.maxWidth = "";
+          }
+          track.style.width = "";
+        }
+
+        function setTransformDesktop() {
+          var W = viewport.clientWidth;
+          var x = slideIndex * W;
+          track.style.transform = "translate3d(-" + x + "px, 0, 0)";
+        }
+
+        function updateArrows() {
+          var maxSlide = slideCount() - 1;
+          if (prevBtn) {
+            prevBtn.setAttribute(
+              "aria-disabled",
+              slideIndex <= 0 ? "true" : "false",
+            );
+          }
+          if (nextBtn) {
+            nextBtn.setAttribute(
+              "aria-disabled",
+              slideIndex >= maxSlide ? "true" : "false",
+            );
+          }
+        }
+
+        function setActiveDot(i, totalDots) {
+          dots.forEach(function (dot, j) {
+            var on = j === i;
+            dot.classList.toggle("insights__dot--active", on);
+            if (on) {
+              dot.setAttribute("aria-current", "true");
+            } else {
+              dot.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        function buildDots() {
+          dotsContainer.innerHTML = "";
+          var isDesktop = mq.matches;
+          var n = isDesktop ? slideCount() : cards.length;
+          dotsContainer.style.display = n <= 1 ? "none" : "";
+          var i;
+          for (i = 0; i < n; i++) {
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className =
+              "insights__dot" + (i === 0 ? " insights__dot--active" : "");
+            btn.setAttribute(
+              "aria-label",
+              isDesktop
+                ? "Go to slide " + (i + 1) + " of " + n
+                : "Go to insight " + (i + 1) + " of " + n,
+            );
+            btn.setAttribute("data-dot-index", String(i));
+            dotsContainer.appendChild(btn);
+          }
+          dots = Array.prototype.slice.call(
+            dotsContainer.querySelectorAll(".insights__dot"),
+          );
+          dots.forEach(function (dot) {
+            dot.addEventListener("click", onDotClick);
+          });
+        }
+
+        function onDotClick() {
+          var idx = parseInt(this.getAttribute("data-dot-index"), 10);
+          if (isNaN(idx)) return;
+          if (mq.matches) {
+            slideIndex = Math.max(0, Math.min(slideCount() - 1, idx));
+            setTransformDesktop();
+            updateArrows();
+            setActiveDot(slideIndex, dots.length);
+          } else if (cards[idx]) {
+            cards[idx].scrollIntoView({
+              behavior: "smooth",
+              inline: "start",
+              block: "nearest",
+            });
+          }
+        }
+
+        function goSlide(delta) {
+          var maxSlide = slideCount() - 1;
+          slideIndex = Math.max(0, Math.min(maxSlide, slideIndex + delta));
+          setTransformDesktop();
+          updateArrows();
+          setActiveDot(slideIndex, dots.length);
+        }
+
+        function nearestCardIndexFromScroll() {
+          var vp = viewport.getBoundingClientRect();
+          var center = vp.left + vp.width / 2;
+          var best = 0;
+          var bestD = Infinity;
+          var i;
+          for (i = 0; i < cards.length; i++) {
+            var r = cards[i].getBoundingClientRect();
+            var c = r.left + r.width / 2;
+            var d = Math.abs(c - center);
+            if (d < bestD) {
+              bestD = d;
+              best = i;
+            }
+          }
+          return best;
+        }
+
+        function onScrollViewport() {
+          if (mq.matches) return;
+          if (scrollTick) return;
+          scrollTick = true;
+          window.requestAnimationFrame(function () {
+            scrollTick = false;
+            var idx = nearestCardIndexFromScroll();
+            setActiveDot(idx, dots.length);
+          });
+        }
+
+        function applyMode() {
+          slideIndex = 0;
+          if (mq.matches) {
+            clearMobileCardStyles();
+            layoutDesktop();
+            track.style.transform = "translate3d(0, 0, 0)";
+            buildDots();
+            setTransformDesktop();
+            updateArrows();
+            setActiveDot(0, dots.length);
+          } else {
+            track.style.transform = "none";
+            clearMobileCardStyles();
+            buildDots();
+            window.requestAnimationFrame(function () {
+              var idx = nearestCardIndexFromScroll();
+              setActiveDot(idx, dots.length);
+            });
+          }
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function () {
+            if (mq.matches) goSlide(-1);
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function () {
+            if (mq.matches) goSlide(1);
+          });
+        }
+
+        viewport.addEventListener("keydown", function (e) {
+          if (mq.matches) {
+            if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              goSlide(-1);
+            } else if (e.key === "ArrowRight") {
+              e.preventDefault();
+              goSlide(1);
+            }
+          } else {
+            if (e.key === "ArrowLeft" && cards.length) {
+              e.preventDefault();
+              var ci = nearestCardIndexFromScroll();
+              if (ci > 0)
+                cards[ci - 1].scrollIntoView({
+                  behavior: "smooth",
+                  inline: "start",
+                  block: "nearest",
+                });
+            } else if (e.key === "ArrowRight" && cards.length) {
+              e.preventDefault();
+              var cj = nearestCardIndexFromScroll();
+              if (cj < cards.length - 1)
+                cards[cj + 1].scrollIntoView({
+                  behavior: "smooth",
+                  inline: "start",
+                  block: "nearest",
+                });
+            }
+          }
+        });
+
+        viewport.addEventListener("scroll", onScrollViewport, {
+          passive: true,
+        });
+
+        if (typeof mq.addEventListener === "function") {
+          mq.addEventListener("change", applyMode);
+        } else {
+          mq.addListener(applyMode);
+        }
+
+        window.addEventListener(
+          "resize",
+          function () {
+            if (mq.matches) {
+              layoutDesktop();
+              setTransformDesktop();
+            }
+          },
+          { passive: true },
+        );
+
+        window.requestAnimationFrame(function () {
+          applyMode();
+        });
+      })();
+    </script>
+  </body>
+</html>

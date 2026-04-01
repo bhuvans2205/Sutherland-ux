@@ -1,0 +1,144 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Shared CTA buttons
+// ==========================================================================
+
+.au-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 12px;
+  padding: 12px 24px 12px 20px;
+  font-family: $font-secondary;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: $color-white;
+  border: 1.4px solid rgba($color-white, 0.4);
+  border-radius: $radius-xxl $radius-s $radius-xl $radius-xxl;
+  backdrop-filter: blur(50px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.2s,
+    transform 0.2s;
+
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $color-white;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 55px;
+    left: -8.4px;
+    top: 15.1px;
+    background: radial-gradient(
+      ellipse,
+      rgba($color-white, 0.15) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-sky;
+    outline-offset: 2px;
+  }
+
+  &--dark {
+    background: $color-indigo;
+  }
+
+  @media (hover: hover) {
+    &--dark:hover {
+      background: $color-navy;
+      border-color: rgba($color-white, 0.6);
+      box-shadow:
+        0 2px 16px 0 $glass-periwinkle,
+        0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--light {
+    background: rgba($color-sky, 0.4);
+  }
+
+  @media (hover: hover) {
+    &--light:hover {
+      background: rgba($color-sky, 0.55);
+      border-color: rgba($color-white, 0.6);
+      box-shadow:
+        0 2px 16px 0 rgba($color-sky, 0.5),
+        0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    padding: 8px 16px;
+    gap: 8px;
+    border-radius: $radius-l 2px $radius-l $radius-l;
+
+    &::before {
+      width: 7px;
+      height: 7px;
+      background-color: #12acf7;
+    }
+
+    &--dark {
+      background: linear-gradient(
+        151.59deg,
+        $color-indigo 63.36%,
+        $color-sky 117.68%
+      );
+    }
+
+    &--light {
+      background: linear-gradient(
+        151.59deg,
+        $color-indigo 63.36%,
+        $color-sky 117.68%
+      );
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1023px) and (hover: hover) {
+    &--dark:hover,
+    &--light:hover {
+      background: linear-gradient(
+        150deg,
+        $color-indigo 56.38%,
+        $color-sky 90.86%
+      );
+      box-shadow:
+        0 2px 16px 0 $glass-periwinkle,
+        0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+}

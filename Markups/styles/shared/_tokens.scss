@@ -1,0 +1,18 @@
+// ==========================================================================
+// Shared Design Tokens (Typography, Layout, Corner Radius)
+// ==========================================================================
+
+$font-primary: "Nunito Sans", "Proxima Nova", sans-serif;
+$font-secondary: Arial, sans-serif;
+$screen-max: 1440px;
+$content-max: 1320px;
+$margin-desktop: 60px;
+
+// Corner radius tokens
+$radius-s: 4px;
+$radius-m: 8px;
+$radius-ml: 12px;
+$radius-l: 16px;
+$radius-xl: 20px;
+$radius-xxl: 24px;
+$radius-xxxl: 40px;

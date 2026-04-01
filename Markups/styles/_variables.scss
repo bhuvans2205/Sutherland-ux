@@ -1,0 +1,136 @@
+// ==========================================================================
+// Primary Colors
+// ==========================================================================
+$color-magenta: #f41c5c;
+$color-indigo: #26235d;
+$color-navy: #091867;
+$color-sky: #12acf7;
+$color-ice: #ddebf6;
+$color-steel: #6ca2cb;
+$color-ocean: #084789;
+$color-midnight: #0f0e2d;
+$color-abyss: #00001b;
+$color-ice-blue: #f3faff;
+
+// ==========================================================================
+// Neutral Colors
+// ==========================================================================
+$color-white: #ffffff;
+$color-off-white: #f7f7f7;
+$color-light-gray: #dddddd;
+$color-silver: #c5c7c5;
+$color-gray: #d4d4d4;
+$color-dark-gray: #404040;
+$color-black: #000000;
+
+// ==========================================================================
+// Glass (Transparency Variants)
+// ==========================================================================
+$glass-magenta: rgba($color-magenta, 0.7);
+$glass-dark: rgba(#2c3546, 1);
+$glass-sky: rgba($color-sky, 0.4);
+$glass-ice: rgba($color-ice, 0.7);
+$glass-frost: rgba(#ddf0ff, 0.9);
+$glass-periwinkle: rgba(#758fd6, 0.8);
+$glass-white-light: rgba($color-white, 0.15);
+$glass-white: rgba($color-white, 0.5);
+$glass-black: rgba($color-black, 0.5);
+
+// ==========================================================================
+// Gradients
+// ==========================================================================
+// Figma: Glass Stroke
+$gradient-glass-white: linear-gradient(
+  to bottom,
+  rgba($color-white, 0.4) 0%,
+  rgba($color-white, 0) 41%,
+  rgba($color-white, 0) 57%,
+  rgba($color-white, 0.1) 100%
+);
+// Figma: Glass Stroke-dark
+$gradient-glass-gray: linear-gradient(
+  to bottom,
+  rgba(#c4c4c4, 0.5) 0%,
+  rgba(#c4c4c4, 0.1) 41%,
+  rgba(#c4c4c4, 0) 57%,
+  rgba(#c4c4c4, 0.4) 100%
+);
+// Hero / header backdrop — Figma 524-2: navy→dark gradient + magenta TR + indigo/navy L-center (ambient radials)
+$hero-backdrop-base: #01041a;
+
+$gradient-hero-backdrop:
+  // Top-right magenta/purple wash (behind Contact / nav right)
+  radial-gradient(
+    ellipse 52% 42% at 97% 0%,
+    rgba($color-magenta, 0.28) 0%,
+    rgba($color-indigo, 0.16) 34%,
+    transparent 66%
+  ),
+  // Left–center deep blue (behind headline)
+  radial-gradient(
+      ellipse 62% 58% at 14% 48%,
+      rgba($color-navy, 0.58) 0%,
+      rgba($color-indigo, 0.28) 41%,
+      transparent 76%
+    ),
+  // Base gradient — Figma 524:2 Hero Container
+  linear-gradient(180deg, $color-navy 0%, $hero-backdrop-base 100%);
+// Figma: Deep Horizon (dark → navy)
+$gradient-deep-horizon: linear-gradient(
+  180deg,
+  $hero-backdrop-base 0%,
+  $color-navy 100%
+);
+// Figma: Deep Horizon Inversed (navy → dark)
+$gradient-deep-horizon-inversed: linear-gradient(
+  180deg,
+  $color-navy 0%,
+  $hero-backdrop-base 100%
+);
+// Figma: Glass Wash
+$gradient-white-gray: linear-gradient(
+  to bottom,
+  $color-white 0%,
+  rgba(#999999, 0.6) 100%
+);
+// Figma: Linear Stroke
+$gradient-glass-white-soft: linear-gradient(
+  to bottom,
+  rgba($color-white, 0.8) 0%,
+  rgba($color-white, 0.3) 41%,
+  rgba($color-white, 0.3) 57%,
+  rgba($color-white, 0.4) 100%
+);
+// Figma: Title gradient
+$gradient-white-blue: linear-gradient(to bottom, $color-white 0%, #b0c2e3 100%);
+// Figma: Electric Blue Gradient
+$gradient-sky-blue: linear-gradient(to bottom, $color-sky 0%, #b0c2e3 100%);
+// Figma: Menu glass
+$gradient-subtle: linear-gradient(
+  to bottom,
+  rgba(#5e5e5e, 0.06) 0%,
+  rgba($color-white, 0.04) 100%
+);
+
+// ==========================================================================
+// Breakpoints
+// ==========================================================================
+$breakpoint-desktop: 1024px;
+
+// ==========================================================================
+// Legacy Aliases (backward compatibility)
+// ==========================================================================
+$primary-theme-color: $color-indigo;
+$secondary-theme-color: $color-magenta;
+$human-theme-color: $color-magenta;
+$white-theme-color: $color-white;
+$black-theme-color: $color-black;
+$lightgray-theme-color: $color-silver;
+$darkgray-theme-color: #2c3546;
+$gray-theme-color: #6e797c;
+$orange-theme-color: #f99f42;
+$yellow-theme-color: #f7d752;
+$blue-theme-color: #2e79bb;
+$green-theme-color: #6cc049;
+$link-theme-color: #458acc;
+$link-theme-color-hover: #00559b;

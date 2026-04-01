@@ -1,0 +1,225 @@
+@use "sass:color";
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Related Insights (carousel — Figma desktop 471:367, mobile 471:842)
+// ==========================================================================
+
+.insights {
+  background: $color-midnight;
+
+  &__inner {
+    background: linear-gradient(
+      180deg,
+      $color-ocean 4.6%,
+      $color-midnight 100%
+    );
+    border-radius: 0 0 $radius-xxxl $radius-xxxl;
+    padding: 80px $margin-desktop 60px;
+    overflow: hidden;
+    max-width: $screen-max;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      padding: 40px 24px 32px;
+      border-radius: 0 0 $radius-l $radius-l;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @media (max-width: 1023px) {
+      align-items: center;
+      margin-bottom: 24px;
+    }
+  }
+
+  // H2: 48/48 / 400 / 0 — mobile title frame 32px line (471:846)
+  &__title {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: $color-white;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-shrink: 0;
+    gap: 16px;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-steel;
+    border: none;
+    border-radius: $radius-xxl;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease;
+
+    img {
+      display: block;
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    &--prev {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover:not([aria-disabled="true"]) {
+      background: color.adjust($color-steel, $lightness: 10%);
+    }
+
+    &[aria-disabled="true"] {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+    }
+  }
+
+  &__viewport {
+    width: 100%;
+    overflow: hidden;
+    outline: none;
+
+    @media (max-width: 1023px) {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      // Title + cards share insights__inner 24px inset — no extra inline start here
+      scroll-padding-inline: 0 28px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 4px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 24px;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+    backface-visibility: hidden;
+    box-sizing: border-box;
+
+    @media (max-width: 1023px) {
+      width: max-content !important;
+      min-width: min-content;
+      gap: 16px;
+      // Inner already has 24px horizontal padding — only right pad for end peek (471:842)
+      padding: 0 28px 0 0;
+      transform: none !important;
+      transition: none !important;
+      will-change: auto;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    // Figma 471:877 mobile row: 8px gap | 471:431 desktop: 12px gap
+    gap: 8px;
+    margin-top: 40px;
+    min-height: 8px;
+
+    @media (min-width: 1024px) {
+      gap: 12px;
+      min-height: 16px;
+    }
+
+    @media (max-width: 1023px) {
+      margin-top: 24px;
+    }
+  }
+
+  // Desktop 471:431 — inactive 8×8 $color-sky circles; active 16×16 white circle (rounded-[8px])
+  // Mobile 471:879-881 — inactive 6×6; active 8×8 #12acf7 (Dot); gap 8px
+  &__dot {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition:
+      width 0.25s ease,
+      height 0.25s ease,
+      border-radius 0.25s ease,
+      background-color 0.25s ease;
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.45);
+
+    &--active {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $color-sky;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 8px;
+      height: 8px;
+      background: $color-sky;
+
+      &--active {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $color-white;
+      }
+    }
+  }
+}

@@ -1,0 +1,251 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// 6. Global Footprint
+// ==========================================================================
+
+.global-footprint-wrapper {
+  background: $color-midnight;
+}
+
+.global-footprint {
+  background: $color-white;
+  border-radius: 0 0 $radius-xxxl $radius-xxxl;
+  padding: 0 $margin-desktop 80px;
+
+  @media (max-width: 1023px) {
+    padding: 32px $margin-mobile;
+    border-radius: 0 0 $radius-l $radius-l;
+  }
+
+  &__inner {
+    max-width: $content-max;
+    margin: 0 auto;
+  }
+
+  &__map {
+    position: relative;
+    width: 100%;
+    height: 427px;
+    border-radius: $radius-xxl;
+    overflow: hidden;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      height: auto;
+      aspect-ratio: 354 / 518;
+      border-radius: $radius-l;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: $margin-mobile;
+    }
+  }
+
+  &__map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: $radius-xxl;
+
+    @media (max-width: 1023px) {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+    }
+  }
+
+  &__map-overlay {
+    position: absolute;
+    right: 38px;
+    top: 38px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba($color-white, 0.6);
+    border-radius: $radius-l;
+    padding: 32px;
+    z-index: 2;
+    max-width: 442px;
+
+    @media (max-width: 1023px) {
+      position: relative;
+      right: auto;
+      top: auto;
+      max-width: 100%;
+      padding: $margin-mobile;
+      border-radius: $radius-ml;
+    }
+  }
+
+  &__map-overlay-title {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    color: $color-white;
+    margin: 0 0 20px;
+
+    @media (max-width: 1023px) {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  &__map-overlay-desc {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: $color-off-white;
+    margin: 0 0 20px;
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    z-index: 3;
+    width: 151px;
+    height: 152px;
+    right: 32px;
+    bottom: 30px;
+    object-fit: contain;
+
+    @media (max-width: 1023px) {
+      width: 79px;
+      height: 80px;
+      right: 20px;
+      bottom: auto;
+      top: 90px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 60px;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    &--bottom {
+      position: static;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    &__row--top &__row-image {
+      order: -1;
+    }
+  }
+
+  &__row-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      gap: 12px;
+    }
+  }
+
+  &__row-heading {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: $color-indigo;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &__row-desc {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: $color-abyss;
+    max-width: 568px;
+    margin: 0;
+
+    &--wide {
+      max-width: none;
+    }
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 18px;
+      max-width: none;
+    }
+  }
+
+  &__row-image {
+    width: 649px;
+    height: 350px;
+    flex-shrink: 0;
+    border-radius: $radius-xxl;
+    overflow: hidden;
+    margin: 0;
+
+    > img:first-child {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius-xxl;
+    }
+
+    &--has-badge {
+      position: relative;
+      overflow: visible;
+    }
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      height: 191px;
+      border-radius: $radius-ml;
+
+      > img:first-child {
+        border-radius: $radius-ml;
+      }
+    }
+  }
+
+  &__countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__country {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-dark-gray;
+    padding: 6px 12px;
+    background: rgba($color-ice, 0.5);
+    border-radius: $radius-m;
+  }
+}

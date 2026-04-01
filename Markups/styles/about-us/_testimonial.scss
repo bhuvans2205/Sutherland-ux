@@ -1,0 +1,221 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// 5. Testimonial
+// ==========================================================================
+
+.au-testimonial {
+  backdrop-filter: blur(34.45px);
+  padding: 80px 60px; // 80px vertical (fixed), 60/1440 horizontal (responsive)
+  height: 603px;
+  border-radius: 0 0 $radius-xxxl $radius-xxxl;
+  overflow: visible;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1023px) {
+    padding: 32px 24px; // 32px vertical (fixed), 24/402 horizontal (responsive)
+    height: auto;
+    border-radius: 0 0 $radius-l $radius-l;
+    overflow: visible;
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: $content-max;
+    height: 100%; // fills section content area (443px at 603px section - 160px padding)
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    @media (max-width: 1023px) {
+      height: auto;
+      gap: 16px;
+    }
+  }
+
+  &__quote--open,
+  &__quote--close {
+    flex-shrink: 0;
+    display: block;
+  }
+
+  &__quote--open {
+    position: absolute;
+    top: -6.772%; // -30/443
+    left: 4.545%; // 60/1320
+    width: 5.059%; // 66.78/1320
+    height: auto;
+    aspect-ratio: 66.78 / 51.66;
+    z-index: 1;
+
+    @media (max-width: 1023px) {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 14.607%; // 51.71/354
+      align-self: flex-start;
+    }
+  }
+
+  &__quote--close {
+    position: absolute;
+    right: 4.806%; // (1320 - 1189.78 - 66.78) / 1320
+    top: 52.228%; // 231.66/443
+    width: 5.059%; // 66.78/1320
+    height: auto;
+    aspect-ratio: 66.78 / 51.66;
+    transform: rotate(180deg);
+    z-index: 1;
+
+    @media (max-width: 1023px) {
+      position: absolute;
+      left: 90%; // left edge at container right edge, matching Figma x=354
+      right: auto;
+      top: 67.57%; // 415/535 of container height
+      width: 14.607%; // 51.71/354
+    }
+  }
+
+  &__quote-text {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: 0;
+    color: #252527;
+    text-align: center;
+    margin: 0 0 32px;
+    padding: 0;
+    width: 100%;
+    max-width: 78%;
+    min-height: 252px;
+
+    p {
+      margin: 0;
+
+      + p {
+        margin-top: 1em;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      font-size: 20px;
+      line-height: 26px;
+      max-width: 100%;
+      min-height: auto;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.515%; // 20/1320
+    width: 100%;
+    margin-bottom: 24px;
+
+    @media (max-width: 1023px) {
+      gap: 2.26%; // 8/354
+      justify-content: flex-start;
+      padding-left: 8.757%; // 31/354
+      margin-bottom: 16px;
+    }
+  }
+
+  &__photo {
+    width: 93px;
+    height: 93px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    color: $color-indigo;
+    font-style: normal;
+
+    @media (max-width: 1023px) {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  &__role {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: $color-indigo;
+
+    @media (max-width: 1023px) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  &__cta {
+    padding: 12px 24px 12px 20px;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 55px;
+      left: -8.4px;
+      top: 15.1px;
+      background: radial-gradient(
+        ellipse,
+        rgba($color-white, 0.15) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    @media (max-width: 1023px) {
+      padding: 8px 16px;
+      background: linear-gradient(
+        151.59deg,
+        $color-indigo 63.36%,
+        $color-sky 117.68%
+      );
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(
+          150deg,
+          $color-indigo 56.38%,
+          $color-sky 90.86%
+        );
+        box-shadow:
+          0 2px 16px 0 $glass-periwinkle,
+          0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

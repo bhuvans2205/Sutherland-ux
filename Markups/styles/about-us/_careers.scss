@@ -1,0 +1,99 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// 7. Grow With Purpose (Careers)
+// ==========================================================================
+
+.au-careers {
+  background: $color-midnight;
+  border-radius: 0 0 $radius-xxxl $radius-xxxl;
+  padding: 80px $margin-desktop;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 1023px) {
+    padding: 40px $margin-mobile;
+    border-radius: 0 0 $radius-l $radius-l;
+  }
+
+  &__inner {
+    max-width: $content-max;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 1023px) {
+      gap: 32px;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: 0;
+    color: $color-sky;
+    margin: 0 0 20px;
+
+    @media (max-width: 1023px) {
+      font-size: 40px;
+      line-height: 44px;
+    }
+  }
+
+  &__desc {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: $color-white;
+    margin: 0 0 20px;
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    opacity: 0;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+  }
+
+  &__video-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+
+    video,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+  }
+}

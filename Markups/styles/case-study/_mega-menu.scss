@@ -1,0 +1,141 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Desktop Dropdown Mega-Menu (Figma 42:5099)
+// ==========================================================================
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+  padding-top: 6px;
+
+  &.is-open {
+    display: block;
+  }
+
+  @media (max-width: 1023px) {
+    display: none !important;
+  }
+
+  &__inner {
+    position: relative;
+    max-width: $screen-max;
+    margin: 0 auto;
+    padding: 0 $margin-desktop;
+  }
+
+  &__panel {
+    display: none;
+    gap: 56px;
+    padding: 40px;
+    border-radius: $radius-l $radius-s $radius-l $radius-l;
+    background: linear-gradient(
+      141.84deg,
+      $color-ocean 10.42%,
+      $color-navy 95.91%
+    );
+    width: 576px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+
+    &.is-active {
+      display: flex;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: var(--indicator-x, 50px);
+      width: 16px;
+      height: 8px;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(
+        141.84deg,
+        $color-ocean 10.42%,
+        $color-navy 95.91%
+      );
+      background-size: var(--panel-w, 576px) 100%;
+      background-position: calc(var(--indicator-x, 50px) * -1) 0;
+    }
+  }
+
+  &__col {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0 16px;
+    border-bottom: 1px solid $color-light-gray;
+  }
+
+  &__category-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  &__category-title {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-white;
+    white-space: nowrap;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__item {
+    display: block;
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: $color-white;
+    text-decoration: none;
+    padding: 8px 0;
+    border-radius: $radius-m;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-sky;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &__bg {
+    display: none;
+  }
+}
+
+.nav__link--active {
+  color: $color-sky !important;
+}

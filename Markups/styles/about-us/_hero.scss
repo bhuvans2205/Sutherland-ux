@@ -1,0 +1,324 @@
+@use "../variables" as *;
+@use "tokens" as *;
+@use "../shared/glass";
+
+// ==========================================================================
+// 1. Hero Section
+// ==========================================================================
+
+.au-hero {
+  &__banner {
+    background: linear-gradient(
+      180deg,
+      $color-navy 0%,
+      $hero-backdrop-base 100%
+    );
+    position: relative;
+    padding-bottom: 80px;
+    overflow: hidden;
+
+    @media (max-width: 1023px) {
+      padding-bottom: 32px;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: $screen-max;
+    margin: 0 auto;
+    padding: 175px $margin-desktop 0;
+
+    @media (max-width: 1023px) {
+      padding: 220px $margin-mobile 0;
+    }
+  }
+
+  &__breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    margin-bottom: 32px;
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: $color-white;
+    @extend .glass-pill-subtle;
+
+    a {
+      color: $color-silver;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    &-separator {
+      opacity: 0.5;
+    }
+
+    &-current {
+      color: $color-white;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 80px;
+    letter-spacing: 0;
+    margin: 32px 0 0;
+    width: 649px;
+    background: linear-gradient(154.97deg, $color-white 38.6%, #b0c2e3 66.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 1023px) {
+      font-size: 40px;
+      line-height: 44px;
+      font-weight: 700;
+      width: 100%;
+      background: linear-gradient(
+        154.97deg,
+        $color-white 38.6%,
+        #b0c2e3 66.32%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  &__hero-image {
+    position: absolute;
+    right: 0;
+    top: 22px;
+    width: 508px;
+    height: 428px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+
+    img {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 1023px) {
+      width: 291px;
+      height: 245px;
+      aspect-ratio: 272/229;
+      right: 0;
+      top: 60px;
+    }
+  }
+
+  &__wave {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 1055px;
+    height: 71px;
+    z-index: 3;
+    pointer-events: none;
+
+    img {
+      width: 1055px;
+      height: 71px;
+      max-width: none;
+      transform: rotate(-1.81deg);
+    }
+
+    @media (max-width: 1023px) {
+      bottom: -25px;
+      left: -50px;
+    }
+  }
+
+  // Stats subsection
+  &__stats {
+    background: linear-gradient(
+      180deg,
+      $hero-backdrop-base 0%,
+      $color-navy 100%
+    );
+    border-radius: 0 0 $radius-xxxl $radius-xxxl;
+    padding: 60px $margin-desktop 40px;
+
+    @media (max-width: 1023px) {
+      padding: 40px $margin-mobile 24px;
+      border-radius: 0 0 $radius-l $radius-l;
+    }
+  }
+
+  &__stats-intro {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: $content-max;
+    margin: 0 auto 40px;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__stats-intro-left {
+    width: 673px;
+    flex-shrink: 0;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
+  }
+
+  &__stats-intro-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__stats-headline {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: $color-sky;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  &__stats-desc {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: $color-white;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  &__stats-cards {
+    display: flex;
+    gap: 24px;
+    max-width: $content-max;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__stat-card {
+    max-width: 400px;
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 32px;
+    border: 1px solid rgba($color-white, 0.4);
+    border-radius: $radius-xxl $radius-xxl $radius-xxl $radius-m;
+    backdrop-filter: blur(12px);
+    background: linear-gradient(
+      72.57deg,
+      rgba($color-white, 0.1) 11.98%,
+      rgba(153, 153, 153, 0.06) 96.89%
+    );
+
+    @media (max-width: 1023px) {
+      flex: 0 0 320px;
+      min-width: 320px;
+      min-height: 56px;
+      scroll-snap-align: start;
+      padding: 12px 20px;
+      gap: 8px;
+      border-radius: $radius-ml 2px $radius-ml $radius-ml;
+    }
+  }
+
+  &__stat-value {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: $color-gray;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__stat-label {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: $color-light-gray;
+
+    @media (max-width: 1023px) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  &__stats-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    max-width: $content-max;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s;
+
+    &--active {
+      width: 8px;
+      height: 8px;
+      background: $color-sky;
+    }
+  }
+}

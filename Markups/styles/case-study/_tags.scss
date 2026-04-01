@@ -1,0 +1,65 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Tags
+// ==========================================================================
+
+.tag-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  @media (max-width: 1023px) {
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-indigo;
+    white-space: nowrap;
+
+    @media (max-width: 1023px) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__tag {
+    font-family: $font-primary;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-indigo;
+    text-decoration: underline;
+    padding: 6px 8px;
+    transition: color 0.2s;
+
+    @media (max-width: 1023px) {
+      font-size: 12px;
+      line-height: 14px;
+      padding: 6px 4px;
+    }
+
+    &:hover {
+      color: $color-sky;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}

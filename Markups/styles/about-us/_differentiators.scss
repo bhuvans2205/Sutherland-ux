@@ -1,0 +1,322 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// 3. Background Group (wraps Differentiators + BG Image + History)
+// ==========================================================================
+
+.au-bg-group {
+  position: relative;
+}
+
+// ==========================================================================
+// 3a. What Makes Us Different
+// ==========================================================================
+
+.au-differentiators {
+  position: relative;
+  z-index: 2;
+  background: $color-white;
+  padding: 80px $margin-desktop;
+  border-radius: 0 0 $radius-xxxl $radius-xxxl;
+  overflow: hidden;
+
+  @media (max-width: 1023px) {
+    padding: 32px $margin-mobile;
+    border-radius: 0 0 $radius-l $radius-l;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 60px;
+    max-width: $content-max;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: $color-indigo;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: $color-abyss;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+
+  &__right {
+    width: 630px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      overflow-x: auto;
+      flex-direction: row;
+      gap: 16px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    border: 1px solid $color-light-gray;
+    border-radius: $radius-l $radius-s $radius-l $radius-l;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 1023px) {
+      width: 320px;
+      min-width: 320px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      padding: 16px;
+      border-radius: $radius-ml 2px $radius-ml $radius-ml;
+    }
+  }
+
+  &__card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__card-content {
+    max-width: 434px;
+  }
+
+  &__card-title {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: $color-indigo;
+    margin: 0;
+
+    @media (max-width: 1023px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &__card-body {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: $color-dark-gray;
+    margin: 16px 0 0;
+
+    @media (max-width: 1023px) {
+      font-size: 14px;
+      line-height: 16px;
+      margin-top: 12px;
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    pointer-events: none;
+    width: 389px;
+    height: 219px;
+    aspect-ratio: 135 / 76;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+    filter: blur(2.5px);
+    z-index: 0;
+    max-width: none;
+    object-fit: cover;
+
+    &--1 {
+      right: -243.347px;
+      top: -110.002px;
+      transform: rotate(-30.339deg);
+
+      @media (max-width: 1023px) {
+        width: 446px;
+        height: 386px;
+        right: auto;
+        left: 143px;
+        top: 110px;
+        transform: none;
+      }
+    }
+
+    &--2 {
+      right: -185.989px;
+      top: -152.078px;
+      transform: rotate(66.99deg);
+
+      @media (max-width: 1023px) {
+        width: 419px;
+        height: 438px;
+        right: auto;
+        left: 131px;
+        top: 120px;
+        transform: none;
+      }
+    }
+
+    &--3 {
+      right: -210.492px;
+      top: -91.07px;
+      transform: rotate(20.158deg);
+
+      @media (max-width: 1023px) {
+        width: 417px;
+        height: 273px;
+        right: auto;
+        left: 164px;
+        top: -64px;
+        transform: none;
+      }
+    }
+
+    &--4 {
+      right: -170.298px;
+      top: -33.659px;
+      transform: rotate(-179.139deg);
+
+      @media (max-width: 1023px) {
+        width: 410px;
+        height: 259px;
+        right: auto;
+        left: 148px;
+        top: -57px;
+        transform: none;
+      }
+    }
+  }
+
+  &__pagination {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: -16px;
+    }
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-gray;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s;
+
+    &--active {
+      width: 8px;
+      height: 8px;
+      background: $color-sky;
+    }
+  }
+}
+
+// ==========================================================================
+// 3b. Background Image (absolute decorative ribbon behind sections)
+// ==========================================================================
+
+.au-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  &__decor {
+    position: absolute;
+    width: 1118px;
+    height: 1175px;
+    left: -74px;
+    top: 67%;
+    transform: translate(-50%, -50%) rotate(-73.9deg);
+
+    @media (max-width: 1023px) {
+      width: 656px;
+      height: 639px;
+      left: 38px;
+      top: 60%;
+    }
+  }
+
+  &__decor-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: none;
+    mask-image: radial-gradient(
+      ellipse 50% 50% at center,
+      black 40%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 50% 50% at center,
+      black 40%,
+      transparent 100%
+    );
+  }
+
+  &__decor-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      -69.04deg,
+      rgba($color-white, 0) 25.5%,
+      rgba($color-white, 0.6) 53.01%
+    );
+  }
+}

@@ -1,0 +1,2390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sutherland – About Us</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+          <a href="/" class="nav__logo" aria-label="Sutherland home">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="nav__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="nav__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="nav__logo-dot"
+            />
+            <img src="assets/images/logo-r.svg" alt="" class="nav__logo-r" />
+          </a>
+          <div class="nav__menu-wrapper">
+            <div
+              class="nav__menu glass-pill"
+              role="menubar"
+              aria-label="Primary menu"
+            >
+              <a
+                href="/capabilities"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="capabilities"
+                >Capabilities</a
+              >
+              <a
+                href="/industries"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="industries"
+                >Industries</a
+              >
+              <a
+                href="/outcomes"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="outcomes"
+                >Outcomes</a
+              >
+              <a
+                href="/impact"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="impact"
+                >Impact</a
+              >
+              <a
+                href="/about"
+                class="nav__link"
+                role="menuitem"
+                data-dropdown-trigger="about"
+                >About</a
+              >
+            </div>
+            <div
+              class="nav__search glass-pill"
+              role="search"
+              aria-label="Site search"
+            >
+              <div class="nav__search-field">
+                <input
+                  type="search"
+                  class="nav__search-input"
+                  placeholder="Search"
+                  aria-label="Search the site"
+                />
+                <img
+                  src="assets/images/icon-search.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                  class="nav__search-icon"
+                />
+              </div>
+              <span class="nav__search-divider" aria-hidden="true"></span>
+              <div
+                class="nav__lang"
+                aria-label="Language selector"
+                data-lang-toggle
+              >
+                <img
+                  src="assets/images/icon-globe.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  class="nav__lang-icon"
+                />
+                <span class="nav__lang-text">EN</span>
+                <img
+                  src="assets/images/icon-arrow.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  class="nav__lang-arrow"
+                />
+                <div
+                  class="lang-dropdown"
+                  aria-hidden="true"
+                  data-lang-dropdown
+                >
+                  <div class="lang-dropdown__arrow"></div>
+                  <a
+                    href="?lang=en"
+                    class="lang-dropdown__item lang-dropdown__item--active"
+                    ><span>English</span></a
+                  >
+                  <a href="?lang=ar" class="lang-dropdown__item"
+                    ><span>Arabic</span></a
+                  >
+                  <a href="?lang=de" class="lang-dropdown__item"
+                    ><span>German</span></a
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="/contact" class="nav__cta cta cta--primary">
+              <span>Contact</span>
+            </a>
+          </div>
+          <button
+            type="button"
+            class="nav__mobile-search"
+            aria-label="Search"
+            data-mobile-search-toggle
+          >
+            <img
+              src="assets/images/icon-search.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+            />
+          </button>
+          <div
+            class="nav__mobile-search-bar"
+            aria-hidden="true"
+            data-mobile-search-bar
+          >
+            <img
+              src="assets/images/icon-search.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+              class="nav__mobile-search-bar-icon"
+            />
+            <input
+              type="search"
+              class="nav__mobile-search-bar-input"
+              placeholder="Search ..."
+              aria-label="Search the site"
+            />
+            <button
+              type="button"
+              class="nav__mobile-search-bar-close"
+              aria-label="Close search"
+              data-mobile-search-close
+            >
+              &times;
+            </button>
+          </div>
+          <div class="nav__mobile-globe-wrap" data-lang-toggle>
+            <button
+              type="button"
+              class="nav__mobile-globe"
+              aria-label="Select language"
+            >
+              <img
+                src="assets/images/icon-globe.svg"
+                alt=""
+                width="18"
+                height="18"
+                aria-hidden="true"
+              />
+            </button>
+            <div class="lang-dropdown" aria-hidden="true" data-lang-dropdown>
+              <div class="lang-dropdown__arrow"></div>
+              <a
+                href="?lang=en"
+                class="lang-dropdown__item lang-dropdown__item--active"
+                ><span>English</span></a
+              >
+              <a href="?lang=ar" class="lang-dropdown__item"
+                ><span>Arabic</span></a
+              >
+              <a href="?lang=de" class="lang-dropdown__item"
+                ><span>German</span></a
+              >
+            </div>
+          </div>
+          <button
+            type="button"
+            class="nav__hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            data-nav-toggle
+          >
+            <img
+              src="assets/images/icon-hamburger.svg"
+              alt=""
+              width="18"
+              height="18"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+        <!-- Desktop dropdown mega-menu -->
+        <div class="nav-dropdown" data-nav-dropdown aria-hidden="true">
+          <div class="nav-dropdown__inner">
+            <div class="nav-dropdown__panel" data-dropdown-panel="capabilities">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >AI &amp; Technology</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Artificial Intelligence</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Cloud &amp; Infrastructure</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Consulting &amp; Transformation</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Data &amp; Analytics</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Digital Engineering</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Enterprise Applications</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Proprietary Platforms</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >Intelligent Operations</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li><a href="#" class="nav-dropdown__item">BPaaS</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Customer Experience (CX)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Finance &amp; Accounting</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">HR Operations</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Industry Solutions</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="industries">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">By Sector</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Banking &amp; Financial Services</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Healthcare &amp; Life Sciences</a
+                    >
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Insurance</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Retail &amp; Consumer Goods</a
+                    >
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Technology</a></li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >More Industries</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Communications &amp; Media</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Energy &amp; Utilities</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Travel &amp; Hospitality</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Government &amp; Public Sector</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="outcomes">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Results</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Case Studies</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Client Success Stories</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">ROI Calculator</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Insights</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">White Papers</a>
+                  </li>
+                  <li><a href="#" class="nav-dropdown__item">Blog</a></li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Webinars &amp; Events</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="impact">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title"
+                    >Social Impact</span
+                  >
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Sustainability</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Diversity &amp; Inclusion</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Community Engagement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Innovation</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Labs &amp; R&amp;D</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Patents &amp; IP</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Partnerships</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-dropdown__panel" data-dropdown-panel="about">
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-ai-tech.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Company</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li><a href="#" class="nav-dropdown__item">Our Story</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Leadership</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Locations</a></li>
+                  <li><a href="#" class="nav-dropdown__item">Newsroom</a></li>
+                </ul>
+              </div>
+              <div class="nav-dropdown__col">
+                <div class="nav-dropdown__category-header">
+                  <img
+                    src="assets/images/icon-operations.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                    class="nav-dropdown__category-icon"
+                  />
+                  <span class="nav-dropdown__category-title">Careers</span>
+                </div>
+                <ul class="nav-dropdown__list">
+                  <li>
+                    <a href="#" class="nav-dropdown__item">Open Positions</a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Life at Sutherland</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="nav-dropdown__item"
+                      >Benefits &amp; Culture</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div
+        class="mobile-menu"
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+        data-mobile-menu
+      >
+        <div class="mobile-menu__top">
+          <a href="/" class="mobile-menu__logo" aria-label="Sutherland home">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="nav__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="nav__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="nav__logo-dot"
+            />
+            <img src="assets/images/logo-r.svg" alt="" class="nav__logo-r" />
+          </a>
+          <button
+            type="button"
+            class="mobile-menu__close"
+            aria-label="Close menu"
+            data-mobile-menu-close
+          >
+            <span
+              class="mobile-menu__close-line mobile-menu__close-line--1"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="mobile-menu__close-line mobile-menu__close-line--2"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+        <div class="mobile-menu__search" role="search">
+          <input
+            type="search"
+            class="mobile-menu__search-input"
+            placeholder="Search"
+            aria-label="Search the site"
+          />
+          <img
+            src="assets/images/icon-search.svg"
+            alt=""
+            width="18"
+            height="18"
+            aria-hidden="true"
+            class="mobile-menu__search-icon"
+          />
+        </div>
+        <nav class="mobile-menu__nav" aria-label="Primary navigation">
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Capabilities</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >AI &amp; Technology</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Artificial Intelligence</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Cloud &amp; Infrastructure</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Consulting &amp; Transformation</a
+              >
+              <a href="#" class="mobile-menu__sublink">Data &amp; Analytics</a>
+              <a href="#" class="mobile-menu__sublink">Digital Engineering</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Enterprise Applications</a
+              >
+              <a href="#" class="mobile-menu__sublink">Proprietary Platforms</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >Intelligent Operations</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink">BPaaS</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Customer Experience (CX)</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Finance &amp; Accounting</a
+              >
+              <a href="#" class="mobile-menu__sublink">HR Operations</a>
+              <a href="#" class="mobile-menu__sublink">Industry Solutions</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Industries</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">By Sector</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Banking &amp; Financial Services</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Healthcare &amp; Life Sciences</a
+              >
+              <a href="#" class="mobile-menu__sublink">Insurance</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Retail &amp; Consumer Goods</a
+              >
+              <a href="#" class="mobile-menu__sublink">Technology</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >More Industries</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink"
+                >Communications &amp; Media</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Energy &amp; Utilities</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Travel &amp; Hospitality</a
+              >
+              <a href="#" class="mobile-menu__sublink"
+                >Government &amp; Public Sector</a
+              >
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Outcomes</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Results</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Case Studies</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Client Success Stories</a
+              >
+              <a href="#" class="mobile-menu__sublink">ROI Calculator</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Insights</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">White Papers</a>
+              <a href="#" class="mobile-menu__sublink">Blog</a>
+              <a href="#" class="mobile-menu__sublink">Webinars &amp; Events</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>Impact</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title"
+                  >Social Impact</span
+                >
+              </div>
+              <a href="#" class="mobile-menu__sublink">Sustainability</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Diversity &amp; Inclusion</a
+              >
+              <a href="#" class="mobile-menu__sublink">Community Engagement</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Innovation</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Labs &amp; R&amp;D</a>
+              <a href="#" class="mobile-menu__sublink">Patents &amp; IP</a>
+              <a href="#" class="mobile-menu__sublink">Partnerships</a>
+            </div>
+          </div>
+          <div class="mobile-menu__item" data-has-submenu>
+            <button
+              type="button"
+              class="mobile-menu__link"
+              aria-expanded="false"
+              data-toggle-submenu
+            >
+              <span>About</span>
+              <img
+                src="assets/images/icon-arrow.svg"
+                alt=""
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="mobile-menu__chevron"
+              />
+            </button>
+            <div class="mobile-menu__submenu" aria-hidden="true">
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-ai-tech.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Company</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Our Story</a>
+              <a href="#" class="mobile-menu__sublink">Leadership</a>
+              <a href="#" class="mobile-menu__sublink">Locations</a>
+              <a href="#" class="mobile-menu__sublink">Newsroom</a>
+              <div class="mobile-menu__subcategory">
+                <img
+                  src="assets/images/icon-operations.svg"
+                  alt=""
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                />
+                <span class="mobile-menu__subcategory-title">Careers</span>
+              </div>
+              <a href="#" class="mobile-menu__sublink">Open Positions</a>
+              <a href="#" class="mobile-menu__sublink">Life at Sutherland</a>
+              <a href="#" class="mobile-menu__sublink"
+                >Benefits &amp; Culture</a
+              >
+            </div>
+          </div>
+        </nav>
+        <a href="/contact" class="mobile-menu__cta">Contact</a>
+        <div class="mobile-menu__lang">
+          <img
+            src="assets/images/icon-globe.svg"
+            alt=""
+            width="16"
+            height="16"
+            aria-hidden="true"
+          />
+          <span>English</span>
+          <img
+            src="assets/images/icon-arrow.svg"
+            alt=""
+            width="12"
+            height="12"
+            aria-hidden="true"
+            class="mobile-menu__lang-arrow"
+          />
+        </div>
+        <div class="mobile-menu__bg-decor" aria-hidden="true">
+          <img src="assets/images/menu-decor.png" alt="" />
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+      <!-- ===== 2. HERO SECTION ===== -->
+      <section class="au-hero" aria-label="About Us hero">
+        <div class="au-hero__banner">
+          <div class="au-hero__hero-image" aria-hidden="true">
+            <img
+              src="assets/images/about-hero.png"
+              alt=""
+              width="508"
+              height="428"
+            />
+          </div>
+          <div class="au-hero__content">
+            <nav class="breadcrumb glass-pill-subtle" aria-label="Breadcrumb">
+              <ol class="breadcrumb__list" role="list">
+                <li class="breadcrumb__item">
+                  <a href="/" class="breadcrumb__link">Home</a>
+                </li>
+                <li class="breadcrumb__item" aria-current="page">
+                  <span class="breadcrumb__current">About Us</span>
+                </li>
+              </ol>
+            </nav>
+            <h1 class="au-hero__title">Engineering<br />for Impact</h1>
+          </div>
+          <div class="au-hero__wave" aria-hidden="true">
+            <img
+              src="assets/images/about-wave.svg"
+              alt=""
+              width="1055"
+              height="38"
+            />
+          </div>
+        </div>
+
+        <!-- Stats subsection -->
+        <div class="au-hero__stats" aria-label="Company statistics">
+          <div class="au-hero__stats-intro">
+            <div class="au-hero__stats-intro-left">
+              <p class="au-hero__stats-headline">
+                Market-leading technology and operational excellence, built
+                around your business.
+              </p>
+            </div>
+            <div class="au-hero__stats-intro-right">
+              <p class="au-hero__stats-desc">
+                For 38 years, Sutherland has paired AI-driven engineering with
+                deep operational expertise to help businesses drive growth,
+                improve efficiency, and adapt to change with confidence.
+              </p>
+            </div>
+          </div>
+          <div
+            class="au-hero__stats-cards"
+            role="list"
+            aria-label="Key statistics"
+          >
+            <article class="au-hero__stat-card glass-card" role="listitem">
+              <span class="au-hero__stat-value">40k+</span>
+              <span class="au-hero__stat-label"
+                >Global team of domain and technology experts</span
+              >
+            </article>
+            <article class="au-hero__stat-card glass-card" role="listitem">
+              <span class="au-hero__stat-value">50%</span>
+              <span class="au-hero__stat-label">Fortune 500 firms served</span>
+            </article>
+            <article class="au-hero__stat-card glass-card" role="listitem">
+              <span class="au-hero__stat-value">63%</span>
+              <span class="au-hero__stat-label"
+                >Of our client partnerships contractually tied to measurable
+                client outcomes</span
+              >
+            </article>
+          </div>
+          <div
+            class="au-hero__stats-pagination"
+            role="tablist"
+            aria-label="Stats pagination"
+          >
+            <button
+              class="au-hero__dot au-hero__dot--active"
+              role="tab"
+              aria-selected="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              class="au-hero__dot"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              class="au-hero__dot"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 3. VIDEO SECTION (MP4 or YouTube/Vimeo — data-video-src) ===== -->
+      <section class="au-video" aria-label="Company video">
+        <div class="au-video__inner">
+          <figure
+            class="au-video__figure"
+            role="group"
+            aria-label="Company video"
+            data-about-video
+            data-video-src="assets/videos/contact-bg.mp4"
+            data-video-poster="assets/images/promo-image.png"
+          >
+            <div class="au-video__frame">
+              <div class="au-video__poster">
+                <img
+                  src="assets/images/promo-image.png"
+                  alt=""
+                  class="au-video__poster-img"
+                  width="1320"
+                  height="641"
+                />
+                <button
+                  type="button"
+                  class="au-video__play"
+                  aria-label="Play company video"
+                >
+                  <svg
+                    width="27"
+                    height="27"
+                    viewBox="0 0 27 27"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <polygon
+                      points="13.5,6.75 13.5,20.25 20.25,13.5"
+                      fill="#fff"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="au-video__player"
+                hidden
+                data-about-video-player-mount
+              ></div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===== 4. WHAT MAKES US DIFFERENT + BG IMAGE + HISTORY ===== -->
+      <div class="au-bg-group">
+        <section class="au-differentiators" aria-labelledby="au-diff-title">
+          <div class="au-differentiators__inner">
+            <div class="au-differentiators__left">
+              <h2 id="au-diff-title" class="au-differentiators__title">
+                What makes us<br />different?
+              </h2>
+              <p class="au-differentiators__subtitle">
+                Sutherland turns complexity into clarity. Through AI, digital
+                engineering, and human insight, we help enterprises operate with
+                confidence. We measure success by outcomes, not activity.
+              </p>
+            </div>
+            <div
+              class="au-differentiators__right"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Key differentiators"
+            >
+              <article
+                class="au-differentiators__card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="1 of 4"
+              >
+                <img
+                  src="assets/images/about-insight-bg.png"
+                  alt=""
+                  class="au-differentiators__decor au-differentiators__decor--1"
+                  aria-hidden="true"
+                  width="389"
+                  height="219"
+                />
+                <div class="au-differentiators__card-content">
+                  <h3 class="au-differentiators__card-title">
+                    End-to-end ownership that delivers
+                  </h3>
+                  <p class="au-differentiators__card-body">
+                    We've helped build and transform some of the world's most
+                    trusted companies, taking responsibility from design and
+                    engineering through deployment, operation, and scale.
+                  </p>
+                </div>
+              </article>
+              <article
+                class="au-differentiators__card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="2 of 4"
+              >
+                <img
+                  src="assets/images/about-insight-bg.png"
+                  alt=""
+                  class="au-differentiators__decor au-differentiators__decor--2"
+                  aria-hidden="true"
+                  width="389"
+                  height="219"
+                />
+                <div class="au-differentiators__card-content">
+                  <h3 class="au-differentiators__card-title">
+                    We win when you win
+                  </h3>
+                  <p class="au-differentiators__card-body">
+                    63% of our business is tied to client success. Our
+                    engagement models are built around your KPIs, making
+                    outcomes the true measure of performance.
+                  </p>
+                </div>
+              </article>
+              <article
+                class="au-differentiators__card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="3 of 4"
+              >
+                <img
+                  src="assets/images/about-insight-bg.png"
+                  alt=""
+                  class="au-differentiators__decor au-differentiators__decor--3"
+                  aria-hidden="true"
+                  width="389"
+                  height="219"
+                />
+                <div class="au-differentiators__card-content">
+                  <h3 class="au-differentiators__card-title">
+                    Built for speed and scale
+                  </h3>
+                  <p class="au-differentiators__card-body">
+                    Our engineering drives speed, while our BPaaS model ensures
+                    solutions run and improve over time. This balance delivers
+                    continuous value with lower total cost.
+                  </p>
+                </div>
+              </article>
+              <article
+                class="au-differentiators__card"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="4 of 4"
+              >
+                <img
+                  src="assets/images/about-insight-bg.png"
+                  alt=""
+                  class="au-differentiators__decor au-differentiators__decor--4"
+                  aria-hidden="true"
+                  width="389"
+                  height="219"
+                />
+                <div class="au-differentiators__card-content">
+                  <h3 class="au-differentiators__card-title">AI at the core</h3>
+                  <p class="au-differentiators__card-body">
+                    AI and automation are embedded into how our platforms and
+                    operations run. This enables smarter, more autonomous
+                    services that deliver measurable results at scale.
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div
+              class="au-differentiators__pagination"
+              role="group"
+              aria-label="Insights pagination"
+            >
+              <button
+                type="button"
+                class="au-differentiators__dot au-differentiators__dot--active"
+                aria-current="true"
+                aria-label="Page 1"
+              ></button>
+              <button
+                type="button"
+                class="au-differentiators__dot"
+                aria-label="Page 2"
+              ></button>
+              <button
+                type="button"
+                class="au-differentiators__dot"
+                aria-label="Page 3"
+              ></button>
+              <button
+                type="button"
+                class="au-differentiators__dot"
+                aria-label="Page 4"
+              ></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 4b. DECORATIVE BACKGROUND ===== -->
+        <div class="au-bg-wrapper" aria-hidden="true">
+          <div class="au-bg-wrapper__decor">
+            <img
+              src="assets/images/about-decorative-bg.png"
+              alt=""
+              class="au-bg-wrapper__decor-img"
+            />
+            <div class="au-bg-wrapper__decor-overlay"></div>
+          </div>
+        </div>
+
+        <!-- ===== 5. OUR HISTORY ===== -->
+        <section
+          class="au-history"
+          aria-labelledby="au-history-title"
+          aria-roledescription="carousel"
+          data-history-carousel
+        >
+          <div class="au-history__inner">
+            <div class="au-history__left">
+              <h2 id="au-history-title" class="au-history__title">
+                Our History
+              </h2>
+              <p class="au-history__desc">
+                For nearly four decades, Sutherland has grown by evolving with
+                technology - expanding capabilities and building intelligent
+                systems that deliver measurable outcomes for enterprises
+                worldwide.
+              </p>
+              <div
+                class="au-history__nav"
+                role="group"
+                aria-label="Timeline navigation"
+              >
+                <button
+                  type="button"
+                  class="au-history__arrow au-history__arrow--prev"
+                  aria-label="Previous timeline event"
+                  data-history-prev
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 18l-6-6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="au-history__arrow au-history__arrow--next"
+                  aria-label="Next timeline event"
+                  data-history-next
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9 18l6-6-6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="au-history__center" aria-hidden="true">
+              <div class="au-history__orbits">
+                <div class="au-history__orbit au-history__orbit--outer"></div>
+                <div class="au-history__orbit au-history__orbit--middle"></div>
+                <div class="au-history__orbit au-history__orbit--inner"></div>
+                <div
+                  class="au-history__orbit-dot au-history__orbit-dot--active"
+                ></div>
+                <div
+                  class="au-history__orbit-dot au-history__orbit-dot--ring"
+                ></div>
+              </div>
+              <span
+                class="au-history__year au-history__year--prev"
+                data-history-year-prev
+                >2000</span
+              >
+              <span
+                class="au-history__year au-history__year--current"
+                data-history-year-current
+                >2013</span
+              >
+              <span
+                class="au-history__year au-history__year--next"
+                data-history-year-next
+                >2014</span
+              >
+              <div
+                class="au-history__orbit-dot au-history__orbit-dot--top"
+              ></div>
+              <div
+                class="au-history__orbit-dot au-history__orbit-dot--bottom"
+              ></div>
+            </div>
+            <div class="au-history__right">
+              <div class="au-history__card-stack">
+                <div
+                  class="au-history__card au-history__card--shadow-back"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="au-history__card au-history__card--shadow-mid"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="au-history__card au-history__card--front"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  <h3 class="au-history__card-title" data-history-card-title>
+                    Acquired Apollo Health Street
+                  </h3>
+                  <p class="au-history__card-desc" data-history-card-desc>
+                    to enhance our healthcare industry specialization
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- /.au-bg-group -->
+
+      <!-- ===== 6. TESTIMONIAL ===== -->
+      <section class="au-testimonial" aria-labelledby="au-testimonial-heading">
+        <h2 id="au-testimonial-heading" class="sr-only">
+          Leadership Testimonial
+        </h2>
+        <div class="au-testimonial__inner">
+          <img
+            src="assets/images/about-quote-open.svg"
+            alt=""
+            class="au-testimonial__quote--open"
+            aria-hidden="true"
+          />
+          <blockquote class="au-testimonial__quote-text">
+            <p>
+              Over the past three decades we have consistently invested in
+              people, products, and platforms to build a company that is
+              dedicated to driving measurable outcomes for our clients.
+            </p>
+            <p>
+              This remains our mission even today. The core values of remaining
+              agile, outside-the-box thinking, uncompromising integrity and
+              flawless execution are key pillars of the company.
+            </p>
+          </blockquote>
+          <img
+            src="assets/images/about-quote-close.svg"
+            alt=""
+            class="au-testimonial__quote--close"
+            aria-hidden="true"
+          />
+          <footer class="au-testimonial__author">
+            <img
+              src="assets/images/about-ceo.png"
+              alt="Dilip Vellodi, Chairman and CEO of Sutherland"
+              class="au-testimonial__photo"
+              width="93"
+              height="93"
+              loading="lazy"
+            />
+            <div class="au-testimonial__author-info">
+              <cite class="au-testimonial__name">Dilip Vellodi</cite>
+              <span class="au-testimonial__role"
+                >Chairman and CEO, Sutherland</span
+              >
+            </div>
+          </footer>
+          <a
+            href="/leadership"
+            class="au-testimonial__cta cta cta--dark-blue"
+            aria-label="View the Sutherland leadership team"
+          >
+            <span>View Leadership Team</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== 7. GLOBAL FOOTPRINT ===== -->
+      <div class="global-footprint-wrapper">
+        <section
+          class="global-footprint"
+          aria-labelledby="global-footprint-title"
+        >
+          <div class="global-footprint__inner">
+            <div class="global-footprint__map">
+              <img
+                src="assets/images/about-map.png"
+                alt="Sutherland team volunteering outdoors"
+                class="global-footprint__map-img"
+                width="1320"
+                height="427"
+                loading="lazy"
+              />
+              <div class="global-footprint__map-overlay">
+                <h2 class="global-footprint__map-overlay-title">
+                  Making a<br />Positive Impact
+                </h2>
+                <p class="global-footprint__map-overlay-desc">
+                  As part of the UN Global Compact, we act responsibly toward
+                  people and the planet. Through consistent practices and strong
+                  partnerships, we work to drive meaningful change.
+                </p>
+                <a
+                  href="/impact"
+                  class="au-cta au-cta--light"
+                  aria-label="Learn more about Sutherland's social impact"
+                >
+                  <span>Learn More</span>
+                </a>
+              </div>
+            </div>
+            <div class="global-footprint__row global-footprint__row--top">
+              <div class="global-footprint__row-text">
+                <h2
+                  id="global-footprint-title"
+                  class="global-footprint__row-heading"
+                >
+                  Our Global Footprint
+                </h2>
+                <p class="global-footprint__row-desc">
+                  We are a global organization with 70+ offices, serving
+                  customers across 144+ countries.
+                </p>
+                <a
+                  href="/locations"
+                  class="au-cta au-cta--dark"
+                  aria-label="Explore Sutherland office locations"
+                >
+                  <span>Explore Locations</span>
+                </a>
+              </div>
+              <figure class="global-footprint__row-image">
+                <img
+                  src="assets/images/about-global-1.png"
+                  alt="Earth viewed from space"
+                  width="649"
+                  height="350"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+            <div class="global-footprint__row global-footprint__row--bottom">
+              <figure
+                class="global-footprint__row-image global-footprint__row-image--has-badge"
+              >
+                <img
+                  src="assets/images/about-global-2.png"
+                  alt="Sutherland team celebrating together"
+                  width="649"
+                  height="350"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/images/about-gptw-badge.png"
+                  alt="Great Place to Work certified badge"
+                  class="global-footprint__badge"
+                  width="151"
+                  height="152"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="global-footprint__row-text">
+                <h2 class="global-footprint__row-heading">
+                  14 Countries,<br />1 Incredible Achievement
+                </h2>
+                <p
+                  class="global-footprint__row-desc global-footprint__row-desc--wide"
+                >
+                  Great Place To Work&reg; : Bulgaria, Canada, China, Colombia,
+                  Egypt, India, Jamaica, Kosovo, Malaysia, Philippines, Saudi
+                  Arabia, the UAE, the UK, and the USA.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===== 9. GROW WITH PURPOSE ===== -->
+      <section class="au-careers" aria-labelledby="au-careers-title">
+        <div class="au-careers__bg" aria-hidden="true">
+          <img
+            src="assets/images/about-careers-bg.png"
+            alt=""
+            class="au-careers__bg-img"
+          />
+        </div>
+        <div class="au-careers__inner">
+          <h2 id="au-careers-title" class="au-careers__title">
+            Grow With Purpose
+          </h2>
+          <p class="au-careers__desc">
+            Build skills, solve real challenges, and shape outcomes that matter.
+            Your next chapter starts here.
+          </p>
+          <a
+            href="/careers"
+            class="au-careers__cta cta cta--glass"
+            aria-label="Join the Sutherland team"
+          >
+            <span>Join us</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== 10. FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__bg-decor" aria-hidden="true">
+        <img src="assets/images/about-footer-decor.png" alt="" />
+      </div>
+      <div class="site-footer__inner">
+        <div class="site-footer__top">
+          <nav class="site-footer__links" aria-label="Footer navigation">
+            <a href="/about" class="site-footer__link">About Us</a>
+            <a href="/contact" class="site-footer__link">Contact Us</a>
+            <a href="/locations" class="site-footer__link">Locations</a>
+            <a href="/careers" class="site-footer__link">Careers</a>
+          </nav>
+          <a href="/" class="site-footer__logo" aria-label="Sutherland home">
+            <img
+              src="assets/images/logo-mark.svg"
+              alt=""
+              class="site-footer__logo-mark"
+            />
+            <img
+              src="assets/images/logo-text.svg"
+              alt="Sutherland"
+              class="site-footer__logo-text"
+            />
+            <img
+              src="assets/images/logo-dot.svg"
+              alt=""
+              class="site-footer__logo-dot"
+            />
+            <img
+              src="assets/images/logo-r.svg"
+              alt=""
+              class="site-footer__logo-r"
+            />
+          </a>
+        </div>
+        <hr class="site-footer__divider" aria-hidden="true" />
+        <div class="site-footer__bottom">
+          <div
+            class="site-footer__social"
+            role="list"
+            aria-label="Social media links"
+          >
+            <a
+              href="https://www.instagram.com/sutherland"
+              class="site-footer__social-link"
+              role="listitem"
+              aria-label="Sutherland on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/sutherland-global-services"
+              class="site-footer__social-link"
+              role="listitem"
+              aria-label="Sutherland on LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <rect
+                  x="2"
+                  y="9"
+                  width="4"
+                  height="12"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="4"
+                  cy="4"
+                  r="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://x.com/sutaborlean"
+              class="site-footer__social-link"
+              role="listitem"
+              aria-label="Sutherland on X"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 4l6.8 8.5M4 20l6.8-8.5m0 0L20 4M10.8 12.5L20 20"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/SutherlandGlobalServices"
+              class="site-footer__social-link"
+              role="listitem"
+              aria-label="Sutherland on Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+          <nav class="site-footer__legal" aria-label="Legal links">
+            <a href="/privacy" class="site-footer__legal-link"
+              >Privacy Policy</a
+            >
+            <a href="/cookies" class="site-footer__legal-link">Cookie Policy</a>
+            <a href="/terms" class="site-footer__legal-link">Terms of Use</a>
+            <a href="/sitemap" class="site-footer__legal-link">Sitemap</a>
+            <a href="#" class="site-footer__legal-link" data-cookie-preferences
+              >Cookie Preferences</a
+            >
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Fixed header on scroll
+      (function () {
+        var header = document.querySelector(".site-header");
+        if (!header) return;
+
+        var spacer = document.createElement("div");
+        spacer.style.display = "none";
+        header.parentNode.insertBefore(spacer, header);
+
+        var headerHeight = header.offsetHeight;
+        var triggerPoint = header.offsetTop + headerHeight;
+
+        function onScroll() {
+          headerHeight =
+            spacer.style.display === "none"
+              ? header.offsetHeight
+              : parseInt(spacer.style.height) || headerHeight;
+
+          if (
+            window.scrollY > header.offsetTop &&
+            !header.classList.contains("is-fixed")
+          ) {
+            triggerPoint = header.offsetTop;
+          }
+
+          if (window.scrollY > triggerPoint) {
+            if (!header.classList.contains("is-fixed")) {
+              spacer.style.height = headerHeight + "px";
+              spacer.style.display = "block";
+              header.classList.add("is-fixed");
+            }
+            header.classList.add("is-scrolled");
+          } else {
+            header.classList.remove("is-fixed", "is-scrolled");
+            spacer.style.display = "none";
+          }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener(
+          "resize",
+          function () {
+            if (!header.classList.contains("is-fixed")) {
+              headerHeight = header.offsetHeight;
+              triggerPoint = header.offsetTop;
+            }
+          },
+          { passive: true },
+        );
+        onScroll();
+      })();
+
+      // Language dropdown toggle
+      (function () {
+        var langToggles = document.querySelectorAll("[data-lang-toggle]");
+        langToggles.forEach(function (toggle) {
+          var dropdown = toggle.querySelector("[data-lang-dropdown]");
+          if (!dropdown) return;
+          var closeTimer = null;
+
+          toggle.addEventListener("click", function (e) {
+            if (e.target.closest("[data-lang-dropdown]")) return;
+            e.preventDefault();
+            clearTimeout(closeTimer);
+            var open = dropdown.getAttribute("aria-hidden") === "false";
+            document
+              .querySelectorAll("[data-lang-dropdown]")
+              .forEach(function (d) {
+                if (d !== dropdown) d.setAttribute("aria-hidden", "true");
+              });
+            dropdown.setAttribute("aria-hidden", open ? "true" : "false");
+          });
+
+          toggle.addEventListener("mouseleave", function () {
+            if (dropdown.getAttribute("aria-hidden") === "false") {
+              closeTimer = setTimeout(function () {
+                dropdown.setAttribute("aria-hidden", "true");
+              }, 300);
+            }
+          });
+
+          toggle.addEventListener("mouseenter", function () {
+            clearTimeout(closeTimer);
+          });
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest("[data-lang-toggle]")) {
+            document
+              .querySelectorAll("[data-lang-dropdown]")
+              .forEach(function (d) {
+                d.setAttribute("aria-hidden", "true");
+              });
+          }
+        });
+      })();
+
+      // Mobile search bar toggle
+      (function () {
+        var searchToggle = document.querySelector(
+          "[data-mobile-search-toggle]",
+        );
+        var searchBar = document.querySelector("[data-mobile-search-bar]");
+        var searchClose = document.querySelector("[data-mobile-search-close]");
+        var navInner = document.querySelector(".nav__inner");
+        if (!searchToggle || !searchBar) return;
+
+        function openSearch() {
+          searchBar.setAttribute("aria-hidden", "false");
+          if (navInner) navInner.classList.add("search-open");
+          var input = searchBar.querySelector("input");
+          if (input) input.focus();
+        }
+
+        function closeSearch() {
+          searchBar.setAttribute("aria-hidden", "true");
+          if (navInner) navInner.classList.remove("search-open");
+        }
+
+        searchToggle.addEventListener("click", openSearch);
+        if (searchClose) searchClose.addEventListener("click", closeSearch);
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            searchBar.getAttribute("aria-hidden") === "false"
+          ) {
+            closeSearch();
+            searchToggle.focus();
+          }
+        });
+      })();
+
+      // Mobile menu open/close
+      (function () {
+        var toggle = document.querySelector("[data-nav-toggle]");
+        var menu = document.querySelector("[data-mobile-menu]");
+        var closeBtn = document.querySelector("[data-mobile-menu-close]");
+        if (!toggle || !menu) return;
+
+        function setMenuOpen(open) {
+          menu.setAttribute("aria-hidden", open ? "false" : "true");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          document.body.style.overflow = open ? "hidden" : "";
+        }
+
+        toggle.addEventListener("click", function () {
+          var isOpen = menu.getAttribute("aria-hidden") === "false";
+          setMenuOpen(!isOpen);
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
+            setMenuOpen(false);
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            menu.getAttribute("aria-hidden") === "false"
+          ) {
+            setMenuOpen(false);
+            toggle.focus();
+          }
+        });
+
+        var submenuToggles = menu.querySelectorAll("[data-toggle-submenu]");
+        submenuToggles.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var expanded = btn.getAttribute("aria-expanded") === "true";
+            var submenu = btn.nextElementSibling;
+            if (!submenu) return;
+            btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+            submenu.setAttribute("aria-hidden", expanded ? "true" : "false");
+          });
+        });
+      })();
+
+      // Desktop dropdown mega-menu
+      (function () {
+        var dropdown = document.querySelector("[data-nav-dropdown]");
+        var triggers = document.querySelectorAll("[data-dropdown-trigger]");
+        if (!dropdown || !triggers.length) return;
+
+        var panels = dropdown.querySelectorAll("[data-dropdown-panel]");
+        var dropdownInner = dropdown.querySelector(".nav-dropdown__inner");
+        var closeTimer = null;
+        var navMenuPill = document.querySelector(".nav__menu");
+        var innerPadding = dropdownInner
+          ? parseInt(getComputedStyle(dropdownInner).paddingLeft) || 0
+          : 0;
+
+        function positionElements(trigger) {
+          if (!dropdownInner) return;
+          var triggerRect = trigger.getBoundingClientRect();
+          var innerRect = dropdownInner.getBoundingClientRect();
+          var pillRect = navMenuPill
+            ? navMenuPill.getBoundingClientRect()
+            : null;
+          var activePanel = dropdown.querySelector(
+            ".nav-dropdown__panel.is-active",
+          );
+          if (activePanel) {
+            var pillLeft = pillRect
+              ? pillRect.left - innerRect.left - innerPadding
+              : 0;
+            var contentWidth = innerRect.width - innerPadding * 2;
+            var maxLeft = contentWidth - activePanel.offsetWidth;
+            var panelLeft = Math.max(0, Math.min(pillLeft, maxLeft));
+            activePanel.style.marginLeft = panelLeft + "px";
+            var triggerCenter = triggerRect.left + triggerRect.width / 2;
+            var panelVisualLeft = innerRect.left + innerPadding + panelLeft;
+            var indicatorX = triggerCenter - panelVisualLeft - 8;
+            activePanel.style.setProperty("--indicator-x", indicatorX + "px");
+            activePanel.style.setProperty(
+              "--panel-w",
+              activePanel.offsetWidth + "px",
+            );
+          }
+        }
+
+        function openDropdown(panelId, trigger) {
+          clearTimeout(closeTimer);
+          panels.forEach(function (p) {
+            p.classList.toggle(
+              "is-active",
+              p.getAttribute("data-dropdown-panel") === panelId,
+            );
+          });
+          triggers.forEach(function (l) {
+            l.classList.toggle(
+              "nav__link--active",
+              l.getAttribute("data-dropdown-trigger") === panelId,
+            );
+          });
+          dropdown.classList.add("is-open");
+          dropdown.setAttribute("aria-hidden", "false");
+          positionElements(trigger);
+        }
+
+        function closeDropdown() {
+          closeTimer = setTimeout(function () {
+            dropdown.classList.remove("is-open");
+            dropdown.setAttribute("aria-hidden", "true");
+            panels.forEach(function (p) {
+              p.classList.remove("is-active");
+              p.style.marginLeft = "";
+            });
+            triggers.forEach(function (l) {
+              l.classList.remove("nav__link--active");
+            });
+          }, 100);
+        }
+
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener("mouseenter", function () {
+            openDropdown(
+              trigger.getAttribute("data-dropdown-trigger"),
+              trigger,
+            );
+          });
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            var panelId = trigger.getAttribute("data-dropdown-trigger");
+            if (
+              dropdown.classList.contains("is-open") &&
+              trigger.classList.contains("nav__link--active")
+            ) {
+              closeDropdown();
+            } else {
+              openDropdown(panelId, trigger);
+            }
+          });
+        });
+
+        dropdown.addEventListener("mouseenter", function () {
+          clearTimeout(closeTimer);
+        });
+        dropdown.addEventListener("mouseleave", closeDropdown);
+
+        var navMenu = document.querySelector(".nav__menu");
+        if (navMenu) {
+          navMenu.addEventListener("mouseleave", function (e) {
+            if (!dropdown.contains(e.relatedTarget)) closeDropdown();
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && dropdown.classList.contains("is-open"))
+            closeDropdown();
+        });
+      })();
+
+      // History timeline carousel
+      (function () {
+        var section = document.querySelector("[data-history-carousel]");
+        if (!section) return;
+
+        var prevBtn = section.querySelector("[data-history-prev]");
+        var nextBtn = section.querySelector("[data-history-next]");
+        var yearPrev = section.querySelector("[data-history-year-prev]");
+        var yearCurrent = section.querySelector("[data-history-year-current]");
+        var yearNext = section.querySelector("[data-history-year-next]");
+        var cardTitle = section.querySelector("[data-history-card-title]");
+        var cardDesc = section.querySelector("[data-history-card-desc]");
+
+        var slides = [
+          {
+            prev: "1986",
+            current: "2000",
+            next: "2008",
+            title: "Founded Sutherland",
+            desc: "established as a technology-enabled business process services company",
+          },
+          {
+            prev: "2000",
+            current: "2008",
+            next: "2013",
+            title: "Global expansion accelerates",
+            desc: "growing operations across Asia, Europe, and the Americas",
+          },
+          {
+            prev: "2008",
+            current: "2013",
+            next: "2014",
+            title: "Acquired Apollo Health Street",
+            desc: "to enhance our healthcare industry specialization",
+          },
+          {
+            prev: "2013",
+            current: "2014",
+            next: "2018",
+            title: "Digital transformation pivot",
+            desc: "investing in AI, automation, and digital-first solutions",
+          },
+          {
+            prev: "2014",
+            current: "2018",
+            next: "2024",
+            title: "AI-first strategy launched",
+            desc: "embedding AI across all platforms and service delivery",
+          },
+          {
+            prev: "2018",
+            current: "2024",
+            next: "",
+            title: "40K+ global team",
+            desc: "serving Fortune 500 clients across 144+ countries",
+          },
+        ];
+
+        var currentIndex = 2;
+        var isAnimating = false;
+        var frontCard = section.querySelector(".au-history__card--front");
+
+        function updateButtons() {
+          if (prevBtn) {
+            prevBtn.disabled = currentIndex <= 0;
+          }
+          if (nextBtn) {
+            nextBtn.disabled = currentIndex >= slides.length - 1;
+          }
+        }
+
+        function render() {
+          var slide = slides[currentIndex];
+          yearPrev.textContent = slide.prev;
+          yearCurrent.textContent = slide.current;
+          yearNext.textContent = slide.next;
+          cardTitle.textContent = slide.title;
+          cardDesc.textContent = slide.desc;
+
+          yearPrev.style.opacity = slide.prev ? "0.5" : "0";
+          yearNext.style.opacity = slide.next ? "0.5" : "0";
+          updateButtons();
+        }
+
+        function animateToSlide(newIndex) {
+          if (isAnimating || newIndex < 0 || newIndex >= slides.length) return;
+          isAnimating = true;
+
+          if (frontCard) frontCard.classList.add("is-exiting");
+          yearPrev.classList.add("is-fading");
+          yearCurrent.classList.add("is-fading");
+          yearNext.classList.add("is-fading");
+
+          setTimeout(function () {
+            currentIndex = newIndex;
+            render();
+
+            if (frontCard) {
+              frontCard.classList.remove("is-exiting");
+              frontCard.classList.add("is-entering");
+            }
+            yearPrev.classList.remove("is-fading");
+            yearCurrent.classList.remove("is-fading");
+            yearNext.classList.remove("is-fading");
+
+            setTimeout(function () {
+              if (frontCard) frontCard.classList.remove("is-entering");
+              isAnimating = false;
+            }, 450);
+          }, 450);
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function () {
+            animateToSlide(currentIndex - 1);
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function () {
+            animateToSlide(currentIndex + 1);
+          });
+        }
+
+        render();
+      })();
+
+      // Stats horizontal scroll dots (mobile)
+      (function () {
+        var slider = document.querySelector(".au-hero__stats-cards");
+        var dots = document.querySelectorAll(".au-hero__dot");
+        if (!slider || !dots.length) return;
+
+        function getActiveIndex() {
+          var scrollLeft = slider.scrollLeft;
+          var maxScroll = slider.scrollWidth - slider.clientWidth;
+          if (maxScroll <= 0) return 0;
+          var ratio = scrollLeft / maxScroll;
+          return Math.min(
+            Math.round(ratio * (dots.length - 1)),
+            dots.length - 1,
+          );
+        }
+
+        function updateDots(idx) {
+          dots.forEach(function (dot, i) {
+            var active = i === idx;
+            dot.classList.toggle("au-hero__dot--active", active);
+            dot.setAttribute("aria-selected", String(active));
+          });
+        }
+
+        slider.addEventListener(
+          "scroll",
+          function () {
+            updateDots(getActiveIndex());
+          },
+          { passive: true },
+        );
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            var maxScroll = slider.scrollWidth - slider.clientWidth;
+            var target = (i / (dots.length - 1)) * maxScroll;
+            slider.scrollTo({ left: target, behavior: "smooth" });
+          });
+        });
+      })();
+
+      // About Us — MP4, YouTube, or Vimeo ([data-about-video] + data-video-src)
+      (function () {
+        var root = document.querySelector("[data-about-video]");
+        if (!root) return;
+
+        var src = (root.getAttribute("data-video-src") || "").trim();
+        var poster = (root.getAttribute("data-video-poster") || "").trim();
+        var posterWrap = root.querySelector(".au-video__poster");
+        var playerMount = root.querySelector("[data-about-video-player-mount]");
+        var btn = root.querySelector(".au-video__play");
+        if (!src || !playerMount || !btn) return;
+
+        function youtubeIdFromUrl(url) {
+          try {
+            var u = new URL(url, window.location.href);
+            var host = u.hostname.replace(/^www\./, "");
+            if (host === "youtu.be") {
+              var segs = u.pathname.split("/").filter(Boolean);
+              return segs.length ? segs[0] : null;
+            }
+            if (host.indexOf("youtube.com") !== -1) {
+              if (u.pathname.indexOf("/embed/") === 0) {
+                return u.pathname.split("/")[2] || null;
+              }
+              return u.searchParams.get("v");
+            }
+          } catch (e) {}
+          return null;
+        }
+
+        function vimeoIdFromUrl(url) {
+          try {
+            var u = new URL(url, window.location.href);
+            if (u.hostname.replace(/^www\./, "").indexOf("vimeo.com") === -1) {
+              return null;
+            }
+            var parts = u.pathname.split("/").filter(Boolean);
+            var id = parts.length ? parts[parts.length - 1] : null;
+            return id && /^\d+$/.test(id) ? id : null;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function detectMode(raw) {
+          var lower = raw.toLowerCase();
+          if (
+            lower.indexOf("youtube.com") !== -1 ||
+            lower.indexOf("youtu.be") !== -1
+          ) {
+            return { type: "youtube", id: youtubeIdFromUrl(raw) };
+          }
+          if (lower.indexOf("vimeo.com") !== -1) {
+            return { type: "vimeo", id: vimeoIdFromUrl(raw) };
+          }
+          return { type: "file", id: null };
+        }
+
+        function mountPlayer() {
+          var mode = detectMode(src);
+          playerMount.innerHTML = "";
+          playerMount.removeAttribute("hidden");
+          root.classList.add("is-playing");
+          if (posterWrap) {
+            posterWrap.setAttribute("aria-hidden", "true");
+          }
+
+          if (mode.type === "youtube" && mode.id) {
+            var yt = document.createElement("iframe");
+            yt.className = "au-video__iframe";
+            yt.title = root.getAttribute("aria-label") || "Video";
+            yt.setAttribute(
+              "allow",
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+            );
+            yt.setAttribute("allowfullscreen", "");
+            yt.src =
+              "https://www.youtube.com/embed/" +
+              encodeURIComponent(mode.id) +
+              "?autoplay=1&rel=0";
+            playerMount.appendChild(yt);
+            yt.focus();
+            return;
+          }
+
+          if (mode.type === "vimeo" && mode.id) {
+            var vm = document.createElement("iframe");
+            vm.className = "au-video__iframe";
+            vm.title = root.getAttribute("aria-label") || "Video";
+            vm.setAttribute(
+              "allow",
+              "autoplay; fullscreen; picture-in-picture",
+            );
+            vm.setAttribute("allowfullscreen", "");
+            vm.src =
+              "https://player.vimeo.com/video/" +
+              encodeURIComponent(mode.id) +
+              "?autoplay=1";
+            playerMount.appendChild(vm);
+            vm.focus();
+            return;
+          }
+
+          var vid = document.createElement("video");
+          vid.className = "au-video__embed";
+          vid.setAttribute("controls", "");
+          vid.setAttribute("playsinline", "");
+          if (poster) vid.setAttribute("poster", poster);
+          var s = document.createElement("source");
+          s.src = src;
+          s.type = "video/mp4";
+          vid.appendChild(s);
+          playerMount.appendChild(vid);
+          var p = vid.play();
+          if (p && typeof p.catch === "function") {
+            p.catch(function () {});
+          }
+        }
+
+        btn.addEventListener("click", mountPlayer);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var track = document.querySelector(".au-differentiators__right");
+        var dots = document.querySelectorAll(".au-differentiators__dot");
+        var cards = track
+          ? track.querySelectorAll(".au-differentiators__card")
+          : [];
+        if (!track || !dots.length || !cards.length) return;
+
+        var activeClass = "au-differentiators__dot--active";
+
+        function setActiveDot(index) {
+          for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.remove(activeClass);
+            dots[i].removeAttribute("aria-current");
+          }
+          if (dots[index]) {
+            dots[index].classList.add(activeClass);
+            dots[index].setAttribute("aria-current", "true");
+          }
+        }
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            cards[i].scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "start",
+            });
+          });
+        });
+
+        var scrollTimer;
+        track.addEventListener("scroll", function () {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function () {
+            var trackRect = track.getBoundingClientRect();
+            var trackCenter = trackRect.left + trackRect.width / 2;
+            var closest = 0;
+            var closestDist = Infinity;
+
+            for (var i = 0; i < cards.length; i++) {
+              var cardRect = cards[i].getBoundingClientRect();
+              var cardCenter = cardRect.left + cardRect.width / 2;
+              var dist = Math.abs(cardCenter - trackCenter);
+              if (dist < closestDist) {
+                closestDist = dist;
+                closest = i;
+              }
+            }
+
+            setActiveDot(closest);
+          }, 50);
+        });
+      })();
+    </script>
+  </body>
+</html>

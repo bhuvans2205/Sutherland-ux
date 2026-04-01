@@ -1,0 +1,204 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Hero Section
+// ==========================================================================
+
+.hero {
+  background: $color-white;
+
+  &__bg {
+    background-color: $hero-backdrop-base;
+    background-image: $gradient-hero-backdrop;
+    background-repeat: no-repeat;
+    border-radius: 0 0 $radius-xxxl $radius-xxxl;
+    padding-bottom: 80px;
+
+    @media (max-width: 1023px) {
+      border-radius: 0 0 $radius-l $radius-l;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: $screen-max;
+    margin: 0 auto;
+    padding: 175px $margin-desktop 0;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      padding: 107px 24px 0;
+      gap: 24px;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 360px;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      height: auto;
+      gap: 16px;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    margin: 0;
+    background: linear-gradient(160.73deg, $color-white 38.6%, #b0c2e3 66.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 1023px) {
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: 0;
+      background: linear-gradient(155.8deg, $color-white 38.6%, #b0c2e3 66.32%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  &__company-logo {
+    width: 236px;
+    height: 76px;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 1023px) {
+      width: 116px;
+      height: 37.27px;
+    }
+  }
+
+  &__company-img {
+    position: absolute;
+    width: 128.11%;
+    height: 265.08%;
+    left: -14.46%;
+    top: -81.53%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  &__image-container {
+    width: 605px;
+    height: 360px;
+    flex-shrink: 0;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      height: 168px;
+    }
+  }
+
+  &__image-frame {
+    border-radius: $radius-xxl $radius-m $radius-xxl $radius-xxl;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    width: 100%;
+    height: 100%;
+
+    @media (max-width: 1023px) {
+      border-radius: $radius-l $radius-s $radius-l $radius-l;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $radius-l $radius-s $radius-l $radius-l;
+
+    @media (max-width: 1023px) {
+      border-radius: $radius-ml 2px $radius-ml $radius-ml;
+    }
+  }
+
+  &__stats-wrapper {
+    max-width: $screen-max;
+    margin: 40px auto 0;
+    padding: 0 $margin-desktop;
+
+    @media (max-width: 1023px) {
+      padding: 0 24px;
+      margin: 24px 0 0;
+      max-width: none;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 1023px) {
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .stat-card--hero {
+        scroll-snap-align: start;
+      }
+    }
+  }
+
+  &__stats-dots {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+  }
+
+  &__stats-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition:
+      width 0.2s,
+      height 0.2s,
+      border-radius 0.2s,
+      background-color 0.2s;
+
+    &--active {
+      width: 8px;
+      height: 8px;
+      border-radius: $radius-s;
+      background: $color-sky;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+    }
+  }
+}

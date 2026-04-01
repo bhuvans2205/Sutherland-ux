@@ -1,0 +1,12 @@
+{
+  "name": "sutherland-markups",
+  "version": "1.0.0",
+  "scripts": {
+    "sass": "sass styles/main.scss styles/main.css",
+    "sass:watch": "sass --watch styles/main.scss styles/main.css",
+    "sass:insights": "sass dist/insights.scss dist/insights.css"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  }
+}

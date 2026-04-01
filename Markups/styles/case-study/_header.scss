@@ -1,0 +1,27 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Site header (Figma 524:3 desktop, 524:588 mobile/tablet)
+// ==========================================================================
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &.is-fixed {
+    position: fixed;
+  }
+
+  &.is-scrolled {
+    background-color: $color-midnight;
+    box-shadow: 0 3px 6px rgba($color-navy, 0.4);
+  }
+}

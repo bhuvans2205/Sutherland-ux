@@ -1,0 +1,90 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Shared CTA Button
+// ==========================================================================
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  font-family: $font-secondary;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: $color-white;
+  border: 1.4px solid rgba($color-white, 0.4);
+  border-radius: $radius-xxl $radius-s $radius-xl $radius-xxl;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    opacity 0.2s,
+    transform 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-sky;
+    outline-offset: 2px;
+  }
+
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $color-white;
+    flex-shrink: 0;
+  }
+
+  &--primary {
+    background: rgba($color-magenta, 0.7);
+    backdrop-filter: blur(50px);
+  }
+
+  &--secondary {
+    background: rgba($color-sky, 0.4);
+    backdrop-filter: blur(50px);
+  }
+
+  &--light-blue {
+    background: rgba($color-sky, 0.4);
+    backdrop-filter: blur(50px);
+  }
+
+  &--dark-blue {
+    background: $color-indigo;
+    backdrop-filter: blur(50px);
+
+    @media (hover: hover) {
+      &:hover {
+        background: $color-navy;
+        border-color: rgba($color-white, 0.6);
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: $radius-l 2px $radius-l $radius-l;
+
+    &::before {
+      width: 7px;
+      height: 7px;
+      background-color: #12acf7;
+    }
+  }
+}

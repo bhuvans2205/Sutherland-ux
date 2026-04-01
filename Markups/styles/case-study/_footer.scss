@@ -1,0 +1,390 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Footer (Figma desktop 447:435, mobile 447:882)
+// ==========================================================================
+
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  background: $color-midnight;
+  position: relative;
+  overflow: hidden;
+  padding: 80px $margin-desktop;
+  z-index: 0;
+
+  @media (max-width: 1023px) {
+    padding: 40px 24px;
+  }
+
+  // ----- Decorative background (same asset, different crop per breakpoint)
+  &__bg {
+    pointer-events: none;
+
+    &--desktop {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      display: flex;
+      width: 100%;
+      height: 314px;
+      align-items: center;
+      justify-content: center;
+      mix-blend-mode: lighten;
+
+      @media (max-width: 1023px) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 154px;
+      mix-blend-mode: lighten;
+
+      @media (max-width: 1023px) {
+        display: block;
+      }
+    }
+  }
+
+  &__bg-flip {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1440px;
+    height: 314px;
+    position: relative;
+    transform: scaleY(-1);
+  }
+
+  &__bg-crop {
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    overflow: hidden;
+  }
+
+  &__bg-img {
+    position: absolute;
+    max-width: none;
+    background-image: url("../assets/images/footer-bg.png");
+    background-repeat: no-repeat;
+    pointer-events: none;
+
+    &--desktop {
+      width: 158.47%;
+      height: 415.71%;
+      left: -33.75%;
+      top: -88.48%;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    &--mobile {
+      width: 191.98%;
+      height: 847.62%;
+      left: -40.89%;
+      top: -284.29%;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
+  &__inner {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: $content-max;
+    margin: 0 auto;
+
+    // Fill viewport between horizontal padding (no artificial 354px cap on large phones / tablets)
+    @media (max-width: 1023px) {
+      max-width: none;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      // Figma 447:882: 32px between logo (ends y=72) and links (container y=104); 32px links→divider
+      gap: 32px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex: 1 1 0;
+    align-items: flex-start;
+    gap: 56px;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      flex: none;
+      width: 100%;
+      max-width: none;
+      min-height: 18px;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(12px, 2vw, 20px);
+    }
+  }
+
+  // H6: 20px / 24px / 400 / 0 (desktop); P2: 16px / 20px (mobile, Figma 447:935)
+  &__link {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: $color-silver;
+    transition: color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  // Composite logo: Figma `Logo` scaled to 354×54 (master 1003×153.069) — absolute insets per layer
+  &__logo {
+    position: relative;
+    flex-shrink: 0;
+    width: 354px;
+    height: 54px;
+
+    &-mark,
+    &-text,
+    &-dot,
+    &-r {
+      position: absolute;
+      display: block;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    &-mark {
+      inset: 0 85.65% 0 0.69%;
+    }
+
+    &-text {
+      inset: 25.84% 1.77% 26.17% 19.67%;
+    }
+
+    &-dot {
+      inset: 28.39% 85.02% 28.41% 0;
+    }
+
+    &-r {
+      inset: 26.5% 0 61.93% 98.23%;
+    }
+
+    @media (max-width: 1023px) {
+      order: -1;
+      width: 209.683px;
+      height: 32px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    box-sizing: border-box;
+    max-width: 1320px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 1px solid rgba($color-sky, 0.2);
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: none;
+      // Do not stack 32px margin (top) + 32px padding — Figma has 32px links→divider only
+      padding-top: 16px;
+      margin-top: 0;
+      // 447:960 at y=76, bottom section ends y=56 → 20px between social block and legal
+      gap: 20px;
+    }
+  }
+
+  // Social row: 32px gap, 20px icons; container 195.996×40 desktop; mobile full width + 10px pad
+  &__social {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 195.996px;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    gap: 32px;
+    box-sizing: border-box;
+
+    li {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 0;
+      // Figma: icon frames 19.999×20 (Instagram), 19.999×19.999 (others)
+      width: 19.999px;
+      height: 20px;
+    }
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      max-width: none;
+      min-height: 40px;
+      justify-content: space-between;
+      padding: 10px;
+      box-sizing: border-box;
+      gap: 0;
+    }
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 19.999px;
+    height: 20px;
+    transition: opacity 0.2s;
+
+    img {
+      display: block;
+      width: 19.999px;
+      height: 20px;
+      max-width: 19.999px;
+      max-height: 20px;
+      object-fit: contain;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  // Desktop: P2 16/20. Mobile (447:961/962): CTA 18px / 18px; frame gap between lines = 8px (y=0→24)
+  &__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+
+      &-row {
+        display: contents;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      width: 100%;
+      max-width: none;
+
+      &-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 18px;
+        width: 100%;
+      }
+    }
+
+    // Narrow phones: allow legal rows to wrap; wider mobile/tablet: two lines like Figma
+
+    @media (max-width: 399px) {
+      &-row {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (min-width: 400px) and (max-width: 1023px) {
+      &-row {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  &__legal-link {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: $color-silver;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 1023px) {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+
+  &__legal-sep {
+    padding: 0 4px;
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: rgba($color-silver, 0.5);
+
+    @media (max-width: 1023px) {
+      font-size: 18px;
+      line-height: 18px;
+      color: rgba($color-silver, 0.65);
+    }
+
+    &--row-break {
+      @media (max-width: 1023px) {
+        display: none;
+      }
+    }
+  }
+}

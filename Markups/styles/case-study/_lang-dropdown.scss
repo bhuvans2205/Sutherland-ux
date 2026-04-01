@@ -1,0 +1,96 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Language Dropdown
+// ==========================================================================
+
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 30px);
+  right: -14px;
+  min-width: 160px;
+  padding: 16px 20px;
+  background: linear-gradient(
+    141.84deg,
+    $color-ocean 10.42%,
+    $color-navy 95.91%
+  );
+  border-radius: $radius-m $radius-s $radius-m $radius-m;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  flex-direction: column;
+  gap: 4px;
+
+  @media (max-width: 1023px) {
+    left: auto;
+    right: -42px;
+    top: calc(100% + 16px);
+    min-width: 130px;
+    border-radius: $radius-ml 2px $radius-ml $radius-ml;
+  }
+
+  &[aria-hidden="false"] {
+    display: flex;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 16px;
+    height: 8px;
+    border-radius: 8px 8px 0 0;
+    background: $color-ocean;
+
+    @media (max-width: 1023px) {
+      right: 43px;
+    }
+  }
+
+  &__item {
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-white;
+    text-decoration: none;
+    padding: 8px 0;
+    display: block;
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 4px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: $color-white;
+        transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+    }
+
+    &:hover,
+    &:active {
+      span::after {
+        width: 50%;
+      }
+    }
+
+    &--active {
+      color: $color-sky;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: -2px;
+    }
+  }
+}

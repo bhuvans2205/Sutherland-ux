@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 56 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pagination Dots">
+<path id="Pagination Dot" d="M0 8C0 3.58172 3.58172 0 8 0V0C12.4183 0 16 3.58172 16 8V8C16 12.4183 12.4183 16 8 16V16C3.58172 16 0 12.4183 0 8V8Z" fill="var(--fill-0, white)"/>
+<circle id="Ellipse 32" cx="32" cy="8" r="4" fill="var(--fill-0, #12ACF7)"/>
+<circle id="Ellipse 34" cx="52" cy="8" r="4" fill="var(--fill-0, #12ACF7)"/>
+</g>
+</svg>

@@ -1,0 +1,58 @@
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Breadcrumb
+// ==========================================================================
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  max-width: fit-content;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__item {
+    font-family: $font-primary;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-silver;
+
+    &:not(:last-child)::after {
+      content: ">";
+      margin-left: 4px;
+    }
+  }
+
+  &__link {
+    color: $color-silver;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-sky;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &__current {
+    color: $color-silver;
+  }
+}

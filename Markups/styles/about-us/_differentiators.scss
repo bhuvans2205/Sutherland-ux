@@ -14,8 +14,6 @@
 // ==========================================================================
 
 .au-differentiators {
-  position: relative;
-  z-index: 2;
   background: $color-white;
   padding: 80px $margin-desktop;
   border-radius: 0 0 $radius-xxxl $radius-xxxl;
@@ -286,8 +284,8 @@
     @media (max-width: 1023px) {
       width: 656px;
       height: 639px;
-      left: 38px;
-      top: 60%;
+      left: -20px;
+      top: 55%;
     }
   }
 
@@ -298,25 +296,10 @@
     height: 100%;
     object-fit: contain;
     max-width: none;
-    mask-image: radial-gradient(
-      ellipse 50% 50% at center,
-      black 40%,
-      transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      ellipse 50% 50% at center,
-      black 40%,
-      transparent 100%
-    );
   }
 
   &__decor-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      -69.04deg,
-      rgba($color-white, 0) 25.5%,
-      rgba($color-white, 0.6) 53.01%
-    );
   }
 }

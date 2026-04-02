@@ -108,23 +108,7 @@
 
   &__viewport {
     width: 100%;
-    overflow: hidden;
     outline: none;
-
-    @media (max-width: 1023px) {
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      // Title + cards share insights__inner 24px inset — no extra inline start here
-      scroll-padding-inline: 0 28px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
 
     &:focus-visible {
       outline: 2px solid $color-sky;
@@ -133,25 +117,22 @@
   }
 
   &__track {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 24px;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-    backface-visibility: hidden;
     box-sizing: border-box;
 
-    @media (max-width: 1023px) {
-      width: max-content !important;
-      min-width: min-content;
-      gap: 16px;
-      // Inner already has 24px horizontal padding — only right pad for end peek (471:842)
-      padding: 0 28px 0 0;
-      transform: none !important;
-      transition: none !important;
-      will-change: auto;
+    .slick-slide {
+      padding: 0 12px;
+
+      @media (max-width: 1023px) {
+        padding: 0 8px;
+      }
+    }
+
+    .slick-list {
+      margin: 0 -12px;
+
+      @media (max-width: 1023px) {
+        margin: 0 -8px;
+      }
     }
   }
 
@@ -160,13 +141,10 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    // Figma 471:877 mobile row: 8px gap | 471:431 desktop: 12px gap
-    gap: 8px;
     margin-top: 40px;
     min-height: 8px;
 
     @media (min-width: 1024px) {
-      gap: 12px;
       min-height: 16px;
     }
 
@@ -175,50 +153,65 @@
     }
   }
 
-  // Desktop 471:431 — inactive 8×8 $color-sky circles; active 16×16 white circle (rounded-[8px])
-  // Mobile 471:879-881 — inactive 6×6; active 8×8 #12acf7 (Dot); gap 8px
-  &__dot {
-    box-sizing: border-box;
-    flex-shrink: 0;
-    margin: 0;
+  &__pagination .slick-dots {
+    display: flex !important;
+    position: static;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
     padding: 0;
-    border: none;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    transition:
-      width 0.25s ease,
-      height 0.25s ease,
-      border-radius 0.25s ease,
-      background-color 0.25s ease;
-
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba($color-white, 0.45);
-
-    &--active {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: $color-sky;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-sky;
-      outline-offset: 2px;
-    }
+    margin: 0;
 
     @media (min-width: 1024px) {
-      width: 8px;
-      height: 8px;
-      background: $color-sky;
+      gap: 12px;
+    }
 
-      &--active {
-        width: 16px;
-        height: 16px;
+    li {
+      margin: 0;
+      padding: 0;
+      width: auto;
+      height: auto;
+
+      button {
+        box-sizing: border-box;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
-        background: $color-white;
+        background: rgba($color-white, 0.45);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: 0;
+        transition:
+          width 0.25s ease,
+          height 0.25s ease,
+          border-radius 0.25s ease,
+          background-color 0.25s ease;
+
+        &::before {
+          display: none;
+        }
+
+        @media (min-width: 1024px) {
+          width: 8px;
+          height: 8px;
+          background: $color-sky;
+        }
+      }
+
+      &.slick-active button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $color-sky;
+
+        @media (min-width: 1024px) {
+          width: 16px;
+          height: 16px;
+          background: $color-white;
+        }
       }
     }
   }

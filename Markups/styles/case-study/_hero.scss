@@ -145,60 +145,54 @@
     display: flex;
     gap: 20px;
 
-    @media (max-width: 1023px) {
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      .stat-card--hero {
-        scroll-snap-align: start;
-      }
+    &.slick-initialized {
+      display: block;
+      gap: 0;
     }
   }
 
-  &__stats-dots {
-    display: none;
-
-    @media (max-width: 1023px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 24px;
-    }
-  }
-
-  &__stats-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba($color-white, 0.3);
-    border: none;
-    cursor: pointer;
+  &__stats .slick-dots {
+    display: flex !important;
+    position: static;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
     padding: 0;
-    transition:
-      width 0.2s,
-      height 0.2s,
-      border-radius 0.2s,
-      background-color 0.2s;
+    margin: 24px 0 0;
 
-    &--active {
-      width: 8px;
-      height: 8px;
-      border-radius: $radius-s;
-      background: $color-sky;
-    }
+    li {
+      margin: 0;
+      padding: 0;
+      width: auto;
+      height: auto;
 
-    &:focus-visible {
-      outline: 2px solid $color-sky;
-      outline-offset: 2px;
+      button {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba($color-white, 0.3);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: 0;
+        transition:
+          width 0.2s,
+          height 0.2s,
+          border-radius 0.2s,
+          background-color 0.2s;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &.slick-active button {
+        width: 8px;
+        height: 8px;
+        border-radius: $radius-s;
+        background: $color-sky;
+      }
     }
   }
 }

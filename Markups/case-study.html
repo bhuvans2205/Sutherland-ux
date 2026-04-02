@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sutherland Case Study – Spotify Multilingual Support</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +23,7 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-            <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
       <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav__inner">
@@ -994,33 +1002,6 @@
               <span class="stat-card__label">Accuracy rate</span>
             </div>
           </div>
-          <div
-            class="hero__stats-dots"
-            role="tablist"
-            aria-label="Statistics page indicators"
-          >
-            <span
-              class="hero__stats-dot hero__stats-dot--active"
-              role="tab"
-              aria-selected="true"
-              aria-label="Page 1"
-              tabindex="0"
-            ></span>
-            <span
-              class="hero__stats-dot"
-              role="tab"
-              aria-selected="false"
-              aria-label="Page 2"
-              tabindex="-1"
-            ></span>
-            <span
-              class="hero__stats-dot"
-              role="tab"
-              aria-selected="false"
-              aria-label="Page 3"
-              tabindex="-1"
-            ></span>
-          </div>
         </div>
       </div>
     </div>
@@ -1873,12 +1854,7 @@
           </div>
         </div>
 
-        <div
-          class="insights__pagination"
-          role="group"
-          aria-label="Carousel position"
-          data-insights-dots
-        ></div>
+        <div class="insights__pagination"></div>
       </div>
     </section>
 
@@ -1980,6 +1956,9 @@
         </div>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script>
       // Fixed header on scroll
@@ -2291,64 +2270,32 @@
         });
       })();
 
+      // Hero stats slider (mobile only)
       (function () {
-        const slider = document.querySelector(".hero__stats");
-        const dots = document.querySelectorAll(".hero__stats-dot");
-        if (!slider || !dots.length) return;
+        var $stats = $(".hero__stats");
+        if (!$stats.length) return;
 
-        const cards = slider.querySelectorAll(".stat-card--hero");
-        const totalCards = cards.length;
-        const totalDots = dots.length;
+        var slickActive = false;
+        var BREAKPOINT = 1024;
 
-        function getActiveIndex() {
-          const scrollLeft = slider.scrollLeft;
-          const maxScroll = slider.scrollWidth - slider.clientWidth;
-          if (maxScroll <= 0) return 0;
-          const ratio = scrollLeft / maxScroll;
-          return Math.min(Math.round(ratio * (totalDots - 1)), totalDots - 1);
+        function initStats() {
+          if (window.innerWidth < BREAKPOINT && !slickActive) {
+            $stats.slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: true,
+              arrows: false,
+              infinite: false,
+            });
+            slickActive = true;
+          } else if (window.innerWidth >= BREAKPOINT && slickActive) {
+            $stats.slick("unslick");
+            slickActive = false;
+          }
         }
 
-        function updateDots(activeIdx) {
-          dots.forEach(function (dot, i) {
-            const isActive = i === activeIdx;
-            dot.classList.toggle("hero__stats-dot--active", isActive);
-            dot.setAttribute("aria-selected", String(isActive));
-            dot.setAttribute("tabindex", isActive ? "0" : "-1");
-          });
-        }
-
-        function scrollToPosition(dotIdx) {
-          const maxScroll = slider.scrollWidth - slider.clientWidth;
-          const target = (dotIdx / (totalDots - 1)) * maxScroll;
-          slider.scrollTo({ left: target, behavior: "smooth" });
-        }
-
-        slider.addEventListener(
-          "scroll",
-          function () {
-            updateDots(getActiveIndex());
-          },
-          { passive: true },
-        );
-
-        dots.forEach(function (dot, i) {
-          dot.addEventListener("click", function () {
-            scrollToPosition(i);
-          });
-          dot.addEventListener("keydown", function (e) {
-            if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-              e.preventDefault();
-              var next = Math.min(i + 1, totalDots - 1);
-              scrollToPosition(next);
-              dots[next].focus();
-            } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-              e.preventDefault();
-              var prev = Math.max(i - 1, 0);
-              scrollToPosition(prev);
-              dots[prev].focus();
-            }
-          });
-        });
+        initStats();
+        $(window).on("resize", initStats);
       })();
 
       // =====================================================================
@@ -2566,258 +2513,31 @@
         });
       })();
 
-      // =====================================================================
-      // Insights carousel — desktop: 2 cards / slide (471:367); mobile: snap + peek (471:842)
-      // =====================================================================
+      // Insights carousel (slick) — desktop: 2 cards, arrows + dots; mobile: 1 card, dots
       (function () {
-        var root = document.querySelector("[data-insights-carousel]");
-        if (!root) return;
+        var $track = $(".insights__track");
+        if (!$track.length) return;
 
-        var track = root.querySelector("[data-insights-track]");
-        var viewport = root.querySelector("[data-insights-viewport]");
-        var prevBtn = root.querySelector("[data-insights-prev]");
-        var nextBtn = root.querySelector("[data-insights-next]");
-        var dotsContainer = root.querySelector("[data-insights-dots]");
-        var cards = root.querySelectorAll("[data-insight-card]");
-
-        if (!track || !viewport || !dotsContainer || !cards.length) return;
-
-        var mq = window.matchMedia("(min-width: 1024px)");
-        var slideIndex = 0;
-        var dots = [];
-        var scrollTick = false;
-
-        function slideCount() {
-          return Math.max(1, Math.ceil(cards.length / 2));
-        }
-
-        function layoutDesktop() {
-          var W = viewport.clientWidth;
-          var gap = 24;
-          var cardW = (W - gap) / 2;
-          var i;
-          for (i = 0; i < cards.length; i++) {
-            cards[i].style.flex = "0 0 " + cardW + "px";
-            cards[i].style.width = cardW + "px";
-            cards[i].style.maxWidth = "";
-          }
-          track.style.width =
-            cards.length * cardW + (cards.length - 1) * gap + "px";
-        }
-
-        function clearMobileCardStyles() {
-          var i;
-          for (i = 0; i < cards.length; i++) {
-            cards[i].style.flex = "";
-            cards[i].style.width = "";
-            cards[i].style.maxWidth = "";
-          }
-          track.style.width = "";
-        }
-
-        function setTransformDesktop() {
-          var W = viewport.clientWidth;
-          var x = slideIndex * W;
-          track.style.transform = "translate3d(-" + x + "px, 0, 0)";
-        }
-
-        function updateArrows() {
-          var maxSlide = slideCount() - 1;
-          if (prevBtn) {
-            prevBtn.setAttribute(
-              "aria-disabled",
-              slideIndex <= 0 ? "true" : "false",
-            );
-          }
-          if (nextBtn) {
-            nextBtn.setAttribute(
-              "aria-disabled",
-              slideIndex >= maxSlide ? "true" : "false",
-            );
-          }
-        }
-
-        function setActiveDot(i, totalDots) {
-          dots.forEach(function (dot, j) {
-            var on = j === i;
-            dot.classList.toggle("insights__dot--active", on);
-            if (on) {
-              dot.setAttribute("aria-current", "true");
-            } else {
-              dot.removeAttribute("aria-current");
-            }
-          });
-        }
-
-        function buildDots() {
-          dotsContainer.innerHTML = "";
-          var isDesktop = mq.matches;
-          var n = isDesktop ? slideCount() : cards.length;
-          dotsContainer.style.display = n <= 1 ? "none" : "";
-          var i;
-          for (i = 0; i < n; i++) {
-            var btn = document.createElement("button");
-            btn.type = "button";
-            btn.className =
-              "insights__dot" + (i === 0 ? " insights__dot--active" : "");
-            btn.setAttribute(
-              "aria-label",
-              isDesktop
-                ? "Go to slide " + (i + 1) + " of " + n
-                : "Go to insight " + (i + 1) + " of " + n,
-            );
-            btn.setAttribute("data-dot-index", String(i));
-            dotsContainer.appendChild(btn);
-          }
-          dots = Array.prototype.slice.call(
-            dotsContainer.querySelectorAll(".insights__dot"),
-          );
-          dots.forEach(function (dot) {
-            dot.addEventListener("click", onDotClick);
-          });
-        }
-
-        function onDotClick() {
-          var idx = parseInt(this.getAttribute("data-dot-index"), 10);
-          if (isNaN(idx)) return;
-          if (mq.matches) {
-            slideIndex = Math.max(0, Math.min(slideCount() - 1, idx));
-            setTransformDesktop();
-            updateArrows();
-            setActiveDot(slideIndex, dots.length);
-          } else if (cards[idx]) {
-            cards[idx].scrollIntoView({
-              behavior: "smooth",
-              inline: "start",
-              block: "nearest",
-            });
-          }
-        }
-
-        function goSlide(delta) {
-          var maxSlide = slideCount() - 1;
-          slideIndex = Math.max(0, Math.min(maxSlide, slideIndex + delta));
-          setTransformDesktop();
-          updateArrows();
-          setActiveDot(slideIndex, dots.length);
-        }
-
-        function nearestCardIndexFromScroll() {
-          var vp = viewport.getBoundingClientRect();
-          var center = vp.left + vp.width / 2;
-          var best = 0;
-          var bestD = Infinity;
-          var i;
-          for (i = 0; i < cards.length; i++) {
-            var r = cards[i].getBoundingClientRect();
-            var c = r.left + r.width / 2;
-            var d = Math.abs(c - center);
-            if (d < bestD) {
-              bestD = d;
-              best = i;
-            }
-          }
-          return best;
-        }
-
-        function onScrollViewport() {
-          if (mq.matches) return;
-          if (scrollTick) return;
-          scrollTick = true;
-          window.requestAnimationFrame(function () {
-            scrollTick = false;
-            var idx = nearestCardIndexFromScroll();
-            setActiveDot(idx, dots.length);
-          });
-        }
-
-        function applyMode() {
-          slideIndex = 0;
-          if (mq.matches) {
-            clearMobileCardStyles();
-            layoutDesktop();
-            track.style.transform = "translate3d(0, 0, 0)";
-            buildDots();
-            setTransformDesktop();
-            updateArrows();
-            setActiveDot(0, dots.length);
-          } else {
-            track.style.transform = "none";
-            clearMobileCardStyles();
-            buildDots();
-            window.requestAnimationFrame(function () {
-              var idx = nearestCardIndexFromScroll();
-              setActiveDot(idx, dots.length);
-            });
-          }
-        }
-
-        if (prevBtn) {
-          prevBtn.addEventListener("click", function () {
-            if (mq.matches) goSlide(-1);
-          });
-        }
-        if (nextBtn) {
-          nextBtn.addEventListener("click", function () {
-            if (mq.matches) goSlide(1);
-          });
-        }
-
-        viewport.addEventListener("keydown", function (e) {
-          if (mq.matches) {
-            if (e.key === "ArrowLeft") {
-              e.preventDefault();
-              goSlide(-1);
-            } else if (e.key === "ArrowRight") {
-              e.preventDefault();
-              goSlide(1);
-            }
-          } else {
-            if (e.key === "ArrowLeft" && cards.length) {
-              e.preventDefault();
-              var ci = nearestCardIndexFromScroll();
-              if (ci > 0)
-                cards[ci - 1].scrollIntoView({
-                  behavior: "smooth",
-                  inline: "start",
-                  block: "nearest",
-                });
-            } else if (e.key === "ArrowRight" && cards.length) {
-              e.preventDefault();
-              var cj = nearestCardIndexFromScroll();
-              if (cj < cards.length - 1)
-                cards[cj + 1].scrollIntoView({
-                  behavior: "smooth",
-                  inline: "start",
-                  block: "nearest",
-                });
-            }
-          }
-        });
-
-        viewport.addEventListener("scroll", onScrollViewport, {
-          passive: true,
-        });
-
-        if (typeof mq.addEventListener === "function") {
-          mq.addEventListener("change", applyMode);
-        } else {
-          mq.addListener(applyMode);
-        }
-
-        window.addEventListener(
-          "resize",
-          function () {
-            if (mq.matches) {
-              layoutDesktop();
-              setTransformDesktop();
-            }
-          },
-          { passive: true },
-        );
-
-        window.requestAnimationFrame(function () {
-          applyMode();
+        $track.slick({
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: true,
+          infinite: false,
+          speed: 450,
+          cssEase: "cubic-bezier(0.33, 1, 0.68, 1)",
+          prevArrow: $("[data-insights-prev]"),
+          nextArrow: $("[data-insights-next]"),
+          appendDots: $(".insights__pagination"),
+          responsive: [
+            {
+              breakpoint: 1023,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+              },
+            },
+          ],
         });
       })();
     </script>

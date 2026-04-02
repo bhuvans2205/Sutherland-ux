@@ -89,6 +89,11 @@
     @media (max-width: 1023px) {
       width: 100%;
     }
+
+    &.slick-initialized {
+      display: block;
+      gap: 0;
+    }
   }
 
   &__card {
@@ -219,7 +224,8 @@
   }
 
   .slick-dots {
-    display: flex;
+    display: flex !important;
+    position: static;
     justify-content: center;
     gap: 8px;
     list-style: none;

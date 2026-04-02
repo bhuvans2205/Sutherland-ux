@@ -1210,35 +1210,27 @@ a {
   display: flex;
   gap: 20px;
 }
-@media (max-width: 1023px) {
-  .hero__stats {
-    gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .hero__stats::-webkit-scrollbar {
-    display: none;
-  }
-  .hero__stats .stat-card--hero {
-    scroll-snap-align: start;
-  }
+.hero__stats.slick-initialized {
+  display: block;
+  gap: 0;
 }
-.hero__stats-dots {
-  display: none;
+.hero__stats .slick-dots {
+  display: flex !important;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
 }
-@media (max-width: 1023px) {
-  .hero__stats-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: 24px;
-  }
+.hero__stats .slick-dots li {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
 }
-.hero__stats-dot {
+.hero__stats .slick-dots li button {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1246,17 +1238,17 @@ a {
   border: none;
   cursor: pointer;
   padding: 0;
+  font-size: 0;
   transition: width 0.2s, height 0.2s, border-radius 0.2s, background-color 0.2s;
 }
-.hero__stats-dot--active {
+.hero__stats .slick-dots li button::before {
+  display: none;
+}
+.hero__stats .slick-dots li.slick-active button {
   width: 8px;
   height: 8px;
   border-radius: 4px;
   background: #12acf7;
-}
-.hero__stats-dot:focus-visible {
-  outline: 2px solid #12acf7;
-  outline-offset: 2px;
 }
 
 .stat-card {
@@ -1274,9 +1266,6 @@ a {
 }
 @media (max-width: 1023px) {
   .stat-card--hero {
-    flex: 0 0 320.5px;
-    min-width: 320.5px;
-    scroll-snap-align: start;
     padding: 12px 20px;
     gap: 8px;
     border-radius: 12px 2px 12px 12px;
@@ -2413,47 +2402,29 @@ a {
 }
 .insights__viewport {
   width: 100%;
-  overflow: hidden;
   outline: none;
-}
-@media (max-width: 1023px) {
-  .insights__viewport {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0 28px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .insights__viewport::-webkit-scrollbar {
-    display: none;
-  }
 }
 .insights__viewport:focus-visible {
   outline: 2px solid #12acf7;
   outline-offset: 4px;
 }
 .insights__track {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 24px;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-  backface-visibility: hidden;
   box-sizing: border-box;
 }
+.insights__track .slick-slide {
+  padding: 0 12px;
+}
 @media (max-width: 1023px) {
-  .insights__track {
-    width: max-content !important;
-    min-width: min-content;
-    gap: 16px;
-    padding: 0 28px 0 0;
-    transform: none !important;
-    transition: none !important;
-    will-change: auto;
+  .insights__track .slick-slide {
+    padding: 0 8px;
+  }
+}
+.insights__track .slick-list {
+  margin: 0 -12px;
+}
+@media (max-width: 1023px) {
+  .insights__track .slick-list {
+    margin: 0 -8px;
   }
 }
 .insights__pagination {
@@ -2461,13 +2432,11 @@ a {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
   margin-top: 40px;
   min-height: 8px;
 }
 @media (min-width: 1024px) {
   .insights__pagination {
-    gap: 12px;
     min-height: 16px;
   }
 }
@@ -2476,41 +2445,60 @@ a {
     margin-top: 24px;
   }
 }
-.insights__dot {
-  box-sizing: border-box;
-  flex-shrink: 0;
+.insights__pagination .slick-dots {
+  display: flex !important;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 1024px) {
+  .insights__pagination .slick-dots {
+    gap: 12px;
+  }
+}
+.insights__pagination .slick-dots li {
   margin: 0;
   padding: 0;
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  transition: width 0.25s ease, height 0.25s ease, border-radius 0.25s ease, background-color 0.25s ease;
+  width: auto;
+  height: auto;
+}
+.insights__pagination .slick-dots li button {
+  box-sizing: border-box;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0;
+  transition: width 0.25s ease, height 0.25s ease, border-radius 0.25s ease, background-color 0.25s ease;
 }
-.insights__dot--active {
+.insights__pagination .slick-dots li button::before {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .insights__pagination .slick-dots li button {
+    width: 8px;
+    height: 8px;
+    background: #12acf7;
+  }
+}
+.insights__pagination .slick-dots li.slick-active button {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #12acf7;
 }
-.insights__dot:focus-visible {
-  outline: 2px solid #12acf7;
-  outline-offset: 2px;
-}
 @media (min-width: 1024px) {
-  .insights__dot {
-    width: 8px;
-    height: 8px;
-    background: #12acf7;
-  }
-  .insights__dot--active {
+  .insights__pagination .slick-dots li.slick-active button {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
     background: #ffffff;
   }
 }
@@ -2537,11 +2525,7 @@ a {
 }
 @media (max-width: 1023px) {
   .insight-card {
-    flex: 0 0 calc(100vw - 76px);
-    width: calc(100vw - 76px);
-    max-width: 326px;
     min-height: 0;
-    scroll-snap-align: start;
     border-radius: 24px 4px 24px 24px;
   }
 }
@@ -3662,6 +3646,10 @@ a {
     width: 100%;
   }
 }
+.au-differentiators__right.slick-initialized {
+  display: block;
+  gap: 0;
+}
 .au-differentiators__card {
   border: 1px solid #dddddd;
   border-radius: 16px 4px 16px 16px;
@@ -3787,7 +3775,8 @@ a {
   }
 }
 .au-differentiators .slick-dots {
-  display: flex;
+  display: flex !important;
+  position: static;
   justify-content: center;
   gap: 8px;
   list-style: none;

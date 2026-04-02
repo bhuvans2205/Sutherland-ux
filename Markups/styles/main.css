@@ -3741,8 +3741,8 @@ a {
   object-fit: cover;
 }
 .au-differentiators__decor--1 {
-  right: -243.347px;
-  top: -110.002px;
+  right: -233.347px;
+  top: -25.002px;
   transform: rotate(-30.339deg);
 }
 @media (max-width: 1023px) {
@@ -3751,13 +3751,13 @@ a {
     height: 386px;
     right: auto;
     left: 143px;
-    top: 110px;
+    top: 40px;
     transform: none;
   }
 }
 .au-differentiators__decor--2 {
   right: -185.989px;
-  top: -152.078px;
+  top: -66.078px;
   transform: rotate(66.99deg);
 }
 @media (max-width: 1023px) {
@@ -3765,14 +3765,14 @@ a {
     width: 419px;
     height: 438px;
     right: auto;
-    left: 131px;
-    top: 120px;
+    left: 185px;
+    top: 0;
     transform: none;
   }
 }
 .au-differentiators__decor--3 {
-  right: -210.492px;
-  top: -91.07px;
+  right: -195.492px;
+  top: -35.07px;
   transform: rotate(20.158deg);
 }
 @media (max-width: 1023px) {
@@ -3786,8 +3786,8 @@ a {
   }
 }
 .au-differentiators__decor--4 {
-  right: -170.298px;
-  top: -33.659px;
+  right: -184.298px;
+  top: 3.341px;
   transform: rotate(-179.139deg);
 }
 @media (max-width: 1023px) {
@@ -3847,7 +3847,7 @@ a {
     width: 656px;
     height: 639px;
     left: -20px;
-    top: 55%;
+    top: 50%;
   }
 }
 .au-bg-wrapper__decor-img {

@@ -27,9 +27,35 @@
 
     @media (max-width: 1023px) {
       height: auto;
-      min-height: 600px;
-      padding: 26px $margin-mobile;
+      min-height: 609px;
+      padding: 26px $margin-mobile 80px;
       border-radius: $radius-l $radius-l $radius-l $radius-s;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__bg-img {
+    position: absolute;
+    width: 1250px;
+    height: 1250px;
+    left: -70px;
+    top: -389px;
+    transform: rotate(180deg);
+    opacity: 0.7;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    max-width: none;
+    border-radius: 50%;
+    z-index: 0;
+
+    @media (max-width: 1023px) {
+      width: 937px;
+      height: 937px;
+      left: -80%;
+      right: 0;
+      top: 70px;
+      transform: rotate(90deg);
     }
   }
 
@@ -42,11 +68,12 @@
     width: 404px;
 
     @media (max-width: 1023px) {
-      position: relative;
+      position: static;
       top: auto;
       left: auto;
       width: 100%;
       margin-bottom: 20px;
+      order: 1;
     }
   }
 
@@ -90,7 +117,7 @@
 
     @media (max-width: 1023px) {
       position: absolute;
-      bottom: 24px;
+      bottom: 32px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
@@ -159,7 +186,7 @@
       opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
     &.is-exiting {
-      transform: scale(0.85) translateY(10px);
+      transform: translateY(-10px);
       opacity: 0;
     }
 
@@ -196,6 +223,7 @@
       width: 100%;
       height: 280px;
       margin-top: 20px;
+      order: 3;
     }
   }
 
@@ -210,55 +238,138 @@
   &__orbit {
     position: absolute;
     border-radius: 50%;
-    border: 1px dashed rgba($color-steel, 0.35);
+    transform: rotate(180deg);
 
-    // Positions relative to __inner: Timeline starts at x=60, y=20, Row at y=20.5 extra
-    // So from __inner: x_offset = 60, y_offset = 40.5
-
-    &--outer {
-      width: 516px;
-      height: 503px;
-      left: 599px; // 60 + 538.84
-      top: -15px; // 40.5 + (-55.06)
+    &--inner {
+      width: 354.57px;
+      height: 344.51px;
+      left: 160px;
+      top: 64.75px;
+      border: 2px dashed $color-indigo;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 1%,
+        transparent 10%
+      );
+      mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 1%,
+        transparent 10%
+      );
     }
 
     &--middle {
-      width: 428px;
-      height: 417px;
-      left: 555px; // 60 + 495.10
-      top: 29px; // 40.5 + (-11.80)
+      width: 428.33px;
+      height: 416.6px;
+      left: 135px;
+      top: 28.7px;
+      border: 2px dashed $color-indigo;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 10%,
+        transparent 12.5%
+      );
+      mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 10%,
+        transparent 12.5%
+      );
     }
 
-    &--inner {
-      width: 355px;
-      height: 345px;
-      left: 518px; // 60 + 458.21
-      top: 65px; // 40.5 + 24.25
+    &--outer {
+      width: 515.66px;
+      height: 503.17px;
+      left: 100px;
+      top: -14.56px;
+      border: 3px dashed rgba(45, 74, 189, 0.5);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 10%,
+        transparent 15%
+      );
+      mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 10%,
+        transparent 15%
+      );
     }
 
     @media (max-width: 1023px) {
+      -webkit-mask-image: linear-gradient(
+        to top,
+        black 0%,
+        black 20%,
+        transparent 55%
+      );
+      mask-image: linear-gradient(to top, black 0%, black 20%, transparent 55%);
+
       &--outer {
-        width: 300px;
-        height: 290px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        width: 471px;
+        height: 483px;
+        left: -28%;
+        top: 6%;
+        transform: rotate(180deg);
+        border: 1px dashed rgba($color-steel, 0.35);
+        -webkit-mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 15%
+        );
+        mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 15%
+        );
       }
 
       &--middle {
-        width: 250px;
-        height: 240px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        width: 352px;
+        height: 362px;
+        left: -8%;
+        top: 19%;
+        transform: rotate(180deg);
+        border: 1px dashed rgba($color-steel, 0.35);
+        -webkit-mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 20%
+        );
+        mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 20%
+        );
       }
 
       &--inner {
-        width: 200px;
-        height: 195px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        width: 291px;
+        height: 300px;
+        left: 6px;
+        top: 33%;
+        transform: rotate(180deg);
+        border: 1px dashed rgba($color-steel, 0.35);
+        -webkit-mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 12.5%
+        );
+        mask-image: linear-gradient(
+          to top,
+          black 0%,
+          black 10%,
+          transparent 12.5%
+        );
       }
     }
   }
@@ -274,7 +385,7 @@
       height: 26px;
       border: 2px solid $color-indigo;
       background: transparent;
-      left: 672px;
+      left: 601px;
       top: 219px;
     }
 
@@ -283,8 +394,8 @@
       width: 12.57px;
       height: 12.57px;
       background: $color-indigo;
-      left: 665px;
-      top: 225.5px;
+      left: 608px;
+      top: 225px;
     }
 
     // Top dot near "2000" (Ellipse 55): x=507.57, y=62.5 → __inner: 627.57, 103
@@ -292,7 +403,7 @@
       width: 10px;
       height: 10px;
       background: $color-sky;
-      left: 628px;
+      left: 573px;
       top: 103px;
     }
 
@@ -301,12 +412,42 @@
       width: 10px;
       height: 10px;
       background: $color-sky;
-      left: 628px;
+      left: 574px;
       top: 360px;
     }
 
     @media (max-width: 1023px) {
-      display: none;
+      &--active {
+        width: 22px;
+        height: 22px;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+      }
+
+      &--ring {
+        width: 11px;
+        height: 11px;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+      }
+
+      &--top {
+        width: 8px;
+        height: 8px;
+        left: 5%;
+        top: 60%;
+      }
+
+      &--bottom {
+        width: 8px;
+        height: 8px;
+        left: auto;
+        right: 5%;
+        top: 60%;
+        bottom: auto;
+      }
     }
   }
 
@@ -326,14 +467,14 @@
     &--current {
       font-size: 40px;
       line-height: 44px;
-      left: 689px;
+      left: 627px;
       top: 210px;
 
       @media (max-width: 1023px) {
-        font-size: 32px;
-        line-height: 36px;
+        font-size: 28px;
+        line-height: 28px;
         left: 50%;
-        top: 25%;
+        top: 30%;
         transform: translateX(-50%);
       }
     }
@@ -342,15 +483,17 @@
       font-size: 24px;
       line-height: 32px;
       opacity: 0.5;
-      left: 662px;
-      top: 95px;
+      left: 605px;
+      top: 91px;
+      pointer-events: auto;
+      cursor: pointer;
 
       @media (max-width: 1023px) {
         font-size: 18px;
         line-height: 22px;
-        top: auto;
-        bottom: 30px;
-        left: 15%;
+        top: 52%;
+        bottom: auto;
+        left: 10%;
       }
     }
 
@@ -358,16 +501,18 @@
       font-size: 24px;
       line-height: 32px;
       opacity: 0.5;
-      left: 662px;
-      top: 351px;
+      left: 603px;
+      top: 347px;
+      pointer-events: auto;
+      cursor: pointer;
 
       @media (max-width: 1023px) {
         font-size: 18px;
         line-height: 22px;
-        top: auto;
-        bottom: 30px;
+        top: 52%;
+        bottom: auto;
         left: auto;
-        right: 15%;
+        right: 10%;
       }
     }
   }
@@ -388,7 +533,8 @@
       top: auto;
       width: 100%;
       height: auto;
-      margin-bottom: 60px;
+      margin-bottom: 0;
+      order: 2;
     }
   }
 
@@ -398,8 +544,9 @@
     height: 271px;
 
     @media (max-width: 1023px) {
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 181px;
+      margin: 0 auto;
     }
   }
 
@@ -417,7 +564,10 @@
       border-radius: $radius-ml $radius-ml $radius-ml $radius-m;
 
       @media (max-width: 1023px) {
-        display: none;
+        width: 253px;
+        height: 181px;
+        top: 0;
+        left: 34px;
       }
     }
 
@@ -432,7 +582,10 @@
       border-radius: $radius-ml $radius-ml $radius-ml $radius-m;
 
       @media (max-width: 1023px) {
-        display: none;
+        width: 293px;
+        height: 155px;
+        top: 13px;
+        left: 14px;
       }
     }
 
@@ -458,7 +611,7 @@
         opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
       &.is-exiting {
-        transform: scale(0.85) translateY(10px);
+        transform: translateY(-10px);
         opacity: 0;
       }
 
@@ -467,9 +620,10 @@
       }
 
       @media (max-width: 1023px) {
-        width: 100%;
-        height: auto;
-        top: 0;
+        width: 320px;
+        height: 138px;
+        top: 23px;
+        left: 0;
         padding: 24px;
       }
     }
@@ -510,11 +664,11 @@
 
 @keyframes cardSlideIn {
   0% {
-    transform: scale(1.08) translateY(-12px);
+    transform: translateY(20px);
     opacity: 0;
   }
   100% {
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }

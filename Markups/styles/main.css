@@ -3660,16 +3660,6 @@ a {
 @media (max-width: 1023px) {
   .au-differentiators__right {
     width: 100%;
-    overflow-x: auto;
-    flex-direction: row;
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .au-differentiators__right::-webkit-scrollbar {
-    display: none;
   }
 }
 .au-differentiators__card {
@@ -3681,10 +3671,6 @@ a {
 }
 @media (max-width: 1023px) {
   .au-differentiators__card {
-    width: 320px;
-    min-width: 320px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
     padding: 16px;
     border-radius: 12px 2px 12px 12px;
   }
@@ -3800,18 +3786,21 @@ a {
     transform: none;
   }
 }
-.au-differentiators__pagination {
-  display: none;
+.au-differentiators .slick-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
 }
-@media (max-width: 1023px) {
-  .au-differentiators__pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: -16px;
-  }
+.au-differentiators .slick-dots li {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
 }
-.au-differentiators__dot {
+.au-differentiators .slick-dots li button {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -3819,9 +3808,13 @@ a {
   border: none;
   cursor: pointer;
   padding: 0;
+  font-size: 0;
   transition: all 0.2s;
 }
-.au-differentiators__dot--active {
+.au-differentiators .slick-dots li button::before {
+  display: none;
+}
+.au-differentiators .slick-dots li.slick-active button {
   width: 8px;
   height: 8px;
   background: #12acf7;

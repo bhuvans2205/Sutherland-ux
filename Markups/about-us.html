@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sutherland – About Us</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1201,33 +1209,6 @@
                 </div>
               </article>
             </div>
-            <div
-              class="au-differentiators__pagination"
-              role="group"
-              aria-label="Insights pagination"
-            >
-              <button
-                type="button"
-                class="au-differentiators__dot au-differentiators__dot--active"
-                aria-current="true"
-                aria-label="Page 1"
-              ></button>
-              <button
-                type="button"
-                class="au-differentiators__dot"
-                aria-label="Page 2"
-              ></button>
-              <button
-                type="button"
-                class="au-differentiators__dot"
-                aria-label="Page 3"
-              ></button>
-              <button
-                type="button"
-                class="au-differentiators__dot"
-                aria-label="Page 4"
-              ></button>
-            </div>
           </div>
         </section>
 
@@ -1753,6 +1734,9 @@
         </div>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script>
       // Fixed header on scroll
@@ -2372,58 +2356,31 @@
 
     <script>
       (function () {
-        var track = document.querySelector(".au-differentiators__right");
-        var dots = document.querySelectorAll(".au-differentiators__dot");
-        var cards = track
-          ? track.querySelectorAll(".au-differentiators__card")
-          : [];
-        if (!track || !dots.length || !cards.length) return;
+        var $slider = $(".au-differentiators__right");
+        if (!$slider.length) return;
 
-        var activeClass = "au-differentiators__dot--active";
+        var slickActive = false;
+        var BREAKPOINT = 1024;
 
-        function setActiveDot(index) {
-          for (var i = 0; i < dots.length; i++) {
-            dots[i].classList.remove(activeClass);
-            dots[i].removeAttribute("aria-current");
-          }
-          if (dots[index]) {
-            dots[index].classList.add(activeClass);
-            dots[index].setAttribute("aria-current", "true");
+        function initSlider() {
+          if (window.innerWidth < BREAKPOINT && !slickActive) {
+            $slider.slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: true,
+              arrows: false,
+              infinite: false,
+              adaptiveHeight: true,
+            });
+            slickActive = true;
+          } else if (window.innerWidth >= BREAKPOINT && slickActive) {
+            $slider.slick("unslick");
+            slickActive = false;
           }
         }
 
-        dots.forEach(function (dot, i) {
-          dot.addEventListener("click", function () {
-            cards[i].scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-              inline: "start",
-            });
-          });
-        });
-
-        var scrollTimer;
-        track.addEventListener("scroll", function () {
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(function () {
-            var trackRect = track.getBoundingClientRect();
-            var trackCenter = trackRect.left + trackRect.width / 2;
-            var closest = 0;
-            var closestDist = Infinity;
-
-            for (var i = 0; i < cards.length; i++) {
-              var cardRect = cards[i].getBoundingClientRect();
-              var cardCenter = cardRect.left + cardRect.width / 2;
-              var dist = Math.abs(cardCenter - trackCenter);
-              if (dist < closestDist) {
-                closestDist = dist;
-                closest = i;
-              }
-            }
-
-            setActiveDot(closest);
-          }, 50);
-        });
+        initSlider();
+        $(window).on("resize", initSlider);
       })();
     </script>
   </body>

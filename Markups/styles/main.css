@@ -3898,7 +3898,7 @@ a {
   .au-history__inner {
     height: auto;
     min-height: 609px;
-    padding: 26px 24px 80px;
+    padding: 26px 24px 66px;
     border-radius: 16px 16px 16px 4px;
     display: flex;
     flex-direction: column;
@@ -3906,10 +3906,10 @@ a {
 }
 .au-history__bg-img {
   position: absolute;
-  width: 1250px;
-  height: 1250px;
-  left: -70px;
-  top: -389px;
+  width: 1608px;
+  height: 1608px;
+  left: -144px;
+  top: -574px;
   transform: rotate(180deg);
   opacity: 0.7;
   mix-blend-mode: multiply;
@@ -3922,10 +3922,10 @@ a {
   .au-history__bg-img {
     width: 937px;
     height: 937px;
-    left: -80%;
-    right: 0;
-    top: 70px;
-    transform: rotate(90deg);
+    left: auto;
+    right: -520px;
+    top: 49px;
+    transform: rotate(180deg);
   }
 }
 .au-history__left {
@@ -3941,7 +3941,7 @@ a {
     top: auto;
     left: auto;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     order: 1;
   }
 }
@@ -4066,8 +4066,8 @@ a {
   .au-history__center {
     position: relative;
     width: 100%;
-    height: 280px;
-    margin-top: 20px;
+    height: 200px;
+    margin-top: 4px;
     order: 3;
   }
 }
@@ -4086,7 +4086,7 @@ a {
 .au-history__orbit--inner {
   width: 354.57px;
   height: 344.51px;
-  left: 160px;
+  left: 12.4%;
   top: 64.75px;
   border: 2px dashed #26235d;
   -webkit-mask-image: linear-gradient(to right, black 0%, black 1%, transparent 10%);
@@ -4095,118 +4095,132 @@ a {
 .au-history__orbit--middle {
   width: 428.33px;
   height: 416.6px;
-  left: 135px;
+  left: 9.6%;
   top: 28.7px;
   border: 2px dashed #26235d;
   -webkit-mask-image: linear-gradient(to right, black 0%, black 10%, transparent 12.5%);
   mask-image: linear-gradient(to right, black 0%, black 10%, transparent 12.5%);
 }
+.au-history__orbit--mid-outer {
+  display: none;
+}
 .au-history__orbit--outer {
   width: 515.66px;
   height: 503.17px;
-  left: 100px;
+  left: 6.3%;
   top: -14.56px;
   border: 3px dashed rgba(45, 74, 189, 0.5);
   -webkit-mask-image: linear-gradient(to right, black 0%, black 10%, transparent 15%);
   mask-image: linear-gradient(to right, black 0%, black 10%, transparent 15%);
 }
 @media (max-width: 1023px) {
-  .au-history__orbit {
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 55%);
-    mask-image: linear-gradient(to top, black 0%, black 20%, transparent 55%);
-  }
   .au-history__orbit--outer {
-    width: 471px;
-    height: 483px;
-    left: -28%;
-    top: 6%;
-    transform: rotate(180deg);
+    width: 154%;
+    height: auto;
+    aspect-ratio: 471/483;
+    left: 50%;
+    top: 38%;
+    transform: translateX(-50%);
+    border: 2px dashed rgba(108, 162, 203, 0.35);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 5%, transparent 9%);
+    mask-image: linear-gradient(to bottom, black 0%, black 5%, transparent 9%);
+  }
+  .au-history__orbit--mid-outer {
+    display: block;
+    width: 139%;
+    height: auto;
+    aspect-ratio: 425/436;
+    left: 50%;
+    top: 58%;
+    transform: translateX(-50%);
     border: 1px dashed rgba(108, 162, 203, 0.35);
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 10%, transparent 15%);
-    mask-image: linear-gradient(to top, black 0%, black 10%, transparent 15%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
+    mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
   }
   .au-history__orbit--middle {
-    width: 352px;
-    height: 362px;
-    left: -8%;
-    top: 19%;
-    transform: rotate(180deg);
+    width: 115%;
+    height: auto;
+    aspect-ratio: 352/362;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
     border: 1px dashed rgba(108, 162, 203, 0.35);
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 10%, transparent 20%);
-    mask-image: linear-gradient(to top, black 0%, black 10%, transparent 20%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
+    mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
   }
   .au-history__orbit--inner {
-    width: 291px;
-    height: 300px;
-    left: 6px;
-    top: 33%;
-    transform: rotate(180deg);
+    width: 95%;
+    height: auto;
+    aspect-ratio: 291/300;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
     border: 1px dashed rgba(108, 162, 203, 0.35);
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 10%, transparent 12.5%);
-    mask-image: linear-gradient(to top, black 0%, black 10%, transparent 12.5%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
+    mask-image: linear-gradient(to bottom, black 0%, black 3%, transparent 5%);
   }
 }
 .au-history__orbit-dot {
   position: absolute;
   border-radius: 50%;
+  z-index: 2;
+  transition: opacity 0.35s ease;
 }
 .au-history__orbit-dot--active {
   width: 26px;
   height: 26px;
-  border: 2px solid #26235d;
-  background: transparent;
-  left: 601px;
-  top: 219px;
-}
-.au-history__orbit-dot--ring {
-  width: 12.57px;
-  height: 12.57px;
-  background: #26235d;
-  left: 608px;
-  top: 225px;
-}
-.au-history__orbit-dot--top {
-  width: 10px;
-  height: 10px;
-  background: #12acf7;
-  left: 573px;
-  top: 103px;
-}
-.au-history__orbit-dot--bottom {
-  width: 10px;
-  height: 10px;
-  background: #12acf7;
-  left: 574px;
-  top: 360px;
+  border: 3px solid #26235d;
+  background: #ffffff;
 }
 @media (max-width: 1023px) {
   .au-history__orbit-dot--active {
     width: 22px;
     height: 22px;
     left: 50%;
-    top: 55%;
+    top: 34%;
     transform: translate(-50%, -50%);
   }
+}
+.au-history__orbit-dot--ring {
+  width: 12.57px;
+  height: 12.57px;
+  background: #26235d;
+  z-index: 3;
+}
+@media (max-width: 1023px) {
   .au-history__orbit-dot--ring {
     width: 11px;
     height: 11px;
     left: 50%;
-    top: 55%;
+    top: 34%;
     transform: translate(-50%, -50%);
   }
+}
+.au-history__orbit-dot--top {
+  width: 10px;
+  height: 10px;
+  background: #12acf7;
+}
+@media (max-width: 1023px) {
   .au-history__orbit-dot--top {
     width: 8px;
     height: 8px;
-    left: 5%;
-    top: 60%;
+    left: 3%;
+    top: 55%;
   }
+}
+.au-history__orbit-dot--bottom {
+  width: 10px;
+  height: 10px;
+  background: #12acf7;
+}
+@media (max-width: 1023px) {
   .au-history__orbit-dot--bottom {
     width: 8px;
     height: 8px;
     left: auto;
-    right: 5%;
-    top: 60%;
-    bottom: auto;
+    right: 3%;
+    top: 55%;
   }
 }
 .au-history__year {
@@ -4221,15 +4235,15 @@ a {
 .au-history__year--current {
   font-size: 40px;
   line-height: 44px;
-  left: 627px;
-  top: 210px;
+  left: 49%;
+  top: 45.35%;
 }
 @media (max-width: 1023px) {
   .au-history__year--current {
     font-size: 28px;
     line-height: 28px;
     left: 50%;
-    top: 30%;
+    top: 6%;
     transform: translateX(-50%);
   }
 }
@@ -4237,8 +4251,8 @@ a {
   font-size: 24px;
   line-height: 32px;
   opacity: 0.5;
-  left: 605px;
-  top: 91px;
+  left: 46.27%;
+  top: 20.45%;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -4246,7 +4260,7 @@ a {
   .au-history__year--prev {
     font-size: 18px;
     line-height: 22px;
-    top: 52%;
+    top: 26%;
     bottom: auto;
     left: 10%;
   }
@@ -4255,8 +4269,8 @@ a {
   font-size: 24px;
   line-height: 32px;
   opacity: 0.5;
-  left: 603px;
-  top: 347px;
+  left: 46.27%;
+  top: 75.97%;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -4264,7 +4278,7 @@ a {
   .au-history__year--next {
     font-size: 18px;
     line-height: 22px;
-    top: 52%;
+    top: 26%;
     bottom: auto;
     left: auto;
     right: 10%;
@@ -4274,7 +4288,8 @@ a {
   position: absolute;
   right: 60px;
   top: 89px;
-  width: 479px;
+  width: 38%;
+  max-width: 479px;
   height: 271px;
   z-index: 2;
 }
@@ -4284,6 +4299,7 @@ a {
     right: auto;
     top: auto;
     width: 100%;
+    max-width: none;
     height: auto;
     margin-bottom: 0;
     order: 2;
@@ -4291,7 +4307,7 @@ a {
 }
 .au-history__card-stack {
   position: relative;
-  width: 479px;
+  width: 100%;
   height: 271px;
 }
 @media (max-width: 1023px) {
@@ -4308,7 +4324,7 @@ a {
   position: absolute;
   top: 0;
   left: 51px;
-  width: 378px;
+  width: calc(100% - 101px);
   height: 271px;
   background: rgba(18, 106, 178, 0.12);
   backdrop-filter: blur(12px);
@@ -4326,7 +4342,7 @@ a {
   position: absolute;
   top: 20px;
   left: 21px;
-  width: 438px;
+  width: calc(100% - 41px);
   height: 232px;
   background: rgba(18, 106, 178, 0.08);
   backdrop-filter: blur(7px);
@@ -4344,7 +4360,7 @@ a {
   position: relative;
   top: 34px;
   left: 0;
-  width: 479px;
+  width: 100%;
   height: 206px;
   background: linear-gradient(247.49deg, #ffffff 73.81%, #ededed 97.69%);
   padding: 32px;

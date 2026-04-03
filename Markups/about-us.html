@@ -1302,6 +1302,9 @@
             <div class="au-history__center" aria-hidden="true">
               <div class="au-history__orbits">
                 <div class="au-history__orbit au-history__orbit--outer"></div>
+                <div
+                  class="au-history__orbit au-history__orbit--mid-outer"
+                ></div>
                 <div class="au-history__orbit au-history__orbit--middle"></div>
                 <div class="au-history__orbit au-history__orbit--inner"></div>
                 <div
@@ -1526,7 +1529,6 @@
           </div>
         </section>
       </div>
-
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
@@ -1889,8 +1891,92 @@
         var currentIndex = 2;
         var isAnimating = false;
         var frontCard = section.querySelector(".au-history__card--front");
+        var dotActive = section.querySelector(".au-history__orbit-dot--active");
+        var dotRing = section.querySelector(".au-history__orbit-dot--ring");
         var dotTop = section.querySelector(".au-history__orbit-dot--top");
         var dotBottom = section.querySelector(".au-history__orbit-dot--bottom");
+        var centerEl = section.querySelector(".au-history__center");
+        var outerOrbit = section.querySelector(".au-history__orbit--outer");
+        var innerOrbit = section.querySelector(".au-history__orbit--inner");
+
+        function orbitGeo(el) {
+          var cr = centerEl.getBoundingClientRect();
+          var r = el.getBoundingClientRect();
+          return {
+            cx: r.left + r.width / 2 - cr.left,
+            cy: r.top + r.height / 2 - cr.top,
+            rx: r.width / 2,
+            ry: r.height / 2,
+          };
+        }
+
+        function yearRect(el) {
+          var cr = centerEl.getBoundingClientRect();
+          var r = el.getBoundingClientRect();
+          return {
+            left: r.left - cr.left,
+            top: r.top - cr.top,
+            cx: r.left + r.width / 2 - cr.left,
+            cy: r.top + r.height / 2 - cr.top,
+          };
+        }
+
+        function ellipseRight(o, y) {
+          var t = Math.max(-1, Math.min(1, (y - o.cy) / o.ry));
+          return { x: o.cx + o.rx * Math.sqrt(1 - t * t), y: y };
+        }
+
+        function ellipseTop(o, x) {
+          var t = Math.max(-1, Math.min(1, (x - o.cx) / o.rx));
+          return { x: x, y: o.cy - o.ry * Math.sqrt(1 - t * t) };
+        }
+
+        function setDotPos(el, cx, cy) {
+          if (!el) return;
+          el.style.left = cx - el.offsetWidth / 2 + "px";
+          el.style.top = cy - el.offsetHeight / 2 + "px";
+          el.style.transform = "none";
+        }
+
+        function positionDots() {
+          if (!centerEl || !outerOrbit || !innerOrbit) return;
+          var isMobile = window.innerWidth < 1024;
+
+          if (isMobile) {
+            var outer = orbitGeo(outerOrbit);
+            var peakY = outer.cy - outer.ry;
+
+            if (dotActive) setDotPos(dotActive, outer.cx, peakY);
+            if (dotRing) setDotPos(dotRing, outer.cx, peakY);
+
+            var maskDepth = 0.08 * (outer.ry * 2);
+            var arcY = peakY + maskDepth;
+            var t = Math.max(-1, Math.min(1, (arcY - outer.cy) / outer.ry));
+            var xHalf = outer.rx * Math.sqrt(1 - t * t);
+            if (dotTop) setDotPos(dotTop, outer.cx - xHalf, arcY);
+            if (dotBottom) setDotPos(dotBottom, outer.cx + xHalf, arcY);
+            return;
+          } else {
+            var outer = orbitGeo(outerOrbit);
+
+            if (yearCurrent && dotActive && dotRing) {
+              var yc = yearRect(yearCurrent);
+              var pt = ellipseRight(outer, yc.cy);
+              setDotPos(dotActive, pt.x, pt.y);
+              setDotPos(dotRing, pt.x, pt.y);
+            }
+            if (yearPrev && dotTop) {
+              var yp = yearRect(yearPrev);
+              var pt = ellipseRight(outer, yp.cy);
+              setDotPos(dotTop, pt.x, pt.y);
+            }
+            if (yearNext && dotBottom) {
+              var yn = yearRect(yearNext);
+              var pt = ellipseRight(outer, yn.cy);
+              setDotPos(dotBottom, pt.x, pt.y);
+            }
+          }
+        }
 
         function updateButtons() {
           if (prevBtn) {
@@ -1926,6 +2012,7 @@
           if (dotTop) dotTop.style.opacity = hasPrev ? "1" : "0";
           if (dotBottom) dotBottom.style.opacity = hasNext ? "1" : "0";
           updateButtons();
+          requestAnimationFrame(positionDots);
         }
 
         function animateToSlide(newIndex) {
@@ -1981,6 +2068,12 @@
         }
 
         render();
+
+        var resizeTimer;
+        window.addEventListener("resize", function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(positionDots, 100);
+        });
       })();
 
       // Stats horizontal scroll dots (mobile)

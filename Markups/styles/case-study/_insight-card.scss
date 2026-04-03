@@ -8,26 +8,22 @@
 .insight-card {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
   background: $color-white;
   border: 1px solid rgba($color-gray, 0.5);
   border-radius: $radius-xxl $radius-m $radius-xxl $radius-xxl;
   overflow: hidden;
-  min-height: 371px;
   transition: box-shadow 0.25s ease;
   box-sizing: border-box;
 
   @media (min-width: 1024px) {
-    // width set in JS: two cards + 24px gap per viewport width
-    min-width: 0;
-    // Fixed height: hover reveals copy inside this box; image area shrinks (does not grow the card)
+    margin: 0 12px;
     height: 371px;
     max-height: 371px;
-    min-height: 371px;
   }
 
   @media (max-width: 1023px) {
-    min-height: 0;
+    width: calc(100vw - 76px);
+    height: 306px;
     border-radius: $radius-xxl $radius-s $radius-xxl $radius-xxl;
   }
 
@@ -40,17 +36,31 @@
     padding: 40px 32px 20px 32px;
     padding-right: 20px;
 
+    @media (min-width: 1024px) {
+      position: relative;
+      z-index: 3;
+    }
+
     @media (max-width: 1023px) {
       padding: 16px 20px 16px 20px;
     }
   }
 
-  // Desktop: description + CTA hidden until hover/focus-within; image stays last in column (bottom)
   &__reveal {
     @media (min-width: 1024px) {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 0 32px 16px;
+      background: $color-white;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition:
+        opacity 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        visibility 0.35s;
     }
 
     @media (max-width: 1023px) {
@@ -59,17 +69,11 @@
   }
 
   &__reveal-inner {
-    @media (min-width: 1024px) {
-      min-height: 0;
-      overflow: hidden;
-    }
-
     @media (max-width: 1023px) {
       display: contents;
     }
   }
 
-  // H4 desktop: 32/36 / 400 / 0 — mobile H5-style 20/24 (471:852)
   &__title {
     font-family: $font-primary;
     font-weight: 400;
@@ -109,18 +113,24 @@
       }
 
       .insight-card__reveal {
-        grid-template-rows: 1fr;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .insight-card__image {
+        transform: translateY(60px);
       }
     }
   }
 
   @media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
-    &__reveal {
+    &__reveal,
+    &__image {
       transition: none;
     }
   }
 
-  // CTA: mobile always visible; desktop revealed with hover block above
   &__cta {
     display: inline-flex;
     align-items: center;
@@ -170,15 +180,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    // Figma desktop Case study: tag is top-left of image frame (flex-start), not bottom
     justify-content: flex-start;
     padding: 23px 32px;
     overflow: hidden;
     border-radius: $radius-xxl $radius-s $radius-xxl $radius-xxl;
 
     @media (min-width: 1024px) {
-      // Allow flex sibling (__text) to grow on hover while total card height stays fixed
       min-height: 0;
+      z-index: 1;
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     @media (max-width: 1023px) {
@@ -215,11 +225,9 @@
     letter-spacing: 0;
     isolation: isolate;
     border: 1px solid rgba($color-white, 0.4);
-    // Figma Case study tag text: colors/old/secondary/blue2 — #0f0e2d (label not mixed with chip blends)
     color: $color-midnight;
     border-radius: $radius-ml $radius-ml $radius-ml 2px;
     backdrop-filter: blur(12px);
-    // Glass base: rgba(94,94,94,0.56) + lighten overlay per Figma
     background: rgba(94, 94, 94, 0.56);
     overflow: hidden;
 

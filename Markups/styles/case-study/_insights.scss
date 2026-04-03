@@ -117,21 +117,18 @@
   }
 
   &__track {
-    box-sizing: border-box;
-
-    .slick-slide {
-      padding: 0 12px;
-
-      @media (max-width: 1023px) {
-        padding: 0 8px;
-      }
-    }
-
     .slick-list {
       margin: 0 -12px;
 
       @media (max-width: 1023px) {
-        margin: 0 -8px;
+        margin: 0;
+        overflow: visible;
+      }
+    }
+
+    .slick-slide {
+      @media (max-width: 1023px) {
+        margin-right: 16px;
       }
     }
   }

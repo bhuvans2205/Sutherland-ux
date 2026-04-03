@@ -1377,6 +1377,11 @@ a {
   position: relative;
   overflow: clip;
 }
+@media (max-width: 1023px) {
+  .case-study {
+    overflow: visible;
+  }
+}
 .case-study__bg {
   position: absolute;
   inset: 0;
@@ -1434,10 +1439,10 @@ a {
   .sidebar--mobile {
     display: block;
     position: sticky;
-    top: 0;
-    z-index: 50;
+    top: var(--site-header-scroll-padding, 104px);
+    z-index: 45;
     background: #ffffff;
-    padding: 32px 24px 12px;
+    padding: 16px 24px 12px;
   }
 }
 .sidebar__sticky {
@@ -1743,6 +1748,9 @@ a {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+.content__block[id] {
+  scroll-margin-top: var(--site-header-scroll-padding, 104px);
 }
 .content__block--panel {
   backdrop-filter: blur(12px);

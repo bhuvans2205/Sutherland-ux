@@ -1970,6 +1970,15 @@
         var header = document.querySelector(".site-header");
         if (!header) return;
 
+        function syncSiteHeaderScrollPadding() {
+          document.documentElement.style.setProperty(
+            "--site-header-scroll-padding",
+            header.offsetHeight + 12 + "px",
+          );
+        }
+        syncSiteHeaderScrollPadding();
+        window.addEventListener("resize", syncSiteHeaderScrollPadding);
+
         var spacer = document.createElement("div");
         spacer.style.display = "none";
         header.parentNode.insertBefore(spacer, header);
@@ -2412,14 +2421,33 @@
         });
         updateProgress(currentActive);
 
-        function smoothScrollTo(id) {
+        function getStickyHeaderOffset() {
+          var header = document.querySelector(".site-header");
+          var gap = 12;
+          if (!header) return gap;
+          return header.offsetHeight + gap;
+        }
+
+        function smoothScrollTo(id, behavior) {
           var target = document.getElementById(id);
           if (!target) return;
-          var offset = window.innerWidth < 1024 ? 100 : 20;
+          var offset = getStickyHeaderOffset();
           var top =
             target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top: top, behavior: "smooth" });
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: behavior || "smooth",
+          });
         }
+
+        function scrollToHashFromLocation() {
+          var hash = location.hash ? location.hash.slice(1) : "";
+          if (!hash || sectionIds.indexOf(hash) === -1) return;
+          smoothScrollTo(hash, "auto");
+        }
+
+        window.addEventListener("load", scrollToHashFromLocation);
+        window.addEventListener("hashchange", scrollToHashFromLocation);
 
         desktopLinks.forEach(function (link) {
           link.addEventListener("click", function (e) {

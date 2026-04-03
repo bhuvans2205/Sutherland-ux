@@ -10,6 +10,12 @@
   position: relative;
   overflow: clip;
 
+  // Sticky mobile sidebar must stick to the viewport; clip creates a scroll
+  // containment that breaks sticky / hides it behind the fixed header.
+  @media (max-width: 1023px) {
+    overflow: visible;
+  }
+
   &__bg {
     position: absolute;
     inset: 0;

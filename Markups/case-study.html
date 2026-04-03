@@ -1219,7 +1219,7 @@
           <div class="content__wrapper">
             <!-- Client Overview -->
             <section
-              class="content__section"
+              class="content__block"
               id="tab-0"
               aria-labelledby="overview-heading"
             >
@@ -1237,7 +1237,7 @@
 
             <!-- The Challenge -->
             <section
-              class="content__section"
+              class="content__block"
               id="tab-1"
               aria-labelledby="challenge-heading"
             >
@@ -1283,7 +1283,7 @@
 
             <!-- Sutherland Solution -->
             <section
-              class="content__section"
+              class="content__block"
               id="tab-2"
               aria-labelledby="solution-heading"
             >
@@ -1442,12 +1442,12 @@
 
           <!-- The Outcome -->
           <section
-            class="content__outcome"
+            class="content__block content__block--panel"
             id="tab-3"
             aria-labelledby="outcome-heading"
           >
-            <div class="content__outcome-inner">
-              <div class="content__section">
+            <div class="content__block-inner">
+              <div class="content__block">
                 <h2
                   class="content__heading content__heading--large"
                   id="outcome-heading"
@@ -2306,9 +2306,7 @@
       // Sidebar scroll-spy, progress bar, and smooth scroll
       // =====================================================================
       (function () {
-        var sections = document.querySelectorAll(
-          ".content__section[id], .content__outcome[id]",
-        );
+        var sections = document.querySelectorAll(".content__block[id]");
         var desktopLinks = document.querySelectorAll(
           ".sidebar--desktop [data-section]",
         );

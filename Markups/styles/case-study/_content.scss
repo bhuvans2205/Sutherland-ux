@@ -29,10 +29,37 @@
     }
   }
 
-  &__section {
+  // Generic in-page blocks (scroll targets + layout stacks)
+  &__block {
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    // Optional surface (e.g. last panel with distinct background)
+    &--panel {
+      backdrop-filter: blur(12px);
+      background: rgba($color-ice, 0.7);
+      border-bottom: 1px solid $color-gray;
+      border-radius: $radius-l $radius-s $radius-l $radius-l;
+      padding: 40px;
+      margin-top: 20px;
+      overflow: hidden;
+
+      @media (max-width: 1023px) {
+        padding: 24px 16px;
+        margin-top: 16px;
+      }
+
+      .content__feature-card {
+        background: $color-white;
+      }
+    }
+  }
+
+  &__block-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 
   &__heading {
@@ -430,32 +457,6 @@
       width: 56px;
       height: 56px;
     }
-  }
-
-  // Outcome Section
-  &__outcome {
-    backdrop-filter: blur(12px);
-    background: rgba($color-ice, 0.7);
-    border-bottom: 1px solid $color-gray;
-    border-radius: $radius-l $radius-s $radius-l $radius-l;
-    padding: 40px;
-    margin-top: 20px;
-    overflow: hidden;
-
-    @media (max-width: 1023px) {
-      padding: 24px 16px;
-      margin-top: 16px;
-    }
-
-    .content__feature-card {
-      background: $color-white;
-    }
-  }
-
-  &__outcome-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
   }
 
   &__conclusion {

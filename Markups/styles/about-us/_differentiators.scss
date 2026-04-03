@@ -93,6 +93,24 @@
     &.slick-initialized {
       display: block;
       gap: 0;
+
+      @media (max-width: 1023px) {
+        .slick-slide {
+          margin-right: 16px;
+          height: auto;
+        }
+
+        .slick-track {
+          display: flex;
+          align-items: stretch;
+        }
+
+        .au-differentiators__card {
+          width: calc(100vw - #{2 * $margin-mobile} - 34px);
+          height: auto;
+          box-sizing: border-box;
+        }
+      }
     }
   }
 

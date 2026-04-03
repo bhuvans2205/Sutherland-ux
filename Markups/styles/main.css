@@ -3664,6 +3664,21 @@ a {
   display: block;
   gap: 0;
 }
+@media (max-width: 1023px) {
+  .au-differentiators__right.slick-initialized .slick-slide {
+    margin-right: 16px;
+    height: auto;
+  }
+  .au-differentiators__right.slick-initialized .slick-track {
+    display: flex;
+    align-items: stretch;
+  }
+  .au-differentiators__right.slick-initialized .au-differentiators__card {
+    width: calc(100vw - 48px - 34px);
+    height: auto;
+    box-sizing: border-box;
+  }
+}
 .au-differentiators__card {
   border: 1px solid #dddddd;
   border-radius: 16px 4px 16px 16px;

@@ -560,6 +560,11 @@
       height: 181px;
       margin: 0 auto;
     }
+
+    @media (max-width: 419px) {
+      width: 90%;
+      max-width: 320px;
+    }
   }
 
   &__card {
@@ -581,6 +586,11 @@
         top: 0;
         left: 34px;
       }
+
+      @media (max-width: 419px) {
+        width: calc(100% - 67px);
+        left: 34px;
+      }
     }
 
     &--shadow-mid {
@@ -597,6 +607,11 @@
         width: 293px;
         height: 155px;
         top: 13px;
+        left: 14px;
+      }
+
+      @media (max-width: 419px) {
+        width: calc(100% - 27px);
         left: 14px;
       }
     }
@@ -637,6 +652,10 @@
         top: 23px;
         left: 0;
         padding: 24px;
+      }
+
+      @media (max-width: 419px) {
+        width: 100%;
       }
     }
   }

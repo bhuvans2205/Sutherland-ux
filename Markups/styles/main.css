@@ -4317,6 +4317,12 @@ a {
     margin: 0 auto;
   }
 }
+@media (max-width: 419px) {
+  .au-history__card-stack {
+    width: 90%;
+    max-width: 320px;
+  }
+}
 .au-history__card {
   border-radius: 12px 12px 12px 8px;
 }
@@ -4338,6 +4344,12 @@ a {
     left: 34px;
   }
 }
+@media (max-width: 419px) {
+  .au-history__card--shadow-back {
+    width: calc(100% - 67px);
+    left: 34px;
+  }
+}
 .au-history__card--shadow-mid {
   position: absolute;
   top: 20px;
@@ -4353,6 +4365,12 @@ a {
     width: 293px;
     height: 155px;
     top: 13px;
+    left: 14px;
+  }
+}
+@media (max-width: 419px) {
+  .au-history__card--shadow-mid {
+    width: calc(100% - 27px);
     left: 14px;
   }
 }
@@ -4384,6 +4402,11 @@ a {
     top: 23px;
     left: 0;
     padding: 24px;
+  }
+}
+@media (max-width: 419px) {
+  .au-history__card--front {
+    width: 100%;
   }
 }
 .au-history__card-title {
@@ -5311,5 +5334,3 @@ a {
     display: none;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

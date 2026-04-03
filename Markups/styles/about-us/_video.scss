@@ -34,13 +34,13 @@
     position: relative;
     width: 100%;
     height: 641px;
-    border-radius: $radius-xxl $radius-xxl $radius-xxl $radius-m;
+    border-radius: $radius-xxl $radius-m $radius-xxl $radius-xxl;
     overflow: hidden;
     background: $color-midnight;
 
     @media (max-width: 1023px) {
       height: 180px;
-      border-radius: $radius-l $radius-l $radius-l $radius-s;
+      border-radius: $radius-m $radius-l $radius-l $radius-l;
     }
   }
 

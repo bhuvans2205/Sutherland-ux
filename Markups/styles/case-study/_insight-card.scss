@@ -36,11 +36,6 @@
     padding: 40px 32px 20px 32px;
     padding-right: 20px;
 
-    @media (min-width: 1024px) {
-      position: relative;
-      z-index: 3;
-    }
-
     @media (max-width: 1023px) {
       padding: 16px 20px 16px 20px;
     }
@@ -48,19 +43,9 @@
 
   &__reveal {
     @media (min-width: 1024px) {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      padding: 0 32px 16px;
-      background: $color-white;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition:
-        opacity 0.35s cubic-bezier(0.33, 1, 0.68, 1),
-        transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
-        visibility 0.35s;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     @media (max-width: 1023px) {
@@ -69,6 +54,12 @@
   }
 
   &__reveal-inner {
+    @media (min-width: 1024px) {
+      min-height: 0;
+      overflow: hidden;
+      padding: 0 32px 0 0;
+    }
+
     @media (max-width: 1023px) {
       display: contents;
     }
@@ -113,20 +104,13 @@
       }
 
       .insight-card__reveal {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .insight-card__image {
-        transform: translateY(60px);
+        grid-template-rows: 1fr;
       }
     }
   }
 
   @media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
-    &__reveal,
-    &__image {
+    &__reveal {
       transition: none;
     }
   }
@@ -187,8 +171,6 @@
 
     @media (min-width: 1024px) {
       min-height: 0;
-      z-index: 1;
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     @media (max-width: 1023px) {

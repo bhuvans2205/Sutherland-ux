@@ -2530,12 +2530,6 @@ a {
   padding: 40px 32px 20px 32px;
   padding-right: 20px;
 }
-@media (min-width: 1024px) {
-  .insight-card__text {
-    position: relative;
-    z-index: 3;
-  }
-}
 @media (max-width: 1023px) {
   .insight-card__text {
     padding: 16px 20px 16px 20px;
@@ -2543,21 +2537,21 @@ a {
 }
 @media (min-width: 1024px) {
   .insight-card__reveal {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 0 32px 16px;
-    background: #ffffff;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: opacity 0.35s cubic-bezier(0.33, 1, 0.68, 1), transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), visibility 0.35s;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
   }
 }
 @media (max-width: 1023px) {
   .insight-card__reveal {
     display: contents;
+  }
+}
+@media (min-width: 1024px) {
+  .insight-card__reveal-inner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 32px 0 0;
   }
 }
 @media (max-width: 1023px) {
@@ -2601,16 +2595,11 @@ a {
     color: #26235d;
   }
   .insight-card:hover .insight-card__reveal, .insight-card:focus-within .insight-card__reveal {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .insight-card:hover .insight-card__image, .insight-card:focus-within .insight-card__image {
-    transform: translateY(60px);
+    grid-template-rows: 1fr;
   }
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
-  .insight-card__reveal, .insight-card__image {
+  .insight-card__reveal {
     transition: none;
   }
 }
@@ -2665,8 +2654,6 @@ a {
 @media (min-width: 1024px) {
   .insight-card__image {
     min-height: 0;
-    z-index: 1;
-    transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
   }
 }
 @media (max-width: 1023px) {

@@ -28,13 +28,25 @@
     }
   }
 
+  &__bg-container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
   &__bg-img {
     position: absolute;
-    left: -1541px;
+    left: 50%;
     top: 680px;
     width: 2502.588px;
     height: 2629.747px;
-    transform: rotate(89.812deg);
+    transform: translate(-50%, 0) rotate(89.812deg);
+    transform-origin: center center;
     aspect-ratio: 59 / 62;
     opacity: 0.12;
     background: url("../assets/images/bg-pattern.png") 50% / cover no-repeat;

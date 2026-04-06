@@ -292,6 +292,17 @@
   pointer-events: none;
   overflow: hidden;
 
+  &__container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
   &__decor {
     position: absolute;
     width: 1118px;

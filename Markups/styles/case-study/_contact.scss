@@ -16,6 +16,8 @@
     padding: 80px $margin-desktop;
     overflow: hidden;
     position: relative;
+    max-width: $container-max;
+    margin: 0 auto;
 
     @media (max-width: 1023px) {
       padding: 40px 24px;

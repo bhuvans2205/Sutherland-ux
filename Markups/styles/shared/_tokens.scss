@@ -6,7 +6,10 @@ $font-primary: "Proxima Nova", sans-serif;
 $font-secondary: Arial, sans-serif;
 $screen-max: 1440px;
 $content-max: 1320px;
+// Outer max width for page sections and component wrappers (HTML .container)
+$container-max: $screen-max;
 $margin-desktop: 60px;
+$margin-mobile: 24px;
 
 // Corner radius tokens
 $radius-s: 4px;

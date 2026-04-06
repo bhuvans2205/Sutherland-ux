@@ -54,6 +54,18 @@ a {
   top: 16px;
 }
 
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 60px;
+}
+@media (max-width: 1023px) {
+  .container {
+    padding-inline: 24px;
+  }
+}
+
 .glass-pill {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 24px 4px 24px 24px;
@@ -2246,6 +2258,8 @@ a {
   padding: 80px 60px;
   overflow: hidden;
   position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 @media (max-width: 1023px) {
   .contact__inner {
@@ -3189,6 +3203,10 @@ a {
   .au-hero__banner {
     padding-bottom: 32px;
   }
+}
+.au-hero__banner-inner {
+  position: relative;
+  z-index: 1;
 }
 .au-hero__content {
   position: relative;

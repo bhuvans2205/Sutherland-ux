@@ -61,3 +61,15 @@ a {
     top: 16px;
   }
 }
+
+// Standard outer wrapper for components — max 1440px, centered, horizontal padding
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $margin-desktop;
+
+  @media (max-width: 1023px) {
+    padding-inline: $margin-mobile;
+  }
+}

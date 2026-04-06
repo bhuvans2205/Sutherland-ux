@@ -22,6 +22,12 @@
     }
   }
 
+  // Positioning context for hero image — matches .container (1440px) with headline
+  &__banner-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   &__content {
     position: relative;
     z-index: 2;

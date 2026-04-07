@@ -1,0 +1,579 @@
+@use "sass:color";
+@use "../variables" as *;
+@use "tokens" as *;
+
+// ==========================================================================
+// Button system (Figma: Sutherland-DEV — buttons / component states)
+// Typography: Arial 16 / 18 · Glass fill + stroke aligned with .glass-pill / .cta
+// ==========================================================================
+
+.btn {
+  --btn-dot-size: 10px;
+  --btn-dot-color: #{$color-white};
+  --btn-pad-y: 12px;
+  --btn-pad-x: 24px;
+  --btn-gap: 12px;
+  --btn-radius-tl: #{$radius-xxl};
+  --btn-radius-tr: #{$radius-s};
+  --btn-radius-br: #{$radius-xl};
+  --btn-radius-bl: #{$radius-xxl};
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  font-family: $font-secondary;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: $color-white;
+  border: 1.4px solid rgba($color-white, 0.4);
+  border-radius: var(--btn-radius-tl) var(--btn-radius-tr) var(--btn-radius-br)
+    var(--btn-radius-bl);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    backdrop-filter 0.25s ease;
+
+  // Specular highlight (Figma glass stroke / wash)
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba($color-white, 0.18) 0%,
+      rgba($color-white, 0) 42%,
+      rgba($color-white, 0) 58%,
+      rgba($color-white, 0.08) 100%
+    );
+    opacity: 0.85;
+    transition: opacity 0.25s ease;
+  }
+
+  &::before {
+    content: "";
+    width: var(--btn-dot-size);
+    height: var(--btn-dot-size);
+    border-radius: 50%;
+    background: var(--btn-dot-color);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-sky;
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &.btn--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    pointer-events: none;
+  }
+
+  // —— Size: compact (Figma mobile frame) ——
+  &--sm {
+    --btn-dot-size: 7px;
+    --btn-dot-color: #{$color-sky};
+    --btn-pad-y: 8px;
+    --btn-pad-x: 16px;
+    --btn-gap: 8px;
+    --btn-radius-tl: #{$radius-l};
+    --btn-radius-tr: 2px;
+    --btn-radius-br: #{$radius-l};
+    --btn-radius-bl: #{$radius-l};
+  }
+
+  &--no-dot {
+    gap: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  // —— Primary · Magenta glass (nav Contact, main CTA) ——
+  &--primary-glass {
+    background: rgba($color-magenta, 0.7);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: rgba($color-magenta, 0.82);
+        border-color: rgba($color-white, 0.55);
+        transform: translateY(-1px);
+        box-shadow:
+          0 4px 12px rgba($color-magenta, 0.35),
+          0 2px 4px rgba(0, 0, 0, 0.12);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:active:not(:disabled):not(.btn--disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // —— Secondary · Sky glass ——
+  &--secondary-glass {
+    background: rgba($color-sky, 0.4);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: rgba($color-sky, 0.55);
+        border-color: rgba($color-white, 0.55);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba($color-sky, 0.28);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:active:not(:disabled):not(.btn--disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  // —— Light blue glass (alias of secondary in design kit) ——
+  &--light-blue-glass {
+    background: rgba($color-sky, 0.4);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: rgba($color-sky, 0.5);
+        border-color: rgba($color-white, 0.5);
+        transform: translateY(-1px);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // —— Dark blue / Indigo (testimonial CTA) ——
+  &--dark-blue {
+    background: $color-indigo;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: $color-navy;
+        border-color: rgba($color-white, 0.6);
+        transform: translateY(-1px);
+
+        &::after {
+          opacity: 0.95;
+        }
+      }
+    }
+  }
+
+  // —— Outline glass · frosted transparent ——
+  &--outline-glass {
+    background: rgba($color-white, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba($color-white, 0.4);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: rgba($color-white, 0.12);
+        border-color: rgba($color-white, 0.55);
+        transform: translateY(-1px);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // —— Ghost · border only, minimal fill ——
+  &--ghost {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: rgba($color-white, 0.45);
+    box-shadow: none;
+
+    &::after {
+      opacity: 0.35;
+    }
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: rgba($color-white, 0.08);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-color: rgba($color-white, 0.6);
+        transform: translateY(-1px);
+
+        &::after {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  // —— Solid magenta (higher emphasis than glass) ——
+  &--primary-solid {
+    background: $color-magenta;
+    border-color: rgba($color-white, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    @media (hover: hover) {
+      &:hover:not(:disabled):not(.btn--disabled) {
+        background: color.adjust($color-magenta, $lightness: -6%);
+        border-color: rgba($color-white, 0.5);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  // —— On light background (e.g. white cards) ——
+  &--on-light {
+    color: $color-indigo;
+    border-color: rgba($color-indigo, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    &::before {
+      background: $color-sky;
+    }
+
+    &::after {
+      background: linear-gradient(
+        180deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-ice-blue, 0.35) 100%
+      );
+      opacity: 0.6;
+    }
+  }
+}
+
+// Stacked modifiers: on-light + fill variants (class="btn btn--on-light btn--primary-glass")
+.btn.btn--on-light.btn--primary-glass {
+  background: rgba($color-magenta, 0.12);
+  color: $color-magenta;
+
+  &::before {
+    background: $color-magenta;
+  }
+
+  @media (hover: hover) {
+    &:hover:not(:disabled):not(.btn--disabled) {
+      background: rgba($color-magenta, 0.2);
+      border-color: rgba($color-magenta, 0.45);
+    }
+  }
+}
+
+.btn.btn--on-light.btn--secondary-glass {
+  background: rgba($color-sky, 0.15);
+  color: $color-navy;
+
+  &::before {
+    background: $color-sky;
+  }
+
+  @media (hover: hover) {
+    &:hover:not(:disabled):not(.btn--disabled) {
+      background: rgba($color-sky, 0.28);
+      border-color: rgba($color-navy, 0.25);
+    }
+  }
+}
+
+// ==========================================================================
+// Buttons reference page layout (buttons.html)
+// ==========================================================================
+
+.buttons-page {
+  min-height: 100vh;
+  background: $color-abyss;
+  color: $color-white;
+  // Markup pages load Nunito Sans (see case-study.html); align display type
+  font-family: "Nunito Sans", $font-primary;
+
+  &__main {
+    padding: 48px $margin-desktop 80px;
+    max-width: $container-max;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      padding: 32px $margin-mobile 48px;
+    }
+  }
+
+  &__intro {
+    margin: 0 0 40px;
+    max-width: 720px;
+
+    h1 {
+      font-family: "Nunito Sans", $font-primary;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 44px;
+      margin: 0 0 12px;
+      background: linear-gradient(
+        154.97deg,
+        $color-white 38.6%,
+        #b0c2e3 66.32%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-family: $font-secondary;
+      font-size: 16px;
+      line-height: 22px;
+      color: $color-silver;
+      margin: 0;
+    }
+  }
+
+  &__intro a {
+    color: $color-sky;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &__section {
+    margin-bottom: 48px;
+    padding: 32px;
+    border-radius: $radius-l;
+    background: rgba($color-white, 0.04);
+    border: 1px solid rgba($color-white, 0.1);
+
+    @media (max-width: 1023px) {
+      padding: 24px 20px;
+    }
+
+    &--on-light {
+      background: $color-white;
+      border-color: $color-light-gray;
+
+      .buttons-page__section-title {
+        color: $color-ocean;
+      }
+
+      .buttons-page__section-hint {
+        color: $color-dark-gray;
+
+        code {
+          color: rgba($color-navy, 0.75);
+        }
+      }
+
+      .buttons-page__matrix-row {
+        border-top-color: rgba($color-indigo, 0.12);
+      }
+
+      .buttons-page__matrix-row--head {
+        color: rgba($color-indigo, 0.55);
+        border-bottom-color: rgba($color-indigo, 0.15);
+      }
+
+      .buttons-page__matrix-title {
+        color: $color-indigo;
+      }
+
+      .buttons-page__matrix-code {
+        color: rgba($color-navy, 0.65);
+      }
+
+      .buttons-page__link-note {
+        color: $color-dark-gray;
+      }
+
+      .buttons-page__matrix-row:not(.buttons-page__matrix-row--head)
+        .buttons-page__matrix-cell::before {
+        color: rgba($color-indigo, 0.45);
+      }
+    }
+  }
+
+  &__section-title {
+    font-family: "Nunito Sans", $font-primary;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-sky;
+    margin: 0 0 6px;
+  }
+
+  &__section-hint {
+    font-family: $font-secondary;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba($color-white, 0.5);
+    margin: 0 0 24px;
+
+    code {
+      font-size: 12px;
+      color: rgba($color-white, 0.7);
+    }
+  }
+
+  // Figma-style component matrix: variant × state
+  &__matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__matrix-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) repeat(3, minmax(0, 1fr));
+    gap: 12px 20px;
+    align-items: center;
+    padding: 18px 0;
+    border-top: 1px solid rgba($color-white, 0.08);
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 20px 0;
+
+      .buttons-page__matrix-cell {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        justify-self: start;
+
+        &:nth-child(2)::before {
+          content: "Default";
+        }
+
+        &:nth-child(3)::before {
+          content: "Disabled";
+        }
+
+        &:nth-child(4)::before {
+          content: "Small";
+        }
+
+        &::before {
+          font-family: "Nunito Sans", $font-primary;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: rgba($color-white, 0.4);
+        }
+      }
+    }
+
+    &--head {
+      padding-top: 0;
+      padding-bottom: 14px;
+      border-top: none;
+      border-bottom: 1px solid rgba($color-white, 0.15);
+      font-family: "Nunito Sans", $font-primary;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba($color-white, 0.45);
+
+      @media (max-width: 1023px) {
+        display: none;
+      }
+
+      .buttons-page__matrix-label {
+        color: rgba($color-white, 0.55);
+      }
+    }
+  }
+
+  &__matrix-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+
+    @media (max-width: 1023px) {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__matrix-title {
+    font-family: "Nunito Sans", $font-primary;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: $color-white;
+  }
+
+  &__matrix-code {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 14px;
+    color: rgba($color-white, 0.45);
+    word-break: break-word;
+  }
+
+  &__matrix-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link-note {
+    font-family: $font-secondary;
+    font-size: 13px;
+    line-height: 18px;
+    color: rgba($color-white, 0.45);
+    margin: 24px 0 0;
+
+    code {
+      font-size: 11px;
+    }
+  }
+}

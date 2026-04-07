@@ -310,13 +310,13 @@ a {
   display: none;
 }
 .btn--primary-glass {
-  background: rgba(244, 28, 92, 0.7);
+  background: linear-gradient(90deg, rgba(244, 28, 92, 0.85) 0%, rgba(244, 28, 92, 0.45) 100%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
 }
 @media (hover: hover) {
   .btn--primary-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(244, 28, 92, 0.82);
+    background: linear-gradient(90deg, rgba(244, 28, 92, 0.95) 0%, rgba(244, 28, 92, 0.6) 100%);
     border-color: rgba(255, 255, 255, 0.55);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(244, 28, 92, 0.35), 0 2px 4px rgba(0, 0, 0, 0.12);
@@ -330,13 +330,13 @@ a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .btn--secondary-glass {
-  background: rgba(18, 172, 247, 0.4);
+  background: linear-gradient(90deg, rgba(18, 172, 247, 0.55) 0%, rgba(18, 172, 247, 0.2) 100%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
 }
 @media (hover: hover) {
   .btn--secondary-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(18, 172, 247, 0.55);
+    background: linear-gradient(90deg, rgba(18, 172, 247, 0.65) 0%, rgba(18, 172, 247, 0.35) 100%);
     border-color: rgba(255, 255, 255, 0.55);
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(18, 172, 247, 0.28);
@@ -349,13 +349,13 @@ a {
   transform: translateY(0);
 }
 .btn--light-blue-glass {
-  background: rgba(18, 172, 247, 0.4);
+  background: linear-gradient(90deg, rgba(18, 172, 247, 0.55) 0%, rgba(18, 172, 247, 0.2) 100%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
 }
 @media (hover: hover) {
   .btn--light-blue-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(18, 172, 247, 0.5);
+    background: linear-gradient(90deg, rgba(18, 172, 247, 0.6) 0%, rgba(18, 172, 247, 0.3) 100%);
     border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-1px);
   }
@@ -364,29 +364,30 @@ a {
   }
 }
 .btn--dark-blue {
-  background: #26235d;
+  background: linear-gradient(151.59deg, #26235d 63.36%, #12acf7 117.68%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
 }
 @media (hover: hover) {
   .btn--dark-blue:hover:not(:disabled):not(.btn--disabled) {
-    background: #091867;
+    background: linear-gradient(150deg, #26235d 56.38%, #12acf7 90.86%);
     border-color: rgba(255, 255, 255, 0.6);
     transform: translateY(-1px);
+    box-shadow: 0 2px 16px 0 rgba(117, 143, 214, 0.8), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   }
   .btn--dark-blue:hover:not(:disabled):not(.btn--disabled)::after {
     opacity: 0.95;
   }
 }
 .btn--outline-glass {
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(76.26deg, rgba(255, 255, 255, 0.1) 11.98%, rgba(153, 153, 153, 0.06) 96.89%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: rgba(255, 255, 255, 0.4);
 }
 @media (hover: hover) {
   .btn--outline-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(255, 255, 255, 0.12);
+    background: linear-gradient(76.26deg, rgba(255, 255, 255, 0.16) 11.98%, rgba(153, 153, 153, 0.1) 96.89%);
     border-color: rgba(255, 255, 255, 0.55);
     transform: translateY(-1px);
   }
@@ -395,7 +396,7 @@ a {
   }
 }
 .btn--ghost {
-  background: transparent;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-color: rgba(255, 255, 255, 0.45);
@@ -406,7 +407,7 @@ a {
 }
 @media (hover: hover) {
   .btn--ghost:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-color: rgba(255, 255, 255, 0.6);
@@ -417,14 +418,14 @@ a {
   }
 }
 .btn--primary-solid {
-  background: #f41c5c;
+  background: linear-gradient(90deg, #f41c5c 0%, rgba(244, 28, 92, 0.8) 100%);
   border-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 @media (hover: hover) {
   .btn--primary-solid:hover:not(:disabled):not(.btn--disabled) {
-    background: rgb(230.2428571429, 11.1571428571, 76.0714285714);
+    background: linear-gradient(90deg, rgb(230.2428571429, 11.1571428571, 76.0714285714) 0%, rgba(244, 28, 92, 0.9) 100%);
     border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-1px);
   }
@@ -443,7 +444,7 @@ a {
 }
 
 .btn.btn--on-light.btn--primary-glass {
-  background: rgba(244, 28, 92, 0.12);
+  background: linear-gradient(90deg, rgba(244, 28, 92, 0.18) 0%, rgba(244, 28, 92, 0.06) 100%);
   color: #f41c5c;
 }
 .btn.btn--on-light.btn--primary-glass::before {
@@ -451,13 +452,13 @@ a {
 }
 @media (hover: hover) {
   .btn.btn--on-light.btn--primary-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(244, 28, 92, 0.2);
+    background: linear-gradient(90deg, rgba(244, 28, 92, 0.26) 0%, rgba(244, 28, 92, 0.12) 100%);
     border-color: rgba(244, 28, 92, 0.45);
   }
 }
 
 .btn.btn--on-light.btn--secondary-glass {
-  background: rgba(18, 172, 247, 0.15);
+  background: linear-gradient(90deg, rgba(18, 172, 247, 0.22) 0%, rgba(18, 172, 247, 0.08) 100%);
   color: #091867;
 }
 .btn.btn--on-light.btn--secondary-glass::before {
@@ -465,7 +466,7 @@ a {
 }
 @media (hover: hover) {
   .btn.btn--on-light.btn--secondary-glass:hover:not(:disabled):not(.btn--disabled) {
-    background: rgba(18, 172, 247, 0.28);
+    background: linear-gradient(90deg, rgba(18, 172, 247, 0.32) 0%, rgba(18, 172, 247, 0.15) 100%);
     border-color: rgba(9, 24, 103, 0.25);
   }
 }

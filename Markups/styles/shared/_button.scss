@@ -119,13 +119,21 @@
 
   // —— Primary · Magenta glass (nav Contact, main CTA) ——
   &--primary-glass {
-    background: rgba($color-magenta, 0.7);
+    background: linear-gradient(
+      90deg,
+      rgba($color-magenta, 0.85) 0%,
+      rgba($color-magenta, 0.45) 100%
+    );
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: rgba($color-magenta, 0.82);
+        background: linear-gradient(
+          90deg,
+          rgba($color-magenta, 0.95) 0%,
+          rgba($color-magenta, 0.6) 100%
+        );
         border-color: rgba($color-white, 0.55);
         transform: translateY(-1px);
         box-shadow:
@@ -146,13 +154,21 @@
 
   // —— Secondary · Sky glass ——
   &--secondary-glass {
-    background: rgba($color-sky, 0.4);
+    background: linear-gradient(
+      90deg,
+      rgba($color-sky, 0.55) 0%,
+      rgba($color-sky, 0.2) 100%
+    );
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: rgba($color-sky, 0.55);
+        background: linear-gradient(
+          90deg,
+          rgba($color-sky, 0.65) 0%,
+          rgba($color-sky, 0.35) 100%
+        );
         border-color: rgba($color-white, 0.55);
         transform: translateY(-1px);
         box-shadow: 0 4px 14px rgba($color-sky, 0.28);
@@ -170,13 +186,21 @@
 
   // —— Light blue glass (alias of secondary in design kit) ——
   &--light-blue-glass {
-    background: rgba($color-sky, 0.4);
+    background: linear-gradient(
+      90deg,
+      rgba($color-sky, 0.55) 0%,
+      rgba($color-sky, 0.2) 100%
+    );
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: rgba($color-sky, 0.5);
+        background: linear-gradient(
+          90deg,
+          rgba($color-sky, 0.6) 0%,
+          rgba($color-sky, 0.3) 100%
+        );
         border-color: rgba($color-white, 0.5);
         transform: translateY(-1px);
 
@@ -189,15 +213,26 @@
 
   // —— Dark blue / Indigo (testimonial CTA) ——
   &--dark-blue {
-    background: $color-indigo;
+    background: linear-gradient(
+      151.59deg,
+      $color-indigo 63.36%,
+      $color-sky 117.68%
+    );
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: $color-navy;
+        background: linear-gradient(
+          150deg,
+          $color-indigo 56.38%,
+          $color-sky 90.86%
+        );
         border-color: rgba($color-white, 0.6);
         transform: translateY(-1px);
+        box-shadow:
+          0 2px 16px 0 $glass-periwinkle,
+          0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
         &::after {
           opacity: 0.95;
@@ -208,14 +243,22 @@
 
   // —— Outline glass · frosted transparent ——
   &--outline-glass {
-    background: rgba($color-white, 0.06);
+    background: linear-gradient(
+      76.26deg,
+      rgba($color-white, 0.1) 11.98%,
+      rgba(153, 153, 153, 0.06) 96.89%
+    );
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-color: rgba($color-white, 0.4);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: rgba($color-white, 0.12);
+        background: linear-gradient(
+          76.26deg,
+          rgba($color-white, 0.16) 11.98%,
+          rgba(153, 153, 153, 0.1) 96.89%
+        );
         border-color: rgba($color-white, 0.55);
         transform: translateY(-1px);
 
@@ -228,7 +271,11 @@
 
   // —— Ghost · border only, minimal fill ——
   &--ghost {
-    background: transparent;
+    background: linear-gradient(
+      90deg,
+      rgba($color-white, 0.04) 0%,
+      rgba($color-white, 0) 100%
+    );
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-color: rgba($color-white, 0.45);
@@ -240,7 +287,11 @@
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: rgba($color-white, 0.08);
+        background: linear-gradient(
+          90deg,
+          rgba($color-white, 0.12) 0%,
+          rgba($color-white, 0.04) 100%
+        );
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         border-color: rgba($color-white, 0.6);
@@ -255,14 +306,22 @@
 
   // —— Solid magenta (higher emphasis than glass) ——
   &--primary-solid {
-    background: $color-magenta;
+    background: linear-gradient(
+      90deg,
+      $color-magenta 0%,
+      rgba($color-magenta, 0.8) 100%
+    );
     border-color: rgba($color-white, 0.35);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
     @media (hover: hover) {
       &:hover:not(:disabled):not(.btn--disabled) {
-        background: color.adjust($color-magenta, $lightness: -6%);
+        background: linear-gradient(
+          90deg,
+          color.adjust($color-magenta, $lightness: -6%) 0%,
+          rgba($color-magenta, 0.9) 100%
+        );
         border-color: rgba($color-white, 0.5);
         transform: translateY(-1px);
       }
@@ -292,7 +351,11 @@
 
 // Stacked modifiers: on-light + fill variants (class="btn btn--on-light btn--primary-glass")
 .btn.btn--on-light.btn--primary-glass {
-  background: rgba($color-magenta, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba($color-magenta, 0.18) 0%,
+    rgba($color-magenta, 0.06) 100%
+  );
   color: $color-magenta;
 
   &::before {
@@ -301,14 +364,22 @@
 
   @media (hover: hover) {
     &:hover:not(:disabled):not(.btn--disabled) {
-      background: rgba($color-magenta, 0.2);
+      background: linear-gradient(
+        90deg,
+        rgba($color-magenta, 0.26) 0%,
+        rgba($color-magenta, 0.12) 100%
+      );
       border-color: rgba($color-magenta, 0.45);
     }
   }
 }
 
 .btn.btn--on-light.btn--secondary-glass {
-  background: rgba($color-sky, 0.15);
+  background: linear-gradient(
+    90deg,
+    rgba($color-sky, 0.22) 0%,
+    rgba($color-sky, 0.08) 100%
+  );
   color: $color-navy;
 
   &::before {
@@ -317,7 +388,11 @@
 
   @media (hover: hover) {
     &:hover:not(:disabled):not(.btn--disabled) {
-      background: rgba($color-sky, 0.28);
+      background: linear-gradient(
+        90deg,
+        rgba($color-sky, 0.32) 0%,
+        rgba($color-sky, 0.15) 100%
+      );
       border-color: rgba($color-navy, 0.25);
     }
   }

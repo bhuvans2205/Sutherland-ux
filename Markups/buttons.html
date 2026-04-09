@@ -13,362 +13,327 @@
     />
   </head>
   <body class="buttons-page">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <main class="buttons-page__main">
+      <!-- ======================== DESKTOP ======================== -->
+      <section class="buttons-page__section">
+        <div class="buttons-page__heading">
+          <h1 class="buttons-page__title">Buttons - Desktop</h1>
+        </div>
 
-    <main id="main-content" class="buttons-page__main">
-      <header class="buttons-page__intro">
-        <h1>Buttons</h1>
-        <p>
-          Layout follows the component sheet: rows = variants (same order as in
-          Figma <strong>Sutherland-DEV</strong> / CTA set), columns = states.
-          Typography: Arial 16&nbsp;px / 18&nbsp;px. Dark frame =
-          <a
-            href="https://www.figma.com/design/UOJP4NfQeaczzjjke7lOQu/Sutherland-DEV?node-id=59-3753&amp;m=dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            >59:3753</a
-          >; compact size =
-          <a
-            href="https://www.figma.com/design/UOJP4NfQeaczzjjke7lOQu/Sutherland-DEV?node-id=59-3754&amp;m=dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            >59:3754</a
-          >.
-        </p>
-      </header>
-
-      <!-- Dark surface — matches hero / nav context (Figma desktop sheet) -->
-      <section
-        class="buttons-page__section"
-        aria-labelledby="buttons-dark-heading"
-      >
-        <p class="buttons-page__section-title" id="buttons-dark-heading">
-          Dark background · Desktop
-        </p>
-        <p class="buttons-page__section-hint">
-          Columns: Default · Disabled · Small (<code>btn--sm</code>, mobile
-          frame)
-        </p>
-
-        <div
-          class="buttons-page__matrix"
-          role="table"
-          aria-label="Button variants on dark background"
-        >
-          <div class="buttons-page__matrix-row buttons-page__matrix-row--head">
-            <div class="buttons-page__matrix-label" role="columnheader">
-              Variant
-            </div>
-            <div role="columnheader">Default</div>
-            <div role="columnheader">Disabled</div>
-            <div role="columnheader">Small</div>
+        <!-- Light Background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Light Background</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="new-btn new-btn--dark-blue">
+              <span class="new-btn__text">Learn More</span>
+            </button>
+            <button type="button" class="new-btn new-btn--dark-blue is-hover">
+              <span class="new-btn__text">Learn More</span>
+            </button>
           </div>
+        </div>
 
-          <!-- 1 Primary — matches cta--primary -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Primary</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--primary-glass</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-glass">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-glass" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-glass btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
+        <!-- Dark Background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Dark Background</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="new-btn new-btn--light-blue">
+              <span class="new-btn__text">Learn More</span>
+            </button>
+            <button type="button" class="new-btn new-btn--light-blue is-hover">
+              <span class="new-btn__text">Learn More</span>
+            </button>
           </div>
+        </div>
 
-          <!-- 2 Secondary — cta--secondary -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Secondary</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--secondary-glass</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--secondary-glass">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--secondary-glass" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--secondary-glass btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
+        <!-- Button Used in Menu -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Button Used in Menu</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="new-btn new-btn--primary">
+              <span class="new-btn__text">Button Text</span>
+            </button>
+            <button type="button" class="new-btn new-btn--primary is-hover">
+              <span class="new-btn__text">Button Text</span>
+            </button>
           </div>
+        </div>
 
-          <!-- 3 Light blue — cta--light-blue -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Light blue</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--light-blue-glass</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--light-blue-glass">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--light-blue-glass" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--light-blue-glass btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
+        <!-- Button Used inside Banner Cards -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Button Used inside Banner Cards</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="new-btn new-btn--outline">
+              <span class="new-btn__text">Read more</span>
+            </button>
+            <button type="button" class="new-btn new-btn--outline is-hover">
+              <span class="new-btn__text">Read more</span>
+            </button>
           </div>
+        </div>
 
-          <!-- 4 Dark blue — cta--dark-blue -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Dark blue</span>
-              <code class="buttons-page__matrix-code">btn btn--dark-blue</code>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--dark-blue">
-                <span class="btn__text">Our leadership</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--dark-blue" disabled>
-                <span class="btn__text">Our leadership</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--dark-blue btn--sm">
-                <span class="btn__text">Our leadership</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- 5 Outline glass -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Outline glass</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--outline-glass</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--outline-glass">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--outline-glass" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--outline-glass btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- 6 Ghost -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Ghost</span>
-              <code class="buttons-page__matrix-code">btn btn--ghost</code>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--ghost">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--ghost" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--ghost btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- 7 Primary solid -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Primary solid</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--primary-solid</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-solid">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-solid" disabled>
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-solid btn--sm">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- 8 No dot modifier (same fill as primary) -->
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Primary · no dot</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--primary-glass btn--no-dot</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button type="button" class="btn btn--primary-glass btn--no-dot">
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--primary-glass btn--no-dot"
-                disabled
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--primary-glass btn--no-dot btn--sm"
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
+        <!-- Dots Dark Background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Dots Dark Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="dots">
+              <span class="dots__item dots__item--active"></span>
+              <span class="dots__item"></span>
+              <span class="dots__item"></span>
             </div>
           </div>
         </div>
 
-        <p class="buttons-page__link-note">
-          Link treatment uses the same classes as
-          <code>&lt;button&gt;</code> (e.g.
-          <code
-            >&lt;a href="#" class="btn btn--primary-glass"&gt;…&lt;/a&gt;</code
-          >).
-        </p>
+        <!-- Dots Light Background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Dots Light Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="dots dots--on-light">
+              <span class="dots__item dots__item--active"></span>
+              <span class="dots__item"></span>
+              <span class="dots__item"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow Dark Background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Arrow Dark Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="buttons-page__row-group">
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--midnight arrow-btn--prev"
+                aria-label="Previous"
+              ></button>
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--midnight arrow-btn--next"
+                aria-label="Next"
+              ></button>
+            </div>
+            <div class="buttons-page__row-group">
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--steel arrow-btn--prev"
+                aria-label="Previous"
+              ></button>
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--steel arrow-btn--next"
+                aria-label="Next"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow Light Background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Arrow Light Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="buttons-page__row-group">
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--teal-outline arrow-btn--prev"
+                aria-label="Previous"
+              ></button>
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--teal-outline arrow-btn--next"
+                aria-label="Next"
+              ></button>
+            </div>
+            <div class="buttons-page__row-group">
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--teal-filled arrow-btn--prev"
+                aria-label="Previous"
+              ></button>
+              <button
+                type="button"
+                class="arrow-btn arrow-btn--teal-filled arrow-btn--next"
+                aria-label="Next"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Play Button -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Play Button</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="play-btn" aria-label="Play"></button>
+            <button
+              type="button"
+              class="play-btn is-hover"
+              aria-label="Play"
+            ></button>
+          </div>
+        </div>
+
+        <!-- Tag Used in insights Section -->
+        <div class="buttons-page__row buttons-page__row--bg-light-gray">
+          <p class="buttons-page__row-label">Tag Used in insights Section</p>
+          <div class="buttons-page__row-buttons">
+            <span class="tag">Tag</span>
+          </div>
+        </div>
+
+        <!-- Social Share Icon -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Social Share Icon</p>
+          <div class="buttons-page__row-buttons">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon is-hover" aria-label="Instagram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
       </section>
 
-      <!-- Light surface -->
-      <section
-        class="buttons-page__section buttons-page__section--on-light"
-        aria-labelledby="buttons-light-heading"
-      >
-        <p class="buttons-page__section-title" id="buttons-light-heading">
-          Light background
-        </p>
-        <p class="buttons-page__section-hint">
-          <code>btn--on-light</code> + fill modifier (card / form contexts)
-        </p>
+      <!-- ======================== MOBILE ======================== -->
+      <section class="buttons-page__section">
+        <div class="buttons-page__heading">
+          <h1 class="buttons-page__title">Buttons - Mobile</h1>
+        </div>
 
-        <div
-          class="buttons-page__matrix buttons-page__matrix--on-light"
-          role="table"
-          aria-label="Button variants on light background"
-        >
-          <div class="buttons-page__matrix-row buttons-page__matrix-row--head">
-            <div class="buttons-page__matrix-label" role="columnheader">
-              Variant
-            </div>
-            <div role="columnheader">Default</div>
-            <div role="columnheader">Disabled</div>
-            <div role="columnheader">Small</div>
+        <!-- Light Background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Light Background</p>
+          <div class="buttons-page__row-buttons">
+            <button
+              type="button"
+              class="new-btn new-btn--dark-blue new-btn--sm"
+            >
+              <span class="new-btn__text">Learn More</span>
+            </button>
           </div>
+        </div>
 
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Primary on light</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--on-light btn--primary-glass</code
-              >
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--primary-glass"
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--primary-glass"
-                disabled
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--primary-glass btn--sm"
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
+        <!-- Dark Background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Dark Background</p>
+          <div class="buttons-page__row-buttons">
+            <button
+              type="button"
+              class="new-btn new-btn--light-blue new-btn--sm"
+            >
+              <span class="new-btn__text">Talk to our Experts</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Button Used in Menu -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Button Used in Menu</p>
+          <div class="buttons-page__row-buttons">
+            <button type="button" class="new-btn new-btn--primary new-btn--sm">
+              <span class="new-btn__text">Button Text</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Arrow Used inside Banner Cards -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Arrow Used inside Banner Cards</p>
+          <div class="buttons-page__row-buttons">
+            <button
+              type="button"
+              class="arrow-btn arrow-btn--teal-outline arrow-btn--next arrow-btn--sm"
+              aria-label="Next"
+            ></button>
+          </div>
+        </div>
+
+        <!-- Dots Dark Background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Dots Dark Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="dots dots--sm">
+              <span class="dots__item dots__item--active"></span>
+              <span class="dots__item"></span>
+              <span class="dots__item"></span>
             </div>
           </div>
+        </div>
 
-          <div class="buttons-page__matrix-row">
-            <div class="buttons-page__matrix-label" role="rowheader">
-              <span class="buttons-page__matrix-title">Secondary on light</span>
-              <code class="buttons-page__matrix-code"
-                >btn btn--on-light btn--secondary-glass</code
-              >
+        <!-- Dots Light Background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Dots Light Background</p>
+          <div class="buttons-page__row-buttons">
+            <div class="dots dots--sm dots--on-light">
+              <span class="dots__item dots__item--active"></span>
+              <span class="dots__item"></span>
+              <span class="dots__item"></span>
             </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--secondary-glass"
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--secondary-glass"
-                disabled
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
-            <div class="buttons-page__matrix-cell" role="cell">
-              <button
-                type="button"
-                class="btn btn--on-light btn--secondary-glass btn--sm"
-              >
-                <span class="btn__text">Get in touch</span>
-              </button>
-            </div>
+          </div>
+        </div>
+
+        <!-- Arrow used in Case Study section -->
+        <div class="buttons-page__row buttons-page__row--bg-dark-gray">
+          <p class="buttons-page__row-label">
+            Arrow used in Case Study section
+          </p>
+          <div class="buttons-page__row-buttons">
+            <button
+              type="button"
+              class="arrow-btn arrow-btn--sky-filled arrow-btn--next arrow-btn--sm"
+              aria-label="Next"
+            ></button>
+          </div>
+        </div>
+
+        <!-- Arrow used in Dark background -->
+        <div class="buttons-page__row">
+          <p class="buttons-page__row-label">Arrow used in Dark background</p>
+          <div class="buttons-page__row-buttons">
+            <span class="chevron-icon chevron-icon--right"></span>
+          </div>
+        </div>
+
+        <!-- Arrow used in Light background -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Arrow used in Light background</p>
+          <div class="buttons-page__row-buttons">
+            <span class="chevron-icon chevron-icon--down"></span>
+          </div>
+        </div>
+
+        <!-- Play Button -->
+        <div class="buttons-page__row buttons-page__row--bg-white">
+          <p class="buttons-page__row-label">Play Button</p>
+          <div class="buttons-page__row-buttons">
+            <button
+              type="button"
+              class="play-btn play-btn--sm"
+              aria-label="Play"
+            ></button>
+          </div>
+        </div>
+
+        <!-- Tag Used in insights Section -->
+        <div class="buttons-page__row buttons-page__row--bg-light-gray">
+          <p class="buttons-page__row-label">Tag Used in insights Section</p>
+          <div class="buttons-page__row-buttons">
+            <span class="tag tag--sm">Tag</span>
           </div>
         </div>
       </section>

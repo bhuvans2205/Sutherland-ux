@@ -1,0 +1,665 @@
+@use "../variables" as *;
+@use "../shared/tokens" as *;
+
+// ==========================================================================
+// Our Solutions — Sutherland-DEV: 4659:1856 (desktop), 4659:2808 (mobile)
+// All numbers below are sourced from Figma get_variable_defs / metadata.
+// ==========================================================================
+
+// Figma design tokens (values returned by get_variable_defs)
+$os-color-bg: #ddebf6; // Colors/New/Primary/Neutral Blue
+$os-color-card-active: #ffffff; // Colors/New/Primary/White
+$os-color-card-glass: rgba(#ffffff, 0.5); // Colors/Glass/White 50
+$os-color-title: #26235d; // Colors/New/Primary/Midnight Blue
+$os-color-body: #404040; // Colors/New/Primary/Grey 70
+$os-color-black: #00001b; // Colors/New/Primary/Black
+$os-color-electric: #12acf7; // Colors/New/Primary/Electric Blue
+$os-color-grey-20: #dddddd; // Colors/New/Primary/Grey 20
+
+// Layout
+$os-section-pad-y-d: 80px;
+$os-section-pad-x-d: 60px;
+$os-section-pad-y-m: 32px;
+$os-section-pad-x-m: 24px;
+$os-radius-section: 40px; // Corner Radius/XXXL (bottom only)
+$os-radius-section-m: 16px; // Corner Radius/L (bottom)
+$os-gap-d: 40px; // Stack gap desktop
+$os-gap-m: 24px; // Stack gap mobile
+
+// Sidebar
+$os-sidebar-w: 315px;
+$os-content-w: 985px;
+$os-content-gap-d: 20px; // Spacing/Padding/Cards/L
+$os-sidebar-gap: 12px; // Spacing/Padding/Cards/S
+$os-sidebar-item-pad: 16px;
+$os-sidebar-item-h: 56px; // single-line item
+
+// Card grid
+$os-card-w: 315px;
+$os-card-h: 230px;
+$os-card-pad-d: 20px; // Spacing/Padding/Cards/L
+$os-card-pad-m: 16px;
+$os-card-radius-tl: 16px;
+$os-card-radius-tr: 4px;
+$os-card-radius-br: 16px;
+$os-card-radius-bl: 16px;
+$os-card-gap-row-d: 20px;
+$os-card-gap-col-d: 20px;
+
+// Mobile carousel card
+$os-card-w-mobile: 321px;
+$os-card-radius-tr-m: 2px;
+
+// Background image (Figma node 4659:1858 / 4659:2810)
+$os-bg-w-d: 571.034px;
+$os-bg-h-d: 545.456px;
+$os-bg-x-d: -89.195px;
+$os-bg-y-d: 560.453px;
+$os-bg-w-m: 677.107px;
+$os-bg-h-m: 655.202px;
+$os-bg-x-m: -423.5px;
+$os-bg-y-m: 499.82px;
+$os-bg-overlay: linear-gradient(
+  258.201deg,
+  rgb(221, 235, 246) 49.919%,
+  rgba(221, 235, 246, 0) 94.11%
+);
+
+// Card decorative image (image 161 — variant2 / active card)
+$os-decor-w: 392.74px;
+$os-decor-h: 412.695px;
+$os-decor-x: 168px;
+$os-decor-y: -245.67px;
+$os-decor-rotate: -22.7deg;
+$os-decor-opacity: 0.7;
+
+// Typography (from Figma get_variable_defs)
+$os-h2-size-d: 48px;
+$os-h2-lh-d: 48px;
+$os-h2-size-m: 32px;
+$os-h2-lh-m: 32px;
+$os-lede-size-d: 16px;
+$os-lede-lh-d: 24px;
+$os-lede-size-m: 16px;
+$os-lede-lh-m: 24px;
+$os-card-title-size-d: 24px; // H5 size
+$os-card-title-lh-d: 32px; // H5 line-height
+$os-card-title-size-m: 18px;
+$os-card-title-lh-m: 22px;
+$os-card-body-size-d: 16px; // P2
+$os-card-body-lh-d: 20px; // Line Height/P1
+$os-card-body-size-m: 14px;
+$os-card-body-lh-m: 16px;
+$os-sidebar-text-size-d: 20px; // H6
+$os-sidebar-text-lh-d: 24px; // Line Height/H6
+$os-sidebar-text-size-m: 16px;
+$os-sidebar-text-lh-m: 18px;
+
+// CTA gradient (from Figma 4027:3077 desktop / 1020:1603 mobile)
+$os-cta-grad-d: linear-gradient(
+  149.779deg,
+  rgb(38, 35, 93) 63.362%,
+  rgb(18, 172, 247) 117.68%
+);
+$os-cta-grad-m: linear-gradient(
+  151.587deg,
+  rgb(38, 35, 93) 63.362%,
+  rgb(18, 172, 247) 117.68%
+);
+$os-cta-grad-hover: linear-gradient(
+  149.779deg,
+  rgb(9, 24, 103) 25%,
+  rgb(18, 172, 247) 95%
+);
+
+// ==========================================================================
+// Section shell
+// ==========================================================================
+.our-solutions {
+  position: relative;
+  background: $os-color-bg;
+  border-radius: 0 0 $os-radius-section $os-radius-section;
+  overflow: hidden;
+  isolation: isolate;
+  padding: $os-section-pad-y-d $os-section-pad-x-d;
+
+  @media (max-width: 1023px) {
+    border-radius: 0 0 $os-radius-section-m $os-radius-section-m;
+    padding: $os-section-pad-y-m $os-section-pad-x-m;
+  }
+}
+
+// Background — image 159 (decorative wave, bottom-left)
+.our-solutions__bg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  width: $os-bg-w-d;
+  height: $os-bg-h-d;
+  left: $os-bg-x-d;
+  top: $os-bg-y-d;
+
+  @media (max-width: 1023px) {
+    width: $os-bg-w-m;
+    height: $os-bg-h-m;
+    left: $os-bg-x-m;
+    top: $os-bg-y-m;
+  }
+}
+
+.our-solutions__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-width: none;
+}
+
+.our-solutions__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: $os-bg-overlay;
+}
+
+// ==========================================================================
+// Container + header
+// ==========================================================================
+.our-solutions__container {
+  position: relative;
+  z-index: 1;
+  max-width: $content-max;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $os-gap-d;
+
+  @media (max-width: 1023px) {
+    gap: $os-gap-m;
+  }
+}
+
+.our-solutions__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+
+  @media (max-width: 1023px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.our-solutions__title {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $os-h2-size-d;
+  line-height: $os-h2-lh-d;
+  letter-spacing: 0;
+  color: $os-color-title;
+  margin: 0;
+
+  @media (max-width: 1023px) {
+    font-size: $os-h2-size-m;
+    line-height: $os-h2-lh-m;
+  }
+}
+
+.our-solutions__lede {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $os-lede-size-d;
+  line-height: $os-lede-lh-d;
+  letter-spacing: 0;
+  color: $os-color-black;
+  margin: 0;
+
+  @media (max-width: 1023px) {
+    font-size: $os-lede-size-m;
+    line-height: $os-lede-lh-m;
+  }
+}
+
+// ==========================================================================
+// List
+//   Desktop: sidebar (left 315) + panel area (right 985) using absolute
+//     positioning so panels stack at top-right and only the open one renders.
+//   Mobile: natural document flow — heads + their panels stack vertically
+//     to behave as an accordion.
+// ==========================================================================
+.our-solutions__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    gap: $os-sidebar-gap;
+    min-height: 480px;
+  }
+}
+
+.our-solutions__head {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: $os-sidebar-w;
+  }
+}
+
+// Sidebar (desktop) / accordion header (mobile) button
+.our-solutions__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: $os-sidebar-item-h;
+  padding: $os-sidebar-item-pad;
+  background: transparent;
+  border: 0;
+  border-radius: 12px 2px 12px 12px;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  outline: none;
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $os-sidebar-text-size-d;
+  line-height: $os-sidebar-text-lh-d;
+  letter-spacing: 0;
+  color: $os-color-title;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: rgba(#ffffff, 0.45);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $os-color-electric;
+    outline-offset: 2px;
+  }
+
+  // Active (selected) sidebar tab — desktop
+  &[aria-expanded="true"] {
+    background: $os-color-card-active;
+    font-weight: 700;
+
+    .our-solutions__btn-indicator {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    min-height: 46px;
+    padding: 14px 12px;
+    font-size: $os-sidebar-text-size-m;
+    line-height: $os-sidebar-text-lh-m;
+    font-weight: 700;
+    background: $os-color-card-active;
+    border-radius: 12px 2px 12px 12px;
+  }
+}
+
+.our-solutions__btn-text {
+  flex: 1;
+  min-width: 0;
+}
+
+// Active dot — desktop sidebar
+.our-solutions__btn-indicator {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $os-color-electric;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+// +/- circle — mobile accordion
+.our-solutions__btn-toggle {
+  display: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $os-color-electric;
+  color: $os-color-card-active;
+  position: relative;
+
+  @media (max-width: 1023px) {
+    display: inline-flex;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+    transition: transform 0.25s ease;
+  }
+
+  &::before {
+    width: 8px;
+    height: 1.47px;
+  }
+
+  &::after {
+    width: 1.47px;
+    height: 8px;
+  }
+}
+
+.our-solutions__btn[aria-expanded="true"] .our-solutions__btn-toggle::after {
+  transform: scaleY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .our-solutions__btn-toggle::before,
+  .our-solutions__btn-toggle::after {
+    transition: none;
+  }
+}
+
+// ==========================================================================
+// Panel (tab content / accordion content)
+// ==========================================================================
+.our-solutions__panel {
+  &[hidden] {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 0;
+    left: calc(#{$os-sidebar-w} + #{$os-content-gap-d});
+    right: 0;
+    min-height: 480px;
+  }
+
+  @media (max-width: 1023px) {
+    margin-bottom: 8px;
+  }
+}
+
+// Card grid — desktop 3 cols × 2 rows
+.our-solutions__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $os-card-gap-row-d $os-card-gap-col-d;
+
+  @media (max-width: 1023px) {
+    display: flex;
+    grid-template-columns: none;
+    gap: 0;
+  }
+
+  // Slick (mobile)
+  &.slick-initialized {
+    display: block;
+
+    .slick-slide {
+      height: auto;
+
+      > div {
+        height: 100%;
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .our-solutions__card {
+      width: $os-card-w-mobile;
+      max-width: calc(100vw - #{2 * $os-section-pad-x-m} - 32px);
+      margin-right: 12px;
+      height: auto;
+    }
+  }
+}
+
+// ==========================================================================
+// Card (Solutions | DES)
+// ==========================================================================
+.our-solutions__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  height: $os-card-h;
+  padding: $os-card-pad-d;
+  background: $os-color-card-glass;
+  border-radius: $os-card-radius-tl $os-card-radius-tr $os-card-radius-br
+    $os-card-radius-bl;
+  overflow: hidden;
+  isolation: isolate;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    height: auto;
+    min-height: $os-card-h;
+    padding: $os-card-pad-m;
+    background: $os-color-card-active;
+    border-radius: $os-card-radius-tl $os-card-radius-tr-m $os-card-radius-br
+      $os-card-radius-bl;
+  }
+}
+
+// Active card — desktop only (variant 2 in Figma)
+.our-solutions__card--active {
+  background: $os-color-card-active;
+
+  .our-solutions__card-title {
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .our-solutions__card-decor {
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+
+  .our-solutions__card-cta {
+    @media (min-width: 1024px) {
+      display: inline-flex;
+    }
+  }
+}
+
+// Decorative image inside active card (image 161)
+.our-solutions__card-decor {
+  display: none;
+  position: absolute;
+  width: $os-decor-w;
+  height: auto;
+  aspect-ratio: 392.74 / 412.695;
+  left: $os-decor-x;
+  top: $os-decor-y;
+  transform: rotate($os-decor-rotate);
+  transform-origin: center;
+  opacity: $os-decor-opacity;
+  pointer-events: none;
+  z-index: 0;
+  max-width: none;
+  object-fit: cover;
+}
+
+// Icon container (frame 4659:1911 etc.)
+.our-solutions__card-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 53px;
+  height: 53px;
+  padding: 8px;
+  flex-shrink: 0;
+
+  > svg,
+  > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.our-solutions__card-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; // Spacing/Padding/Cards/XXS
+  margin-top: auto;
+}
+
+.our-solutions__card-title {
+  font-family: $font-primary;
+  font-weight: 700;
+  font-size: $os-card-title-size-d;
+  line-height: $os-card-title-lh-d;
+  letter-spacing: 0;
+  color: $os-color-title;
+  margin: 0;
+
+  @media (max-width: 1023px) {
+    font-size: $os-card-title-size-m;
+    line-height: $os-card-title-lh-m;
+  }
+}
+
+.our-solutions__card-desc {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: $os-card-body-size-d;
+  line-height: $os-card-body-lh-d;
+  letter-spacing: 0;
+  color: $os-color-body;
+  margin: 0;
+
+  @media (max-width: 1023px) {
+    font-size: $os-card-body-size-m;
+    line-height: $os-card-body-lh-m;
+  }
+}
+
+// CTA — only visible on desktop active card; on mobile every card shows it
+.our-solutions__card-cta {
+  display: none;
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 12px 24px 12px 20px; // Figma pl-20 pr-24 py-12
+  background: $os-cta-grad-d;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background 0.25s ease,
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: $os-cta-grad-hover;
+    border-color: rgba(#ffffff, 0.6);
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $os-color-electric;
+    outline-offset: 2px;
+  }
+
+  &::before {
+    background-color: $os-color-grey-20; // Figma: #DDDDDD on desktop
+  }
+
+  @media (max-width: 1023px) {
+    display: inline-flex;
+    padding: 8px 16px;
+    background: $os-cta-grad-m;
+    // mobile dot stays sky-blue (#12acf7) — matches both Figma and base .cta
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+// ==========================================================================
+// Slick dots (mobile)
+// ==========================================================================
+.our-solutions__panel .slick-dots {
+  display: flex !important;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+
+  li {
+    width: auto;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+
+    button {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: $os-color-electric;
+      opacity: 0.5;
+      font-size: 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &.slick-active button {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: $os-color-title;
+      opacity: 1;
+    }
+  }
+}
